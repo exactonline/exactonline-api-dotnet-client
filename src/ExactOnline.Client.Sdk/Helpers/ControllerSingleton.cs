@@ -21,15 +21,13 @@ namespace ExactOnline.Client.Sdk.Helpers
 		/// </summary>
 		public static ControllerSingleton GetInstance(IApiConnector connector, string apiEndpoint)
 		{
-			if (_instance == null)
+			// This has to be created for each apiEndpoint. Otherwise it's not possible to use the SDK with multiple divisions.
+			_instance = new ControllerSingleton
 			{
-				_instance = new ControllerSingleton
-				{
-					_apiEndpoint = apiEndpoint,
-					_connector = connector,
-					_controllers = new Hashtable()
-				};
-			}
+				_apiEndpoint = apiEndpoint,
+				_connector = connector,
+				_controllers = new Hashtable()
+			};
 			return _instance;
 		}
 
