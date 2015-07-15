@@ -1341,7 +1341,7 @@ Public Class ContractStatistics
 	Public Property [VATNumber] As String
 End Class
 
-<SupportedActionsSDK(False, True, False, False)>
+<SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
 Public Class Costcenter
 	Public Property [Active] As Boolean?

@@ -3,67 +3,116 @@ using System.Windows.Forms;
 
 namespace ExactOnline.Client.OAuth
 {
-	public partial class LoginForm : Form
-	{
-		private readonly Uri _redirectUri;
+    public partial class LoginForm : Form
+    {
+        private readonly bool _isAutoLogin;
+        private readonly string _username;
+        private readonly string _password;
+        private readonly Uri _redirectUri;
 
-		#region Property
+        #region Property
 
-		public Uri AuthorizationUri { get; set; }
+        public Uri AuthorizationUri { get; set; }
 
-		#endregion
+        #endregion
 
-		#region Constructor
+        #region Constructor
 
-		public LoginForm(Uri redirectUri)
-			: this()
-		{
-			_redirectUri = redirectUri;
-		}
+        public LoginForm(Uri redirectUri)
+            : this()
+        {
+            _redirectUri = redirectUri;
+        }
 
-		public LoginForm()
-		{
-			InitializeComponent();
-			WebBrowser.Navigated += WebBrowserNavigated;
-		}
+        public LoginForm(string username, string password, Uri redirectUri)
+            : this()
+        {
+            _isAutoLogin = true;
+            _username = username;
+            _password = password;
+            _redirectUri = redirectUri;
+        }
 
-		#endregion
+        public LoginForm()
+        {
+            InitializeComponent();
+            WebBrowser.ScriptErrorsSuppressed = true;
+            WebBrowser.Navigated += WebBrowserNavigated;
+        }
 
-		private void LoginFormLoad(object sender, EventArgs e)
-		{
-			WebBrowser.Navigate(AuthorizationUri);
-		}
+        #endregion
 
-		#region Events
+        private void LoginFormLoad(object sender, EventArgs e)
+        {
+            if (_isAutoLogin)
+            {
+                if (string.IsNullOrWhiteSpace(_username) || string.IsNullOrWhiteSpace(_password))
+                {
+                    throw new ArgumentException("Username and/or password cannot be null.");
+                }
 
-		private void WebBrowserNavigated(object sender, WebBrowserNavigatedEventArgs e)
-		{
-			if (IsRedirected(e.Url))
-			{
-				AuthorizationUri = e.Url;
-				Hide();
-			}
-		}
+                var loginUrl = string.Format("{0}&UserNameField={1}&PasswordField={2}", AuthorizationUri, _username, _password);
+                WebBrowser.Navigate(loginUrl);
+            }
+            else
+            {
+                WebBrowser.Navigate(AuthorizationUri);
+            }
+        }
 
-		#endregion
+        private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            if (!_isAutoLogin)
+            {
+                return;
+            }
 
-		#region Private Methods
+            if (WebBrowser.Document == null)
+            {
+                throw new SystemException("WebBrowser.Document is null.");
+            }
 
-		/// <summary>
-		/// Tests whether two URLs are equal for purposes of detecting the conclusion of authorization.
-		/// </summary>
-		private bool IsRedirected(Uri uri)
-		{
-			var uriComponents = uri.GetComponents(UriComponents.SchemeAndServer | UriComponents.Path, UriFormat.Unescaped);
-			var redirectUri = _redirectUri.ToString();
-			if (uriComponents.EndsWith("/") && !redirectUri.EndsWith("/"))
-			{
-				redirectUri = redirectUri + "/";
-			}
+            var elementById = WebBrowser.Document.GetElementById("LoginButton");
+            if (elementById == null)
+            {
+                throw new SystemException("WebBrowser.Document.GetElementById(\"LoginButton\") is null.");
+            }
 
-			return string.Equals(uriComponents, redirectUri, StringComparison.Ordinal);
-		}
+            elementById.InvokeMember("click");
+        }
 
-		#endregion
-	}
+        #region Events
+
+        private void WebBrowserNavigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            if (IsRedirected(e.Url))
+            {
+                AuthorizationUri = e.Url;
+                Hide();
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Tests whether two URLs are equal for purposes of detecting the conclusion of authorization.
+        /// </summary>
+        private bool IsRedirected(Uri uri)
+        {
+            var uriComponents = uri.GetComponents(UriComponents.SchemeAndServer | UriComponents.Path, UriFormat.Unescaped);
+            var redirectUri = _redirectUri.ToString();
+            if (uriComponents.EndsWith("/") && !redirectUri.EndsWith("/"))
+            {
+                redirectUri = redirectUri + "/";
+            }
+
+            return string.Equals(uriComponents, redirectUri, StringComparison.Ordinal);
+        }
+
+        #endregion
+
+
+    }
 }
