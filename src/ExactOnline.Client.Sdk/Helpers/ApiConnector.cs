@@ -169,6 +169,7 @@ namespace ExactOnline.Client.Sdk.Helpers
 			request.ContentType = "application/json";
 			request.Accept = "application/json";
 			request.Headers.Add("Authorization", "Bearer " + _accessTokenDelegate());
+            request.Headers.Add("Prefer", "return=representation");
 
 			Debug.WriteLine(request.Method);
 			Debug.WriteLine(url);

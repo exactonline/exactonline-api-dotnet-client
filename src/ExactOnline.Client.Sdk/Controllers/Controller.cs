@@ -124,12 +124,13 @@ namespace ExactOnline.Client.Sdk.Controllers
 			return false;
 		}
 
-		/// <summary>
-		/// Creates an entity in Exact Online
-		/// </summary>
-		/// <param name="entity">Entity to create</param>
-		/// <returns>True if succeed</returns>
-		public Boolean Create(ref T entity)
+	    /// <summary>
+	    /// Creates an entity in Exact Online
+	    /// </summary>
+	    /// <param name="entity">Entity to create</param>
+	    /// <param name="skipGetEntity">If true: skips GetEntity()</param>
+	    /// <returns>True if succeed</returns>
+	    public Boolean Create(ref T entity, bool skipGetEntity)
 		{
 			if (!IsCreateable(entity)) throw new Exception("Cannot create entity. Entity does not support creation. Please see the Reference Documentation.");
 
@@ -157,7 +158,10 @@ namespace ExactOnline.Client.Sdk.Controllers
 				}
 
 				// Get entity with linked entities (API Response for creating does not return the linked entities)
-				entity = GetEntity(GetIdentifierValue(entity), _expandfield);
+			    if (!skipGetEntity)
+			    {
+			        entity = GetEntity(GetIdentifierValue(entity), _expandfield);
+			    }
 			}
 			return created;
 		}

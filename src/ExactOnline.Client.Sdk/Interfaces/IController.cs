@@ -10,7 +10,7 @@ namespace ExactOnline.Client.Sdk.Interfaces
 
 		T GetEntity(string guid, string parameters);
 
-		Boolean Create(ref T entity);
+		Boolean Create(ref T entity, bool skipEntity);
 
 		Boolean Update(T entity);
 

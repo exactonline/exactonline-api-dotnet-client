@@ -259,10 +259,10 @@ namespace ExactOnline.Client.Sdk.Helpers
 		/// <summary>
 		/// Inserts the specified entity into Exact Online
 		/// </summary>
-		public Boolean Insert(ref T entity)
+		public Boolean Insert(ref T entity, bool skipGetEntity = false)
 		{
 			if (entity == null) throw new ArgumentException("Insert entity: Entity cannot be null");
-			return _controller.Create(ref entity);
+            return _controller.Create(ref entity, skipGetEntity);
 		}
 	}
 }
