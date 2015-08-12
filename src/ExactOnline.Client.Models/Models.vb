@@ -1,4 +1,4 @@
-' Last generated on 2014-11-12 09:16:57 +01:00
+' Last generated on 2015-08-11 19:55:56 +02:00
 
 <SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
@@ -16,14 +16,28 @@ Public Class Account
 	Public Property [AddressLine1] As String
 	Public Property [AddressLine2] As String
 	Public Property [AddressLine3] As String
-	Public Property [BankAccounts] As IENumerable(Of BankAccount)
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [BankAccounts] As IEnumerable(Of BankAccount)
 	Public Property [Blocked] As Boolean?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BRIN] As Guid?
 	Public Property [BusinessType] As Guid?
 	Public Property [CanDropShip] As Boolean?
 	Public Property [ChamberOfCommerce] As String
 	Public Property [City] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Classification] As String
+	Public Property [Classification1] As Guid?
+	Public Property [Classification2] As Guid?
+	Public Property [Classification3] As Guid?
+	Public Property [Classification4] As Guid?
+	Public Property [Classification5] As Guid?
+	Public Property [Classification6] As Guid?
+	Public Property [Classification7] As Guid?
+	Public Property [Classification8] As Guid?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ClassificationDescription] As String
@@ -32,12 +46,17 @@ Public Class Account
 	Public Property [CompanySize] As Guid?
 	Public Property [ConsolidationScenario] As Byte?
 	Public Property [ControlledDate] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Costcenter] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostcenterDescription] As String
 	Public Property [CostPaid] As Byte
 	Public Property [Country] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CountryName] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
@@ -49,14 +68,22 @@ Public Class Account
 	Public Property [CreatorFullName] As String
 	Public Property [CreditLinePurchase] As Double?
 	Public Property [CreditLineSales] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Currency] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CustomerSince] As DateTime?
 	Public Property [DiscountPurchase] As Double?
 	Public Property [DiscountSales] As Double?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Document] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DunsNumber] As String
 	Public Property [Email] As String
 	Public Property [EndDate] As DateTime?
@@ -83,13 +110,21 @@ Public Class Account
 	Public Property [InvoicingMethod] As Int32?
 	Public Property [IsAccountant] As Byte
 	Public Property [IsAgency] As Byte
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [IsBank] As Boolean?
 	Public Property [IsCompetitor] As Byte
 	Public Property [IsMailing] As Byte
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [IsMember] As Boolean?
 	Public Property [IsPilot] As Boolean?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [IsPurchase] As Boolean?
 	Public Property [IsReseller] As Boolean?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [IsSales] As Boolean?
 	Public Property [IsSupplier] As Boolean?
 	Public Property [Language] As String
@@ -99,7 +134,11 @@ Public Class Account
 	Public Property [Latitude] As Double?
 	Public Property [LeadSource] As Guid?
 	Public Property [LogoFileName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LogoThumbnailUrl] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LogoUrl] As String
 	Public Property [Logo] As Byte()
 	Public Property [Longitude] As Double?
@@ -114,6 +153,8 @@ Public Class Account
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [Name] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Parent] As Guid?
 	Public Property [PaymentConditionPurchase] As String
 	'''<summary>Readonly Field</summary>
@@ -165,7 +206,18 @@ Public Class Account
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StateName] As String
 	Public Property [Status] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StatusSince] As DateTime?
+	Public Property [SalesTaxSchedule] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SalesTaxScheduleCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SalesTaxScheduleDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Type] As String
 	Public Property [VATLiability] As String
 	Public Property [VATNumber] As String
@@ -206,6 +258,8 @@ End Class
 <DataServiceKey("ID")>
 Public Class AccountClassification
 	Public Property [AccountClassificationName] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountClassificationNameDescription] As String
 	Public Property [Code] As String
 	'''<summary>Readonly Field</summary>
@@ -214,6 +268,8 @@ Public Class AccountClassification
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Description] As String
 	'''<summary>Readonly Field</summary>
@@ -226,6 +282,8 @@ Public Class AccountClassification
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 End Class
 
@@ -238,6 +296,8 @@ Public Class AccountClassificationName
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Description] As String
 	'''<summary>Readonly Field</summary>
@@ -250,93 +310,108 @@ Public Class AccountClassificationName
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [SequenceNumber] As Int32
-End Class
-
-<DataServiceKey("ID")>
-Public Class ActivityLog
-	Public Property [ID] As Guid
-	Public Property [Division] As Int32?
-	Public Property [DivisionDescription] As String
-	Public Property [ActivityType] As Int16
-	Public Property [ActivityTypeDescription] As String
-	Public Property [User] As Guid?
-	Public Property [UserFullName] As String
-	Public Property [StartTime] As DateTime
-	Public Property [EndTime] As DateTime?
-	Public Property [Session] As Guid?
-	Public Property [App] As String
-	Public Property [QueryString] As String
-	Public Property [DataKey] As String
-	Public Property [HostName] As String
-	Public Property [ClientAddress] As String
-	Public Property [Duration] As Int32?
-	Public Property [QueryDuration] As Int32?
-	Public Property [IsPostback] As Byte?
-	Public Property [Action] As Int16?
-	Public Property [Count] As Int32?
-	Public Property [LogText] As String
-	Public Property [DatabaseID] As Guid
-	Public Property [DatabaseName] As String
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
 Public Class Address
-    Public Property [Account] As Guid?
-    Public Property [AccountIsSupplier] As Boolean?
-    Public Property [AccountName] As String
-    Public Property [AddressLine1] As String
-    Public Property [AddressLine2] As String
-    Public Property [AddressLine3] As String
-    Public Property [City] As String
-    Public Property [Contact] As Guid?
-    Public Property [ContactName] As String
-    Public Property [Country] As String
-    Public Property [CountryName] As String
-    Public Property [Created] As DateTime?
-    Public Property [Creator] As Guid?
-    Public Property [CreatorFullName] As String
-    Public Property [Division] As Int32?
-    Public Property [Fax] As String
-    Public Property [FreeBoolField_01] As Boolean?
-    Public Property [FreeBoolField_02] As Boolean?
-    Public Property [FreeBoolField_03] As Boolean?
-    Public Property [FreeBoolField_04] As Boolean?
-    Public Property [FreeBoolField_05] As Boolean?
-    Public Property [FreeDateField_01] As DateTime?
-    Public Property [FreeDateField_02] As DateTime?
-    Public Property [FreeDateField_03] As DateTime?
-    Public Property [FreeDateField_04] As DateTime?
-    Public Property [FreeDateField_05] As DateTime?
-    Public Property [FreeNumberField_01] As Double?
-    Public Property [FreeNumberField_02] As Double?
-    Public Property [FreeNumberField_03] As Double?
-    Public Property [FreeNumberField_04] As Double?
-    Public Property [FreeNumberField_05] As Double?
-    Public Property [FreeTextField_01] As String
-    Public Property [FreeTextField_02] As String
-    Public Property [FreeTextField_03] As String
-    Public Property [FreeTextField_04] As String
-    Public Property [FreeTextField_05] As String
-    Public Property [ID] As Guid
-    Public Property [Mailbox] As String
-    Public Property [Main] As Boolean?
-    Public Property [Modified] As DateTime?
-    Public Property [Modifier] As Guid?
-    Public Property [ModifierFullName] As String
-    Public Property [NicNumber] As String
-    Public Property [Notes] As String
-    Public Property [Phone] As String
-    Public Property [PhoneExtension] As String
-    Public Property [Postcode] As String
-    Public Property [State] As String
-    Public Property [StateDescription] As String
-    Public Property [Type] As Int16?
-    Public Property [Warehouse] As Guid?
-    Public Property [WarehouseCode] As String
-    Public Property [WarehouseDescription] As String
+	Public Property [Account] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [AccountIsSupplier] As Boolean?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [AccountName] As String
+	Public Property [AddressLine1] As String
+	Public Property [AddressLine2] As String
+	Public Property [AddressLine3] As String
+	Public Property [City] As String
+	Public Property [Contact] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ContactName] As String
+	Public Property [Country] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CountryName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Division] As Int32?
+	Public Property [Fax] As String
+	Public Property [FreeBoolField_01] As Boolean?
+	Public Property [FreeBoolField_02] As Boolean?
+	Public Property [FreeBoolField_03] As Boolean?
+	Public Property [FreeBoolField_04] As Boolean?
+	Public Property [FreeBoolField_05] As Boolean?
+	Public Property [FreeDateField_01] As DateTime?
+	Public Property [FreeDateField_02] As DateTime?
+	Public Property [FreeDateField_03] As DateTime?
+	Public Property [FreeDateField_04] As DateTime?
+	Public Property [FreeDateField_05] As DateTime?
+	Public Property [FreeNumberField_01] As Double?
+	Public Property [FreeNumberField_02] As Double?
+	Public Property [FreeNumberField_03] As Double?
+	Public Property [FreeNumberField_04] As Double?
+	Public Property [FreeNumberField_05] As Double?
+	Public Property [FreeTextField_01] As String
+	Public Property [FreeTextField_02] As String
+	Public Property [FreeTextField_03] As String
+	Public Property [FreeTextField_04] As String
+	Public Property [FreeTextField_05] As String
+	Public Property [ID] As Guid
+	Public Property [Mailbox] As String
+	Public Property [Main] As Boolean?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	Public Property [NicNumber] As String
+	Public Property [Notes] As String
+	Public Property [Phone] As String
+	Public Property [PhoneExtension] As String
+	Public Property [Postcode] As String
+	Public Property [State] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [StateDescription] As String
+	Public Property [Type] As Int16?
+	Public Property [Warehouse] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [WarehouseCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [WarehouseDescription] As String
+End Class
+
+<SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("ID")>
+Public Class AddressState
+	Public Property [Country] As String
+	Public Property [DisplayValue] As String
+	Public Property [Latitude] As Double?
+	Public Property [Longitude] As Double?
+	Public Property [ID] As Guid
+	Public Property [State] As String
+	Public Property [Name] As String
 End Class
 
 <DataServiceKey("AccountId")>
@@ -513,409 +588,215 @@ Public Class Asset
 	Public Property [TransactionEntryNo] As Int32?
 End Class
 
+<SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("ID")>
-Public Class AvgActivityDuration
-	Public Property [ID] As Int32
-	Public Property [LogDate] As DateTime
-	Public Property [AvgDuration] As Double
-	Public Property [ActivityInstances] As Int32
+Public Class Bank
+	Public Property [BankName] As String
+	Public Property [BICCode] As String
+	Public Property [Country] As String
+	Public Property [Created] As DateTime?
+	Public Property [Description] As String
+	Public Property [Format] As String
+	Public Property [HomePageAddress] As String
+	Public Property [ID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	Public Property [Status] As String
 End Class
 
-<SupportedActionsSDK(False, True, False, False)>
-<DataServiceKey("CostCenter,CostUnit,FinancialYear,GLAccount")>
-Public Class BalanceByCostAnalysis
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [CostCenter] As Guid
-	Public Property [CostCenterCode] As String
-	Public Property [CostCenterDescription] As String
-	Public Property [CostUnit] As Guid
-	Public Property [CostUnitCode] As String
-	Public Property [CostUnitDescription] As String
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<DataServiceKey("CostCenter,CostUnit,FinancialYear,GLAccount")>
-Public Class BalanceByCostAnalysisBase
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [CostCenter] As Guid
-	Public Property [CostCenterCode] As String
-	Public Property [CostCenterDescription] As String
-	Public Property [CostUnit] As Guid
-	Public Property [CostUnitCode] As String
-	Public Property [CostUnitDescription] As String
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<SupportedActionsSDK(False, True, False, False)>
-<DataServiceKey("CostCenter,CostUnit,FinancialPeriod,FinancialYear,GLAccount")>
-Public Class BalanceByCostAnalysisPerPeriod
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [CostCenter] As Guid
-	Public Property [CostCenterCode] As String
-	Public Property [CostCenterDescription] As String
-	Public Property [CostUnit] As Guid
-	Public Property [CostUnitCode] As String
-	Public Property [CostUnitDescription] As String
-	Public Property [FinancialPeriod] As Int32
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<DataServiceKey("CostCenter,CostUnit,FinancialPeriod,FinancialYear,GLAccount")>
-Public Class BalanceByCostAnalysisPerPeriodBase
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [CostCenter] As Guid
-	Public Property [CostCenterCode] As String
-	Public Property [CostCenterDescription] As String
-	Public Property [CostUnit] As Guid
-	Public Property [CostUnitCode] As String
-	Public Property [CostUnitDescription] As String
-	Public Property [FinancialPeriod] As Int32
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<SupportedActionsSDK(False, True, False, False)>
-<DataServiceKey("CostCenter,CostUnit,FinancialPeriod,FinancialYear,GLAccount")>
-Public Class BalanceByCostAnalysisPerPeriodProcessed
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [CostCenter] As Guid
-	Public Property [CostCenterCode] As String
-	Public Property [CostCenterDescription] As String
-	Public Property [CostUnit] As Guid
-	Public Property [CostUnitCode] As String
-	Public Property [CostUnitDescription] As String
-	Public Property [FinancialPeriod] As Int32
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<SupportedActionsSDK(False, True, False, False)>
-<DataServiceKey("CostCenter,CostUnit,FinancialYear,GLAccount")>
-Public Class BalanceByCostAnalysisProcessed
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [CostCenter] As Guid
-	Public Property [CostCenterCode] As String
-	Public Property [CostCenterDescription] As String
-	Public Property [CostUnit] As Guid
-	Public Property [CostUnitCode] As String
-	Public Property [CostUnitDescription] As String
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<SupportedActionsSDK(False, True, False, False)>
-<DataServiceKey("FinancialPeriod,FinancialYear,GLAccount")>
-Public Class BalanceByPeriod
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [FinancialPeriod] As Int32
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<DataServiceKey("FinancialPeriod,FinancialYear,GLAccount")>
-Public Class BalanceByPeriodBase
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [FinancialPeriod] As Int32
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<SupportedActionsSDK(False, True, False, False)>
-<DataServiceKey("FinancialPeriod,FinancialYear,GLAccount")>
-Public Class BalanceByPeriodProcessed
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [FinancialPeriod] As Int32
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<SupportedActionsSDK(False, True, False, False)>
-<DataServiceKey("FinancialYear,GLAccount")>
-Public Class BalanceByYear
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<DataServiceKey("FinancialYear,GLAccount")>
-Public Class BalanceByYearBase
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<SupportedActionsSDK(False, True, False, False)>
-<DataServiceKey("FinancialYear,GLAccount")>
-Public Class BalanceByYearProcessed
-	Public Property [Division] As Int32
-	Public Property [GLAccount] As Guid
-	Public Property [GLAccountCode] As String
-	Public Property [GLAccountDescription] As String
-	Public Property [GLAccountBalanceType] As String
-	Public Property [GLAccountReportingCode] As String
-	Public Property [GLAccountClassification] As Guid
-	Public Property [GLAccountClassificationCode] As String
-	Public Property [GLAccountClassificationDescription] As String
-	Public Property [GLScheme] As Guid
-	Public Property [GLSchemeCode] As String
-	Public Property [GLSchemeDescription] As String
-	Public Property [FinancialYear] As Int32
-	Public Property [Open] As Double?
-	Public Property [Debit] As Double?
-	Public Property [Credit] As Double?
-	Public Property [Close] As Double?
-End Class
-
-<SupportedActionsSDK(False, True, False, False)>
+<SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
 Public Class BankAccount
 	Public Property [Account] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [AccountName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Bank] As Guid?
 	Public Property [BankAccount] As String
 	Public Property [BankAccountHolderName] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BankDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BankName] As String
 	Public Property [BICCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Description] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Format] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [IBAN] As String
 	Public Property [ID] As Guid
 	Public Property [Main] As Boolean?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Type] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [TypeDescription] As String
 End Class
 
+<SupportedActionsSDK(True, True, False, False)>
 <DataServiceKey("EntryID")>
 Public Class BankEntry
 	Public Property [BankStatementDocument] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BankStatementDocumentNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BankStatementDocumentSubject] As String
-	Public Property [BankEntryLines] As IENumerable(Of BankEntryLine)
+	Public Property [BankEntryLines] As IEnumerable(Of BankEntryLine)
 	Public Property [ClosingBalanceFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
 	Public Property [Currency] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [EntryID] As Guid
 	Public Property [EntryNumber] As Int32?
 	Public Property [FinancialPeriod] As Int16?
 	Public Property [FinancialYear] As Int16?
 	Public Property [JournalCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [JournalDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
 	Public Property [OpeningBalanceFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Status] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StatusDescription] As String
 End Class
 
+<SupportedActionsSDK(True, True, False, False)>
 <DataServiceKey("ID")>
 Public Class BankEntryLine
 	Public Property [Account] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
 	Public Property [AmountFC] As Double?
 	Public Property [AmountVATFC] As Double?
 	Public Property [Asset] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetDescription] As String
 	Public Property [CostCenter] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostCenterDescription] As String
 	Public Property [CostUnit] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostUnitDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Date] As DateTime?
 	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [Document] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentSubject] As String
 	Public Property [EntryID] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [EntryNumber] As Int32?
 	Public Property [ExchangeRate] As Double?
 	Public Property [GLAccount] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LineNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [Notes] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OffsetID] As Guid?
 	Public Property [OurRef] As Int32?
 	Public Property [Project] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectDescription] As String
 	Public Property [Quantity] As Double?
 	Public Property [VATCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATCodeDescription] As String
 	Public Property [VATPercentage] As Double?
 	Public Property [VATType] As String
@@ -981,68 +862,134 @@ Public Class Budget
 	Public Property [ReportingYear] As Int16?
 End Class
 
+<SupportedActionsSDK(True, True, False, False)>
 <DataServiceKey("EntryID")>
 Public Class CashEntry
-	Public Property [CashEntryLines] As IENumerable(Of CashEntryLine)
+	Public Property [CashEntryLines] As IEnumerable(Of CashEntryLine)
 	Public Property [ClosingBalanceFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
 	Public Property [Currency] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [EntryID] As Guid
 	Public Property [EntryNumber] As Int32?
 	Public Property [FinancialPeriod] As Int16?
 	Public Property [FinancialYear] As Int16?
 	Public Property [JournalCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [JournalDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
 	Public Property [OpeningBalanceFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Status] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StatusDescription] As String
 End Class
 
+<SupportedActionsSDK(True, True, False, False)>
 <DataServiceKey("ID")>
 Public Class CashEntryLine
 	Public Property [Account] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
 	Public Property [AmountFC] As Double?
 	Public Property [AmountVATFC] As Double?
 	Public Property [Asset] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetDescription] As String
 	Public Property [CostCenter] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostCenterDescription] As String
 	Public Property [CostUnit] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostUnitDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Date] As DateTime?
 	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [Document] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentSubject] As String
 	Public Property [EntryID] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [EntryNumber] As Int32?
 	Public Property [ExchangeRate] As Double?
 	Public Property [GLAccount] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LineNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [Notes] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OffsetID] As Guid?
 	Public Property [OurRef] As Int32?
 	Public Property [Project] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectDescription] As String
 	Public Property [Quantity] As Double?
 	Public Property [VATCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATCodeDescription] As String
 	Public Property [VATPercentage] As Double?
 	Public Property [VATType] As String
@@ -1051,64 +998,128 @@ End Class
 <DataServiceKey("EntryID")>
 Public Class CashflowEntryBase
 	Public Property [ClosingBalanceFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
 	Public Property [Currency] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [EntryID] As Guid
 	Public Property [EntryNumber] As Int32?
 	Public Property [FinancialPeriod] As Int16?
 	Public Property [FinancialYear] As Int16?
 	Public Property [JournalCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [JournalDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
 	Public Property [OpeningBalanceFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Status] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StatusDescription] As String
 End Class
 
 <DataServiceKey("ID")>
 Public Class CashflowEntryLineBase
 	Public Property [Account] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
 	Public Property [AmountFC] As Double?
 	Public Property [AmountVATFC] As Double?
 	Public Property [Asset] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetDescription] As String
 	Public Property [CostCenter] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostCenterDescription] As String
 	Public Property [CostUnit] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostUnitDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Date] As DateTime?
 	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [Document] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentSubject] As String
 	Public Property [EntryID] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [EntryNumber] As Int32?
 	Public Property [ExchangeRate] As Double?
 	Public Property [GLAccount] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LineNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [Notes] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OffsetID] As Guid?
 	Public Property [OurRef] As Int32?
 	Public Property [Project] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectDescription] As String
 	Public Property [Quantity] As Double?
 	Public Property [VATCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATCodeDescription] As String
 	Public Property [VATPercentage] As Double?
 	Public Property [VATType] As String
@@ -1121,14 +1132,21 @@ Public Class CenterTag
 	Public Property [Description] As String
 End Class
 
-<DataServiceKey("ID")>
-Public Class ComparableActivityLog
-	Public Property [ID] As Guid
-	Public Property [Type] As Int16
-	Public Property [StartTime] As DateTime
-	Public Property [App] As String
-	Public Property [QueryString] As String
-	Public Property [Action] As Int16
+<DataServiceKey("Id")>
+Public Class Certification
+	Public Property [Id] As Int16
+	Public Property [Description] As String
+End Class
+
+<DataServiceKey("Id")>
+Public Class CertificationAwarded
+	Public Property [Id] As Guid
+	Public Property [Customer] As Guid
+	Public Property [UserId] As Guid
+	Public Property [Certification] As Int16
+	Public Property [Comments] As String
+	Public Property [IssueDate] As DateTime
+	Public Property [ExpirationDate] As DateTime
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
@@ -1137,15 +1155,21 @@ Public Class Contact
 	Public Property [ID] As Guid
 	Public Property [Person] As Guid?
 	Public Property [Account] As Guid?
+	Public Property [AccountName] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [AccountName] As String
 	Public Property [Code] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountMainContact] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountIsCustomer] As Boolean
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountIsSupplier] As Boolean?
 	Public Property [StartDate] As DateTime?
 	Public Property [EndDate] As DateTime?
@@ -1164,35 +1188,67 @@ Public Class Contact
 	Public Property [Creator] As Guid?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [IsMainContact] As Boolean?
 	Public Property [LastName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [FullName] As String
 	Public Property [FirstName] As String
 	Public Property [MiddleName] As String
 	Public Property [BirthNamePrefix] As String
 	Public Property [BirthName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PartnerNamePrefix] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PartnerName] As String
 	Public Property [Initials] As String
 	Public Property [Title] As String
 	Public Property [Gender] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressStreet] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressStreetNumber] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressStreetNumberSuffix] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressLine2] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [City] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [State] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Postcode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Country] As String
 	Public Property [Language] As String
 	Public Property [Email] As String
 	Public Property [HID] As Int32?
 	Public Property [Picture] As Byte()
 	Public Property [Phone] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PhoneExtension] As String
 	Public Property [Mobile] As String
 	Public Property [SocialSecurityNumber] As String
@@ -1202,8 +1258,14 @@ Public Class Contact
 	Public Property [Nationality] As String
 	Public Property [Notes] As String
 	Public Property [PictureName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PictureUrl] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PictureThumbnailUrl] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AllowMailing] As Int32?
 End Class
 
@@ -1213,10 +1275,20 @@ Public Class ContactBase
 	Public Property [Person] As Guid?
 	Public Property [Account] As Guid?
 	Public Property [AccountName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Code] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountMainContact] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountIsCustomer] As Boolean
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountIsSupplier] As Boolean?
 	Public Property [StartDate] As DateTime?
 	Public Property [EndDate] As DateTime?
@@ -1227,35 +1299,75 @@ Public Class ContactBase
 	Public Property [BusinessFax] As String
 	Public Property [IsMailingExcluded] As Boolean?
 	Public Property [MarketingNotes] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [IsMainContact] As Boolean?
 	Public Property [LastName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [FullName] As String
 	Public Property [FirstName] As String
 	Public Property [MiddleName] As String
 	Public Property [BirthNamePrefix] As String
 	Public Property [BirthName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PartnerNamePrefix] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PartnerName] As String
 	Public Property [Initials] As String
 	Public Property [Title] As String
 	Public Property [Gender] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressStreet] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressStreetNumber] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressStreetNumberSuffix] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressLine2] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [City] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [State] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Postcode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Country] As String
 	Public Property [Language] As String
 	Public Property [Email] As String
 	Public Property [HID] As Int32?
 	Public Property [Picture] As Byte()
 	Public Property [Phone] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PhoneExtension] As String
 	Public Property [Mobile] As String
 	Public Property [SocialSecurityNumber] As String
@@ -1265,80 +1377,15 @@ Public Class ContactBase
 	Public Property [Nationality] As String
 	Public Property [Notes] As String
 	Public Property [PictureName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PictureUrl] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PictureThumbnailUrl] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AllowMailing] As Int32?
-End Class
-
-<DataServiceKey("ID")>
-Public Class ContractStatistics
-	Public Property [AccountantCode] As String
-	Public Property [AccountantName] As String
-	Public Property [AccountantOrLinked] As Byte?
-	Public Property [AccountClassificationCode] As String
-	Public Property [AccountClassificationDescription] As String
-	Public Property [AccountManagerAccountantCode] As Int32?
-	Public Property [AccountManagerAccountantName] As String
-	Public Property [AccountManagerCode] As Int32?
-	Public Property [AccountManagerName] As String
-	Public Property [AdministrationsInUse] As Int32?
-	Public Property [Blocked] As Byte?
-	Public Property [BusinessLineCode] As String
-	Public Property [BusinessLineDescription] As String
-	Public Property [BusTypeCode] As String
-	Public Property [BusTypeDescription] As String
-	Public Property [ChamberOfCommerce] As String
-	Public Property [City] As String
-	Public Property [Code] As String
-	Public Property [CompSizeCode] As String
-	Public Property [CompSizeDescription] As String
-	Public Property [ContractLineValue] As Double?
-	Public Property [ContractLineValueDC] As Double?
-	Public Property [ContractNumber] As String
-	Public Property [ContractType] As String
-	Public Property [Country] As String
-	Public Property [EndDate] As DateTime?
-	Public Property [EntrepreneurAccountantLinked] As String
-	Public Property [Environment] As String
-	Public Property [EventDate] As DateTime?
-	Public Property [EventDescription] As String
-	Public Property [EventMonth] As Int32?
-	Public Property [EventType] As String
-	Public Property [EventYear] As Int32?
-	Public Property [EventYearMonth] As Int32?
-	Public Property [ExchangeRate] As Double?
-	Public Property [FinalDate] As DateTime?
-	Public Property [ID] As Guid
-	Public Property [InflowOutflow] As String
-	Public Property [IsAccountant] As String
-	Public Property [ItemBasePricePerMonth] As Double?
-	Public Property [ItemBasePricePerYear] As Double?
-	Public Property [Itemcode] As String
-	Public Property [ItemDescription] As String
-	Public Property [ItemType] As String
-	Public Property [LastModified] As DateTime?
-	Public Property [LeadSourceCode] As String
-	Public Property [LeadSourceDescription] As String
-	Public Property [LinePackage] As Byte
-	Public Property [Name] As String
-	Public Property [NumberOfAdministrations] As Int32?
-	Public Property [NumberOfUsers] As Int32?
-	Public Property [PackageCode] As String
-	Public Property [Postcode] As String
-	Public Property [Quantity] As Int32?
-	Public Property [ResellerCode] As String
-	Public Property [ResellerName] As String
-	Public Property [SectorCode] As String
-	Public Property [SectorDescription] As String
-	Public Property [StartDate] As DateTime?
-	Public Property [State] As String
-	Public Property [SubSectorCode] As String
-	Public Property [SubSectorDescription] As String
-	Public Property [ValuePerMonth] As Double?
-	Public Property [ValuePerMonthDC] As Double?
-	Public Property [ValuePerYear] As Double?
-	Public Property [ValuePerYearDC] As Double?
-	Public Property [VATNumber] As String
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
@@ -1428,8 +1475,28 @@ Public Class CostTransaction
 	Public Property [ProjectAccount] As Guid?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ProjectAccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ProjectAccountName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectDescription] As String
 	Public Property [Quantity] As Double?
+	Public Property [Subscription] As Guid?
+	Public Property [SubscriptionAccount] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionAccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionAccountName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionNumber] As Int32?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Type] As Int16?
@@ -1437,7 +1504,7 @@ Public Class CostTransaction
 	Public Property [Price] As Double?
 End Class
 
-<SupportedActionsSDK(False, True, False, False)>
+<SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
 Public Class Costunit
 	Public Property [Code] As String
@@ -1464,6 +1531,17 @@ Public Class Costunit
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
+End Class
+
+<SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("Code")>
+Public Class Currency
+	Public Property [AmountPrecision] As Double
+	Public Property [Code] As String
+	Public Property [Created] As DateTime?
+	Public Property [Description] As String
+	Public Property [Modified] As DateTime?
+	Public Property [PricePrecision] As Double
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
@@ -1506,6 +1584,44 @@ Public Class DepreciationMethod
 	Public Property [Years] As Int16?
 End Class
 
+<SupportedActionsSDK(True, True, True, True)>
+<DataServiceKey("ID")>
+Public Class DirectDebitMandate
+	Public Property [Account] As Guid?
+	Public Property [BankAccount] As Guid?
+	Public Property [CancellationDate] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Division] As Int32?
+	Public Property [FirstSend] As Byte?
+	Public Property [ID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	Public Property [PaymentType] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Reference] As String
+	Public Property [SignatureDate] As DateTime?
+	Public Property [Type] As Int16?
+End Class
+
 <SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("Code")>
 Public Class Division
@@ -1521,6 +1637,9 @@ Public Class Division
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
 	Public Property [Currency] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
@@ -1535,10 +1654,15 @@ Public Class Division
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	Public Property [SiretNumber] As String
 	Public Property [StartDate] As DateTime?
 	Public Property [Status] As Int16?
 	Public Property [TaxOfficeNumber] As String
 	Public Property [TaxReferenceNumber] As String
+	Public Property [VATNumber] As String
 	Public Property [Website] As String
 End Class
 
@@ -1568,8 +1692,12 @@ Public Class Document
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32
 	Public Property [DocumentDate] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentViewUrl] As String
 	Public Property [FinancialTransactionEntryID] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [HasEmptyBody] As Boolean
 	Public Property [HID] As Int32?
 	Public Property [ID] As Guid
@@ -1591,6 +1719,7 @@ Public Class Document
 	Public Property [TypeDescription] As String
 	Public Property [Opportunity] As Guid?
 	Public Property [SalesInvoiceNumber] As Int32?
+	Public Property [SalesOrderNumber] As Int32?
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
@@ -1599,7 +1728,11 @@ Public Class DocumentAttachment
 	Public Property [ID] As Guid
 	Public Property [Attachment] As Byte()
 	Public Property [FileName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [FileSize] As Double
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Url] As String
 	Public Property [Document] As Guid
 End Class
@@ -1607,15 +1740,19 @@ End Class
 <SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("ID")>
 Public Class DocumentCategory
+	Public Property [Created] As DateTime?
 	Public Property [Description] As String
 	Public Property [ID] As Guid
+	Public Property [Modified] As DateTime?
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("ID")>
 Public Class DocumentType
+	Public Property [Created] As DateTime?
 	Public Property [Description] As String
 	Public Property [ID] As Int32
+	Public Property [Modified] As DateTime?
 	Public Property [TypeCategory] As Int32?
 	Public Property [DocumentIsCreatable] As Boolean
 	Public Property [DocumentIsUpdatable] As Boolean
@@ -1626,14 +1763,16 @@ End Class
 <SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("ID")>
 Public Class DocumentTypeCategory
+	Public Property [Created] As DateTime?
 	Public Property [Description] As String
 	Public Property [ID] As Int32
+	Public Property [Modified] As DateTime?
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("ID")>
 Public Class Employee
-	Public Property [ActiveEmployment] As Byte
+	Public Property [ActiveEmployment] As Byte?
 	Public Property [AddressLine2] As String
 	Public Property [AddressLine3] As String
 	Public Property [AddressStreet] As String
@@ -1652,18 +1791,10 @@ Public Class Employee
 	Public Property [City] As String
 	Public Property [Code] As String
 	Public Property [Country] As String
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
-	Public Property [Customer] As Guid
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Customer] As Guid?
 	Public Property [Division] As Int32?
 	Public Property [Email] As String
 	Public Property [EmployeeHID] As Int32?
@@ -1671,7 +1802,7 @@ Public Class Employee
 	Public Property [FirstName] As String
 	Public Property [FullName] As String
 	Public Property [Gender] As String
-	Public Property [HID] As Int32
+	Public Property [HID] As Int32?
 	Public Property [ID] As Guid
 	Public Property [Initials] As String
 	Public Property [Language] As String
@@ -1682,17 +1813,11 @@ Public Class Employee
 	Public Property [MaritalStatus] As Int16?
 	Public Property [MiddleName] As String
 	Public Property [Mobile] As String
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [Municipality] As String
-	Public Property [NameComposition] As Int16
+	Public Property [NameComposition] As Int16?
 	Public Property [Nationality] As String
 	Public Property [NickName] As String
 	Public Property [Notes] As String
@@ -1709,52 +1834,6 @@ Public Class Employee
 	Public Property [State] As String
 	Public Property [StartDate] As DateTime?
 	Public Property [Title] As String
-End Class
-
-<DataServiceKey("ID")>
-Public Class ErrorLog
-	Public Property [Account] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [AccountName] As String
-	Public Property [App] As String
-	Public Property [DatabaseID] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [DatabaseName] As String
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [Division] As Int32?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [DivisionDescription] As String
-	Public Property [ExceptionName] As String
-	Public Property [FormData] As String
-	Public Property [ID] As Int32
-	Public Property [KnownError] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [KnownErrorDescription] As String
-	Public Property [LogDate] As DateTime?
-	Public Property [LogText] As String
-	Public Property [ShortLogText] As String
-	Public Property [Machine] As String
-	Public Property [QueryString] As String
-	Public Property [Session] As Guid?
-	Public Property [Status] As String
-	Public Property [StatusText] As String
-	Public Property [User] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [UserFullName] As String
-	Public Property [WebServer] As String
-End Class
-
-<DataServiceKey("ID")>
-Public Class ErrorLogSessionAndDate
-	Public Property [LogID] As Int32
-	Public Property [Session] As Guid
-	Public Property [LogDate] As DateTime
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
@@ -1801,7 +1880,16 @@ Public Class ExternalLink
 	Public Property [ID] As Guid
 	Public Property [Reference] As String
 	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
+End Class
+
+<DataServiceKey("Id")>
+Public Class Filter
+	Public Property [Id] As String
+	Public Property [Type] As Int32
+	Public Property [Caption] As String
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
@@ -1838,20 +1926,38 @@ End Class
 <SupportedActionsSDK(True, True, False, False)>
 <DataServiceKey("EntryID")>
 Public Class GeneralJournalEntry
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
 	Public Property [Currency] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [EntryID] As Guid
 	Public Property [EntryNumber] As Int32?
 	Public Property [ExchangeRate] As Double?
 	Public Property [FinancialPeriod] As Int16?
 	Public Property [FinancialYear] As Int16?
-	Public Property [GeneralJournalEntryLines] As IENumerable(Of GeneralJournalEntryLine)
+	Public Property [GeneralJournalEntryLines] As IEnumerable(Of GeneralJournalEntryLine)
 	Public Property [JournalCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [JournalDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
 	Public Property [Reversal] As Boolean?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Status] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StatusDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Type] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [TypeDescription] As String
 End Class
 
@@ -1859,52 +1965,111 @@ End Class
 <DataServiceKey("ID")>
 Public Class GeneralJournalEntryLine
 	Public Property [Account] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
 	Public Property [AmountFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [AmountVATDC] As Double?
 	Public Property [AmountVATFC] As Double?
 	Public Property [Asset] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetDescription] As String
 	Public Property [CostCenter] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostCenterDescription] As String
 	Public Property [CostUnit] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostUnitDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Date] As DateTime?
 	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [Document] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentSubject] As String
 	Public Property [EntryID] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [EntryNumber] As Int32?
 	Public Property [GLAccount] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountDescription] As String
 	Public Property [ID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LineNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [Notes] As String
 	Public Property [OffsetID] As Guid?
+	Public Property [OurRef] As Int32?
 	Public Property [Project] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectDescription] As String
 	Public Property [Quantity] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [VATBaseAmountDC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [VATBaseAmountFC] As Double?
 	Public Property [VATCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATCodeDescription] As String
 	Public Property [VATPercentage] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATType] As String
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
 Public Class GLAccount
+	Public Property [AssimilatedVATBox] As Int16?
 	Public Property [BalanceSide] As String
 	Public Property [BalanceType] As String
 	Public Property [BelcotaxType] As Int32?
@@ -1963,6 +2128,7 @@ Public Class GLAccount
 	Public Property [VATGLAccountType] As String
 	Public Property [VATNonDeductibleGLAccount] As Guid?
 	Public Property [VATNonDeductiblePercentage] As Double?
+	Public Property [VATSystem] As String
 	Public Property [YearEndCostGLAccount] As Guid?
 	Public Property [YearEndReflectionGLAccount] As Guid?
 End Class
@@ -2041,22 +2207,28 @@ Public Class GLScheme
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("ID")>
+Public Class GLTransactionType
+	Public Property [ID] As Int32
+	Public Property [Description] As String
+	Public Property [DescriptionSuffix] As String
+End Class
+
+<SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("ItemId")>
 Public Class HourCostType
 	Public Property [ItemId] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemDescription] As String
-End Class
-
-<DataServiceKey("ApplicationID")>
-Public Class InstalledApplication
-	Public Property [ApplicationID] As Guid
-	Public Property [ApplicationName] As String
 End Class
 
 <DataServiceKey("ID")>
 Public Class IntraStat
 	Public Property [Area] As String
 	Public Property [DeliveryTerm] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [ID] As Guid
 	Public Property [NetWeight] As Double?
@@ -2080,7 +2252,11 @@ Public Class Invoice
 	Public Property [EndTime] As DateTime?
 	Public Property [FinancialPeriod] As Int16?
 	Public Property [FinancialYear] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountDescription] As String
 	Public Property [HeaderDescription] As String
 	Public Property [ID] As Guid
@@ -2094,10 +2270,20 @@ Public Class Invoice
 	Public Property [IsAccountant] As Int32?
 	Public Property [IsPackage] As Boolean?
 	Public Property [IsReseller] As Boolean?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemGroupCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemGroupDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemUnitCode] As String
 	Public Property [Journal] As String
 	Public Property [PackageCode] As String
@@ -2307,6 +2493,52 @@ Public Class ItemGroup
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("ItemId")>
+Public Class ItemVersion
+	Public Property [BatchQuantity] As Double?
+	Public Property [CalculatedCostPrice] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Division] As Int32?
+	Public Property [ID] As Guid
+	Public Property [IsDefault] As Byte
+	Public Property [Item] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ItemDescription] As String
+	Public Property [LeadTime] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	Public Property [Notes] As String
+	Public Property [Status] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [StatusDescription] As String
+	Public Property [Type] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [TypeDescription] As String
+	Public Property [VersionNumber] As Int32?
+End Class
+
+<SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
 Public Class Journal
 	Public Property [AllowVariableCurrency] As Boolean?
@@ -2355,13 +2587,27 @@ Public Class Journal
 	Public Property [Type] As Int32?
 	Public Property [PaymentInTransitAccount] As Guid?
 	Public Property [Bank] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BankName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BankAccountCountry] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BankAccountBICCode] As String
 	Public Property [BankAccountIncludingMask] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BankAccountDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BankAccountIBAN] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BankAccountUseSEPA] As Boolean?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [BankAccountUseSepaDirectDebit] As Boolean?
 End Class
 
@@ -2383,10 +2629,40 @@ End Class
 Public Class Layout
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [ID] As Guid
 	Public Property [Subject] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
 	Public Property [Type] As Int16?
+End Class
+
+<DataServiceKey("Id")>
+Public Class LocationContact
+	Public Property [Id] As Guid
+	Public Property [Name] As String
+	Public Property [Email] As String
+	Public Property [ContactPerson] As String
+	Public Property [Phone] As String
+	Public Property [Website] As String
+	Public Property [Longitude] As Double?
+	Public Property [Latitude] As Double?
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
@@ -2500,53 +2776,98 @@ Public Class MailMessageAttachment
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AttachmentFileExtension] As String
 	Public Property [AttachmentFileName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [FileSize] As Int64
 	Public Property [ID] As Guid
 	Public Property [MailMessageID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [RecipientAccount] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [SenderAccount] As Guid?
 	Public Property [Type] As Int32
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [TypeDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Url] As String
 End Class
 
+<SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
-Public Class OAuthClient
-	Public Property [Account] As Guid?
+Public Class ManufacturingTimeTransaction
+	Public Property [ID] As Guid
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [AccountName] As String
-	Public Property [ActionCreatePartnerKey] As Boolean?
-	Public Property [ApplicationName] As String
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [ClientSecret] As String
+	Public Property [Division] As Int32?
+	Public Property [Employee] As Guid?
+	Public Property [Date] As DateTime?
+	Public Property [Status] As Int16?
+	Public Property [Hours] As Double?
+	Public Property [Quantity] As Double?
+	Public Property [ShopOrder] As Guid?
+	Public Property [RoutingStepPlan] As Guid?
+	Public Property [WorkCenter] As Guid?
+	Public Property [LaborHours] As Double?
+	Public Property [PercentComplete] As Double?
+	Public Property [Activity] As Int16?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
-	Public Property [Description] As String
-	Public Property [EndDate] As DateTime?
-	Public Property [ID] As Guid
-	Public Property [Logo] As Byte()
-	Public Property [LogoFileName] As String
-	Public Property [LogoUrl] As String
-	Public Property [LogoThumbnailUrl] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
-	Public Property [ReturnUrl] As String
-	Public Property [StartDate] As DateTime?
-	Public Property [Type] As Int16?
+	Public Property [Notes] As String
+End Class
+
+<SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("Division,ReportingYear,GLAccount")>
+Public Class OpeningBalanceAfterEntry
+	Public Property [Amount] As Double?
+	Public Property [BalanceSide] As String
+	Public Property [Division] As Int32
+	Public Property [GLAccount] As Guid
+	Public Property [GLAccountCode] As String
+	Public Property [GLAccountDescription] As String
+	Public Property [ReportingYear] As Int32
+End Class
+
+<DataServiceKey("Division,ReportingYear,GLAccount")>
+Public Class OpeningBalanceBase
+	Public Property [Amount] As Double?
+	Public Property [BalanceSide] As String
+	Public Property [Division] As Int32
+	Public Property [GLAccount] As Guid
+	Public Property [GLAccountCode] As String
+	Public Property [GLAccountDescription] As String
+	Public Property [ReportingYear] As Int32
+End Class
+
+<SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("Division,ReportingYear,GLAccount")>
+Public Class OpeningBalanceProcessed
+	Public Property [Amount] As Double?
+	Public Property [BalanceSide] As String
+	Public Property [Division] As Int32
+	Public Property [GLAccount] As Guid
+	Public Property [GLAccountCode] As String
+	Public Property [GLAccountDescription] As String
+	Public Property [ReportingYear] As Int32
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
@@ -2639,6 +2960,8 @@ End Class
 Public Class Opportunity
 	Public Property [ID] As Guid
 	Public Property [Account] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountName] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
@@ -2656,10 +2979,16 @@ Public Class Opportunity
 	Public Property [Creator] As Guid?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
 	Public Property [Currency] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
@@ -2667,26 +2996,40 @@ Public Class Opportunity
 	Public Property [Name] As String
 	Public Property [Notes] As String
 	Public Property [OpportunityStage] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OpportunityStageDescription] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OpportunityStatus] As Int32?
 	Public Property [Probability] As Double?
 	Public Property [Owner] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OwnerFullName] As String
 	Public Property [RateFC] As Double?
 	Public Property [SalesType] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [SalesTypeDescription] As String
 	Public Property [ReasonCode] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ReasonCodeDescription] As String
 	Public Property [Project] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectDescription] As String
 	Public Property [Campaign] As Guid?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CampaignDescription] As String
 	Public Property [LeadSource] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LeadSourceDescription] As String
 End Class
 
@@ -2699,12 +3042,20 @@ Public Class OpportunityContact
 	Public Property [Person] As Guid?
 	Public Property [Account] As Guid?
 	Public Property [AccountName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Code] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountMainContact] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountIsCustomer] As Boolean
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountIsSupplier] As Boolean?
 	Public Property [StartDate] As DateTime?
 	Public Property [EndDate] As DateTime?
@@ -2723,35 +3074,67 @@ Public Class OpportunityContact
 	Public Property [Creator] As Guid?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [IsMainContact] As Boolean?
 	Public Property [LastName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [FullName] As String
 	Public Property [FirstName] As String
 	Public Property [MiddleName] As String
 	Public Property [BirthNamePrefix] As String
 	Public Property [BirthName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PartnerNamePrefix] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PartnerName] As String
 	Public Property [Initials] As String
 	Public Property [Title] As String
 	Public Property [Gender] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressStreet] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressStreetNumber] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressStreetNumberSuffix] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AddressLine2] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [City] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [State] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Postcode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Country] As String
 	Public Property [Language] As String
 	Public Property [Email] As String
 	Public Property [HID] As Int32?
 	Public Property [Picture] As Byte()
 	Public Property [Phone] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PhoneExtension] As String
 	Public Property [Mobile] As String
 	Public Property [SocialSecurityNumber] As String
@@ -2761,8 +3144,14 @@ Public Class OpportunityContact
 	Public Property [Nationality] As String
 	Public Property [Notes] As String
 	Public Property [PictureName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PictureUrl] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PictureThumbnailUrl] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AllowMailing] As Int32?
 End Class
 
@@ -2771,17 +3160,36 @@ Public Class OpportunityStage
 	Public Property [ID] As Guid
 	Public Property [Active] As Byte?
 	Public Property [Code] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
 	Public Property [Description] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
 	Public Property [OpportunityStatus] As Int32?
 	Public Property [Probability] As Double
 	Public Property [SortOrder] As Int32
 End Class
 
-<DataServiceKey("InvoiceNumber")>
+<DataServiceKey("HID")>
 Public Class OutstandingInvoice
+	Public Property [HID] As Int64
 	Public Property [Id] As Guid
 	Public Property [InvoiceNumber] As Int32
 	Public Property [InvoiceDate] As DateTime
@@ -2811,45 +3219,10 @@ Public Class OutstandingInvoiceOverview
 	Public Property [OverduePayableInvoiceAmount] As Double
 End Class
 
-<DataServiceKey("ID")>
-Public Class PartnerKey
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [Created] As DateTime?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [Creator] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [CreatorFullName] As String
-	Public Property [Description] As String
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [Division] As Int32?
-	Public Property [EndDate] As DateTime?
-	Public Property [ForAccount] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [ForAccountName] As String
-	Public Property [ID] As Guid
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [Modified] As DateTime?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [Modifier] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [ModifierFullName] As String
-	Public Property [PublishDate] As DateTime?
-	Public Property [RegisterDate] As DateTime?
-	Public Property [StartDate] As DateTime?
-	Public Property [Status] As Int32?
-End Class
-
 <SupportedActionsSDK(False, True, False, False)>
-<DataServiceKey("InvoiceNumber")>
+<DataServiceKey("HID")>
 Public Class Payable
+	Public Property [HID] As Int64
 	Public Property [Id] As Guid
 	Public Property [InvoiceNumber] As Int32
 	Public Property [InvoiceDate] As DateTime
@@ -2910,60 +3283,6 @@ Public Class PaymentCondition
 	Public Property [VATCalculation] As String
 End Class
 
-<DataServiceKey("ID")>
-Public Class PerformanceCounterLogEntry
-	Public Property [Date] As DateTime?
-	Public Property [ID] As Guid
-	Public Property [PerformanceCounter] As Guid?
-	Public Property [PerformanceCounterMeasurement] As Guid?
-	Public Property [ServerMachine] As Guid?
-	Public Property [Value] As Double?
-End Class
-
-<DataServiceKey("ID")>
-Public Class PerformanceCounterMeasurement
-	Public Property [Active] As Byte
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [Created] As DateTime?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [Creator] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [CreatorFullName] As String
-	Public Property [CriticalValue] As Double?
-	Public Property [DangerValue] As Double?
-	Public Property [Frequency] As Int32?
-	Public Property [ID] As Guid
-	Public Property [Instance] As String
-	Public Property [LowerBound] As Double?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [Modified] As DateTime?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [Modifier] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [ModifierFullName] As String
-	Public Property [Name] As String
-	Public Property [Notes] As String
-	Public Property [PerformanceCounter] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [PerformanceCounterDescription] As String
-	Public Property [ServerGroup] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [ServerGroupDescription] As String
-	Public Property [ServerMachine] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [ServerMachineDescription] As String
-	Public Property [UpperBound] As Double?
-End Class
-
 <SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("Year,Period")>
 Public Class PeriodRevenue
@@ -2974,12 +3293,30 @@ End Class
 
 <DataServiceKey("ID")>
 Public Class Picture
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
 	Public Property [ID] As Guid
 	Public Property [Picture] As Byte()
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [FileName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
@@ -3041,6 +3378,7 @@ Public Class PrintedSalesInvoice
 	Public Property [SendOutputBasedOnAccount] As Boolean?
 End Class
 
+<SupportedActionsSDK(True, False, False, False)>
 <DataServiceKey("OrderId")>
 Public Class PrintedSalesOrder
 	Public Property [OrderId] As Guid
@@ -3101,15 +3439,23 @@ Public Class Profile
 	Public Property [Name] As String
 	Public Property [ProfileText] As String
 	Public Property [LogoName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LogoUrl] As String
 	Public Property [Customer] As Guid
-	Public Property [Locations] As IENumerable(Of ProfileLocation)
+	Public Property [Locations] As IEnumerable(Of ProfileLocation)
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LocationsCount] As Int32
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LocationName] As String
-	Public Property [Tags] As IENumerable(Of CenterTag)
-	Public Property [Location] As ProfileLocation
+	Public Property [Tags] As IEnumerable(Of CenterTag)
+	Public Property [Location] As LocationContact
+	Public Property [Certifications] As IEnumerable(Of Certification)
+	Public Property [RowId] As Int64?
 	Public Property [Distance] As Double?
-	Public Property [Rnd] As Guid
+	Public Property [IsCertified] As Boolean
 End Class
 
 <DataServiceKey("Id")>
@@ -3163,6 +3509,8 @@ End Class
 <DataServiceKey("ID")>
 Public Class Project
 	Public Property [Account] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountCode] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
@@ -3173,6 +3521,8 @@ Public Class Project
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ClassificationDescription] As String
 	Public Property [Code] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostsAmountFC] As Double?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
@@ -3220,8 +3570,12 @@ Public Class Project
 	Public Property [TypeDescription] As String
 	Public Property [BudgetedAmount] As Double?
 	Public Property [PrepaidType] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PrepaidTypeDescription] As String
 	Public Property [PrepaidItem] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PrepaidItemDescription] As String
 	Public Property [MarkupPercentage] As Double?
 	Public Property [BudgetedCosts] As Double?
@@ -3231,53 +3585,95 @@ End Class
 <SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("EntryID")>
 Public Class PurchaseEntry
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountFC] As Double?
 	Public Property [BatchNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Currency] As String
 	Public Property [Supplier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [SupplierName] As String
 	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [Document] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentSubject] As String
 	Public Property [DueDate] As DateTime?
 	Public Property [EntryDate] As DateTime?
 	Public Property [EntryID] As Guid
 	Public Property [EntryNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ExternalLinkDescription] As String
 	Public Property [ExternalLinkReference] As String
 	Public Property [InvoiceNumber] As Int32?
 	Public Property [Journal] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [JournalDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [OrderNumber] As Int32?
 	Public Property [PaymentCondition] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PaymentConditionDescription] As String
 	Public Property [ProcessNumber] As Int32?
 	Public Property [Rate] As Double?
 	Public Property [ReportingYear] As Int16?
 	Public Property [ReportingPeriod] As Int16?
 	Public Property [Reversal] As Boolean?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Status] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StatusDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Type] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [TypeDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATAmountDC] As Double?
 	Public Property [VATAmountFC] As Double?
 	Public Property [YourRef] As String
-	Public Property [PurchaseEntryLines] As IENumerable(Of PurchaseEntryLine)
+	Public Property [PurchaseEntryLines] As IEnumerable(Of PurchaseEntryLine)
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
 Public Class PurchaseEntryLine
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
 	Public Property [AmountFC] As Double?
 	Public Property [Asset] As Guid?
@@ -3285,8 +3681,12 @@ Public Class PurchaseEntryLine
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetDescription] As String
 	Public Property [CostCenter] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostCenterDescription] As String
 	Public Property [CostUnit] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostUnitDescription] As String
 	Public Property [Description] As String
 	'''<summary>Readonly Field</summary>
@@ -3301,6 +3701,8 @@ Public Class PurchaseEntryLine
 	Public Property [GLAccountDescription] As String
 	Public Property [ID] As Guid
 	Public Property [EntryID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LineNumber] As Int32?
 	Public Property [Notes] As String
 	Public Property [Project] As Guid?
@@ -3310,22 +3712,35 @@ Public Class PurchaseEntryLine
 	Public Property [Quantity] As Double?
 	Public Property [SerialNumber] As String
 	Public Property [Subscription] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [SubscriptionDescription] As String
 	Public Property [TrackingNumber] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [TrackingNumberDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Type] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATAmountDC] As Double?
 	Public Property [VATAmountFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATBaseAmountDC] As Double?
 	Public Property [VATBaseAmountFC] As Double?
 	Public Property [VATCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATCodeDescription] As String
 	Public Property [VATPercentage] As Double?
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
-<DataServiceKey("InvoiceNumber")>
+<DataServiceKey("HID")>
 Public Class Receivable
+	Public Property [HID] As Int64
 	Public Property [Id] As Guid
 	Public Property [InvoiceNumber] As Int32
 	Public Property [InvoiceDate] As DateTime
@@ -3400,6 +3815,29 @@ Public Class RecentHours
 	Public Property [ActivityDescription] As String
 End Class
 
+<SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("ID")>
+Public Class ReportingBalance
+	Public Property [Amount] As Double?
+	Public Property [AmountCredit] As Double?
+	Public Property [AmountDebit] As Double?
+	Public Property [BalanceType] As String
+	Public Property [CostCenterCode] As String
+	Public Property [CostCenterDescription] As String
+	Public Property [CostUnitCode] As String
+	Public Property [CostUnitDescription] As String
+	Public Property [Count] As Int32?
+	Public Property [Division] As Int32?
+	Public Property [GLAccount] As Guid?
+	Public Property [GLAccountCode] As String
+	Public Property [GLAccountDescription] As String
+	Public Property [ID] As Int64
+	Public Property [ReportingPeriod] As Int32?
+	Public Property [ReportingYear] As Int32?
+	Public Property [Type] As Int32?
+	Public Property [Status] As Int32?
+End Class
+
 <DataServiceKey("ID")>
 Public Class Request
 	Public Property [Account] As Guid?
@@ -3445,6 +3883,8 @@ Public Class Request
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Currency] As String
 	Public Property [CurrencyActual] As String
@@ -3566,11 +4006,7 @@ Public Class Request
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemDescription_2] As String
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemGroup_1] As Guid?
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemGroup_2] As Guid?
 	Public Property [ItemNumberID_1] As Guid?
 	Public Property [ItemNumberID_2] As Guid?
@@ -3585,6 +4021,8 @@ Public Class Request
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [MultipleEntryCols] As String
 	Public Property [MultipleEntryID] As Guid?
@@ -3598,9 +4036,9 @@ Public Class Request
 	Public Property [PayrollComponentDescription] As String
 	Public Property [PayrollPeriod] As Int32?
 	Public Property [PayrollYear] As Int32?
+	Public Property [Person] As Guid?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [Person] As Guid?
 	Public Property [PersonFullName] As String
 	Public Property [Priority] As Int32?
 	Public Property [Processed] As DateTime?
@@ -3657,53 +4095,98 @@ End Class
 <SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("EntryID")>
 Public Class SalesEntry
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountFC] As Double?
 	Public Property [BatchNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Currency] As String
 	Public Property [Customer] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CustomerName] As String
 	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [Document] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentSubject] As String
 	Public Property [DueDate] As DateTime?
 	Public Property [EntryDate] As DateTime?
 	Public Property [EntryID] As Guid
 	Public Property [EntryNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ExternalLinkDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ExternalLinkReference] As String
 	Public Property [InvoiceNumber] As Int32?
 	Public Property [Journal] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [JournalDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [OrderNumber] As Int32?
 	Public Property [PaymentCondition] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PaymentConditionDescription] As String
+	Public Property [PaymentReference] As String
 	Public Property [ProcessNumber] As Int32?
 	Public Property [Rate] As Double?
 	Public Property [ReportingYear] As Int16?
 	Public Property [ReportingPeriod] As Int16?
 	Public Property [Reversal] As Boolean?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Status] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StatusDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Type] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [TypeDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATAmountDC] As Double?
 	Public Property [VATAmountFC] As Double?
 	Public Property [YourRef] As String
-	Public Property [SalesEntryLines] As IENumerable(Of SalesEntryLine)
+	Public Property [SalesEntryLines] As IEnumerable(Of SalesEntryLine)
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
 Public Class SalesEntryLine
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
 	Public Property [AmountFC] As Double?
 	Public Property [Asset] As Guid?
@@ -3711,8 +4194,12 @@ Public Class SalesEntryLine
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetDescription] As String
 	Public Property [CostCenter] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostCenterDescription] As String
 	Public Property [CostUnit] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostUnitDescription] As String
 	Public Property [Description] As String
 	'''<summary>Readonly Field</summary>
@@ -3727,6 +4214,8 @@ Public Class SalesEntryLine
 	Public Property [GLAccountDescription] As String
 	Public Property [ID] As Guid
 	Public Property [EntryID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LineNumber] As Int32?
 	Public Property [Notes] As String
 	Public Property [Project] As Guid?
@@ -3740,13 +4229,21 @@ Public Class SalesEntryLine
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [SubscriptionDescription] As String
 	Public Property [TrackingNumber] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [TrackingNumberDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Type] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATAmountDC] As Double?
 	Public Property [VATAmountFC] As Double?
 	Public Property [VATBaseAmountDC] As Double?
 	Public Property [VATBaseAmountFC] As Double?
 	Public Property [VATCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATCodeDescription] As String
 	Public Property [VATPercentage] As Double?
 End Class
@@ -3754,50 +4251,108 @@ End Class
 <SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("InvoiceID")>
 Public Class SalesInvoice
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Currency] As String
 	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [Document] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentSubject] As String
 	Public Property [DueDate] As DateTime?
 	Public Property [InvoiceDate] As DateTime?
 	Public Property [InvoiceID] As Guid
 	Public Property [InvoiceTo] As Guid?
 	Public Property [InvoiceToContactPerson] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [InvoiceToContactPersonFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [InvoiceToName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [InvoiceNumber] As Int32?
 	Public Property [Journal] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [JournalDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [OrderDate] As DateTime?
 	Public Property [OrderedBy] As Guid?
 	Public Property [OrderedByContactPerson] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OrderedByContactPersonFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OrderedByName] As String
 	Public Property [OrderNumber] As Int32?
 	Public Property [PaymentCondition] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PaymentConditionDescription] As String
+	Public Property [PaymentReference] As String
 	Public Property [Remarks] As String
 	Public Property [Salesperson] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [SalespersonFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Status] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StatusDescription] As String
+	Public Property [TaxSchedule] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [TaxScheduleCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [TaxScheduleDescription] As String
 	Public Property [Type] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [TypeDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATAmountFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATAmountDC] As Double?
 	Public Property [YourRef] As String
-	Public Property [SalesInvoiceLines] As IENumerable(Of SalesInvoiceLine)
+	Public Property [SalesInvoiceLines] As IEnumerable(Of SalesInvoiceLine)
 	Public Property [StarterSalesInvoiceStatus] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StarterSalesInvoiceStatusDescription] As String
 End Class
 
@@ -3805,10 +4360,16 @@ End Class
 <DataServiceKey("ID")>
 Public Class SalesInvoiceLine
 	Public Property [AmountFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
 	Public Property [CostCenter] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostCenterDescription] As String
 	Public Property [CostUnit] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostUnitDescription] As String
 	Public Property [Description] As String
 	Public Property [Discount] As Double?
@@ -3816,6 +4377,8 @@ Public Class SalesInvoiceLine
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [Employee] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [EmployeeFullName] As String
 	Public Property [EndTime] As DateTime?
 	Public Property [GLAccount] As Guid?
@@ -3828,10 +4391,15 @@ Public Class SalesInvoiceLine
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ItemCode] As String
 	Public Property [LineNumber] As Int32?
 	Public Property [NetPrice] As Double?
 	Public Property [Notes] As String
 	Public Property [Pricelist] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PricelistDescription] As String
 	Public Property [Project] As Guid?
 	'''<summary>Readonly Field</summary>
@@ -3848,9 +4416,18 @@ Public Class SalesInvoiceLine
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [UnitDescription] As String
 	Public Property [UnitPrice] As Double?
+	Public Property [TaxSchedule] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [TaxScheduleCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [TaxScheduleDescription] As String
 	Public Property [VATAmountFC] As Double?
 	Public Property [VATAmountDC] As Double?
 	Public Property [VATCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATCodeDescription] As String
 	Public Property [VATPercentage] As Double?
 End Class
@@ -3868,67 +4445,145 @@ Public Class SalesItemPrice
 	Public Property [VATCode] As String
 End Class
 
-<DataServiceKey("OrderID")>
 <SupportedActionsSDK(True, True, True, True)>
+<DataServiceKey("OrderID")>
 Public Class SalesOrder
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ApprovalStatus] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ApprovalStatusDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Approved] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Approver] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ApproverFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Currency] As String
 	Public Property [DeliverTo] As Guid?
 	Public Property [DeliverToContactPerson] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DeliverToContactPersonFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DeliverToName] As String
 	Public Property [DeliveryDate] As DateTime?
 	Public Property [DeliveryStatus] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DeliveryStatusDescription] As String
 	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [Document] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentSubject] As String
 	Public Property [InvoiceStatus] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [InvoiceStatusDescription] As String
 	Public Property [InvoiceTo] As Guid?
 	Public Property [InvoiceToContactPerson] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [InvoiceToContactPersonFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [InvoiceToName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [OrderDate] As DateTime?
 	Public Property [OrderedBy] As Guid?
 	Public Property [OrderedByContactPerson] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OrderedByContactPersonFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OrderedByName] As String
 	Public Property [OrderID] As Guid
 	Public Property [OrderNumber] As Int32?
 	Public Property [PaymentCondition] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PaymentConditionDescription] As String
 	Public Property [Remarks] As String
 	Public Property [Salesperson] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [SalespersonFullName] As String
 	Public Property [ShippingMethod] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ShippingMethodDescription] As String
 	Public Property [Status] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StatusDescription] As String
+	Public Property [TaxSchedule] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [TaxScheduleCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [TaxScheduleDescription] As String
 	Public Property [WarehouseID] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [WarehouseCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [WarehouseDescription] As String
 	Public Property [YourRef] As String
-	Public Property [SalesOrderLines] As IENumerable(Of SalesOrderLine)
+	Public Property [SalesOrderLines] As IEnumerable(Of SalesOrderLine)
 End Class
 
-<DataServiceKey("ID")>
 <SupportedActionsSDK(True, True, True, True)>
+<DataServiceKey("ID")>
 Public Class SalesOrderLine
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AmountDC] As Double?
 	Public Property [AmountFC] As Double?
 	Public Property [CostCenter] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostCenterDescription] As String
 	Public Property [CostUnit] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostUnitDescription] As String
 	Public Property [DeliveryDate] As DateTime?
 	Public Property [Description] As String
@@ -3945,15 +4600,41 @@ Public Class SalesOrderLine
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemCode] As String
+	Public Property [ItemVersion] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ItemVersionDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LineNumber] As Int32?
 	Public Property [NetPrice] As Double?
 	Public Property [Notes] As String
+	Public Property [OrderNumber] As Int32?
 	Public Property [Pricelist] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PricelistDescription] As String
+	Public Property [Project] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ProjectDescription] As String
 	Public Property [Quantity] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [QuantityDelivered] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [QuantityInvoiced] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ShopOrder] As Guid?
+	Public Property [TaxSchedule] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [TaxScheduleCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [TaxScheduleDescription] As String
 	Public Property [UnitCode] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
@@ -3962,6 +4643,8 @@ Public Class SalesOrderLine
 	Public Property [UseDropShipment] As Byte
 	Public Property [VATAmount] As Double?
 	Public Property [VATCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATCodeDescription] As String
 	Public Property [VATPercentage] As Double?
 End Class
@@ -3996,6 +4679,10 @@ Public Class ShopOrder
 	Public Property [IsOnHold] As Byte
 	Public Property [IsReleased] As Byte
 	Public Property [Item] As Guid?
+	Public Property [ItemVersion] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ItemVersionDescription] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
@@ -4009,8 +4696,20 @@ Public Class ShopOrder
 	Public Property [PlannedDate] As DateTime?
 	Public Property [PlannedQuantity] As Double?
 	Public Property [PlannedStartDate] As DateTime?
+	Public Property [ProducedQuantity] As Double?
+	Public Property [Project] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ProjectDescription] As String
 	Public Property [ReadyToShipQuantity] As Double?
+	Public Property [SalesOrderLines] As IEnumerable(Of SalesOrderLine)
+	Public Property [ShopOrderMain] As Guid?
+	Public Property [ShopOrderMainNumber] As Int32?
+	Public Property [ShopOrderMaterialPlans] As IEnumerable(Of ShopOrderMaterialPlan)
 	Public Property [ShopOrderNumber] As Int32?
+	Public Property [ShopOrderParent] As Guid?
+	Public Property [ShopOrderParentNumber] As Int32?
+	Public Property [ShopOrderRoutingStepPlans] As IEnumerable(Of ShopOrderRoutingStepPlan)
 	Public Property [Status] As Int16?
 	Public Property [Type] As Int16?
 	Public Property [Warehouse] As Guid?
@@ -4053,6 +4752,7 @@ Public Class ShopOrderMaterialPlan
 	Public Property [ModifierFullName] As String
 	Public Property [Notes] As String
 	Public Property [PlannedAmountFC] As Double?
+	Public Property [PlannedDate] As DateTime?
 	Public Property [PlannedPriceFC] As Double?
 	Public Property [PlannedQuantity] As Double?
 	Public Property [PlannedQuantityFactor] As Double?
@@ -4097,6 +4797,8 @@ Public Class ShopOrderRoutingStepPlan
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [Operation] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OperationDescription] As String
 	Public Property [OperationResource] As Guid?
 	Public Property [PlannedEndDate] As DateTime?
@@ -4121,6 +4823,7 @@ Public Class ShopOrderRoutingStepPlan
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StatusDescription] As String
+	Public Property [SubcontractedLeadDays] As Int32?
 	Public Property [TotalCostDC] As Double?
 	Public Property [Workcenter] As Guid?
 End Class
@@ -4136,12 +4839,23 @@ End Class
 <SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("EntryID")>
 Public Class Subscription
+	Public Property [BlockEntry] As Boolean?
 	Public Property [CancellationDate] As DateTime?
 	Public Property [Classification] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ClassificationCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ClassificationDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Currency] As String
 	Public Property [CustomerPONumber] As String
@@ -4153,29 +4867,69 @@ Public Class Subscription
 	Public Property [EntryID] As Guid
 	Public Property [InvoicedTo] As DateTime?
 	Public Property [InvoiceTo] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [InvoiceToName] As String
 	Public Property [InvoiceToContactPerson] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [InvoiceToContactPersonFullName] As String
+	Public Property [InvoicingStartDate] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [OrderedBy] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OrderedByName] As String
 	Public Property [OrderedByContactPerson] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [OrderedByContactPersonFullName] As String
 	Public Property [Notes] As String
 	Public Property [Number] As Int32
 	Public Property [PaymentCondition] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PaymentConditionDescription] As String
 	Public Property [Printed] As Boolean
 	Public Property [ReasonCancelled] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ReasonCancelledCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ReasonCancelledDescription] As String
 	Public Property [StartDate] As DateTime
 	Public Property [SubscriptionType] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [SubscriptionTypeCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [SubscriptionTypeDescription] As String
-	Public Property [SubscriptionLines] As IENumerable(Of SubscriptionLine)
+	Public Property [SubscriptionLines] As IEnumerable(Of SubscriptionLine)
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionRestrictionEmployees] As IEnumerable(Of SubscriptionRestrictionEmployee)
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionRestrictionItems] As IEnumerable(Of SubscriptionRestrictionItem)
+End Class
+
+<SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("ID")>
+Public Class SubscriptionChargeType
+	Public Property [ID] As Int16
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Description] As String
 End Class
 
 <SupportedActionsSDK(True, True, True, True)>
@@ -4198,6 +4952,10 @@ Public Class SubscriptionLine
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemDescription] As String
 	Public Property [LineNumber] As Int32
+	Public Property [LineType] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [LineTypeDescription] As String
 	Public Property [NetPrice] As Double
 	Public Property [Notes] As String
 	Public Property [Quantity] As Double
@@ -4209,6 +4967,8 @@ Public Class SubscriptionLine
 	Public Property [UnitPrice] As Double
 	Public Property [VATAmountFC] As Double?
 	Public Property [VATCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATCodeDescription] As String
 End Class
 
@@ -4223,6 +4983,8 @@ Public Class SubscriptionReasonCode
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Description] As String
 	'''<summary>Readonly Field</summary>
@@ -4236,24 +4998,191 @@ Public Class SubscriptionReasonCode
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
+End Class
+
+<DataServiceKey("ID")>
+Public Class SubscriptionRestriction
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Division] As Int32
+	Public Property [ID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	Public Property [Subscription] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionNumber] As Int32
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionDescription] As String
+End Class
+
+<SupportedActionsSDK(True, True, False, True)>
+<DataServiceKey("ID")>
+Public Class SubscriptionRestrictionEmployee
+	Public Property [Employee] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [EmployeeFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [EmployeeHID] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Division] As Int32
+	Public Property [ID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	Public Property [Subscription] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionNumber] As Int32
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionDescription] As String
+End Class
+
+<SupportedActionsSDK(True, True, False, True)>
+<DataServiceKey("ID")>
+Public Class SubscriptionRestrictionItem
+	Public Property [Item] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ItemCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ItemDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Division] As Int32
+	Public Property [ID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	Public Property [Subscription] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionNumber] As Int32
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionDescription] As String
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("ID")>
 Public Class SubscriptionType
 	Public Property [Code] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
 	Public Property [Description] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32
 	Public Property [ID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+End Class
+
+<SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("ID")>
+Public Class TaxComponentRate
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	Public Property [CreatorFullName] As String
+	Public Property [Division] As Int32
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [EndDate] As DateTime?
+	Public Property [ID] As Guid
+	Public Property [LineNumber] As Int32
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	Public Property [Rate] As Double
+	Public Property [StartDate] As DateTime?
+	Public Property [TaxComponent] As Guid
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("DocumentID")>
 Public Class TaxDocument
 	Public Property [DocumentID] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime
 	Public Property [Request] As Guid?
 	Public Property [Status] As Int32
@@ -4267,7 +5196,69 @@ Public Class TaxDocument
 	Public Property [Period] As Int32
 	Public Property [PeriodDescription] As String
 	Public Property [DueDate] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentViewUrl] As String
+End Class
+
+<SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("ID")>
+Public Class TaxSchedule
+	Public Property [Code] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	Public Property [CreatorFullName] As String
+	Public Property [Description] As String
+	Public Property [Division] As Int32
+	Public Property [ID] As Guid
+	Public Property [IsBlocked] As Byte
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	Public Property [Notes] As String
+	Public Property [Type] As Int16
+End Class
+
+<SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("ID")>
+Public Class TaxScheduleComponent
+	Public Property [Account] As Guid?
+	Public Property [Code] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	Public Property [CreatorFullName] As String
+	Public Property [Description] As String
+	Public Property [Division] As Int32
+	Public Property [GLAccount] As Guid?
+	Public Property [ID] As Guid
+	Public Property [LineNumber] As Int32
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
+	Public Property [Notes] As String
+	Public Property [TaxComponent] As Guid
+	Public Property [TaxSchedule] As Guid
+	Public Property [TaxComponentRates] As IEnumerable(Of TaxComponentRate)
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
@@ -4308,7 +5299,19 @@ End Class
 <DataServiceKey("ProjectId")>
 Public Class TimeAndBillingProject
 	Public Property [ProjectId] As Guid
+	Public Property [ProjectCode] As String
 	Public Property [ProjectDescription] As String
+End Class
+
+<SupportedActionsSDK(False, True, False, False)>
+<DataServiceKey("ID")>
+Public Class TimeAndBillingProjectDetails
+	Public Property [ID] As Guid
+	Public Property [Code] As String
+	Public Property [Description] As String
+	Public Property [Account] As Guid?
+	Public Property [AccountName] As String
+	Public Property [Type] As Int32
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
@@ -4340,6 +5343,7 @@ End Class
 <DataServiceKey("ProjectId")>
 Public Class TimeAndBillingRecentProject
 	Public Property [ProjectId] As Guid
+	Public Property [ProjectCode] As String
 	Public Property [ProjectDescription] As String
 	Public Property [DateLastUsed] As DateTime
 End Class
@@ -4354,6 +5358,8 @@ Public Class TimeTransaction
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountName] As String
 	Public Property [Activity] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ActivityDescription] As String
 	Public Property [AmountFC] As Double?
 	Public Property [Attachment] As Guid?
@@ -4404,9 +5410,29 @@ Public Class TimeTransaction
 	Public Property [ProjectAccount] As Guid?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ProjectAccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ProjectAccountName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectDescription] As String
 	Public Property [Quantity] As Double?
 	Public Property [StartTime] As DateTime?
+	Public Property [Subscription] As Guid?
+	Public Property [SubscriptionAccount] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionAccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionAccountName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [SubscriptionNumber] As Int32?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Type] As Int16?
@@ -4416,22 +5442,38 @@ End Class
 <DataServiceKey("EntryID")>
 Public Class Transaction
 	Public Property [ClosingBalanceFC] As Double?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
 	Public Property [Date] As DateTime?
 	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [EntryID] As Guid
 	Public Property [EntryNumber] As Int32?
 	Public Property [FinancialPeriod] As Int16?
 	Public Property [FinancialYear] As Int16?
 	Public Property [JournalCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [JournalDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
 	Public Property [OpeningBalanceFC] As Double?
 	Public Property [PaymentConditionCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [PaymentConditionDescription] As String
 	Public Property [Status] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StatusDescription] As String
-	Public Property [TransactionLines] As IENumerable(Of TransactionLine)
+	Public Property [TransactionLines] As IEnumerable(Of TransactionLine)
 	Public Property [Type] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [TypeDescription] As String
 End Class
 
@@ -4439,47 +5481,89 @@ End Class
 <DataServiceKey("ID")>
 Public Class TransactionLine
 	Public Property [Account] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AccountName] As String
 	Public Property [AmountDC] As Double?
 	Public Property [AmountFC] As Double?
 	Public Property [AmountVATFC] As Double?
 	Public Property [AmountVATBaseFC] As Double?
 	Public Property [Asset] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [AssetDescription] As String
 	Public Property [CostCenter] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostCenterDescription] As String
 	Public Property [CostUnit] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CostUnitDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	Public Property [Currency] As String
 	Public Property [Date] As DateTime?
 	Public Property [Description] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Division] As Int32?
 	Public Property [Document] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentNumber] As Int32?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [DocumentSubject] As String
 	Public Property [DueDate] As DateTime?
 	Public Property [EntryID] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [EntryNumber] As Int32?
 	Public Property [ExchangeRate] As Double?
 	Public Property [FinancialPeriod] As Int16?
 	Public Property [FinancialYear] As Int16?
 	Public Property [GLAccount] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [GLAccountDescription] As String
 	Public Property [ID] As Guid
 	Public Property [InvoiceNumber] As Int32?
 	Public Property [Item] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ItemDescription] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [LineNumber] As Int32?
 	Public Property [LineType] As Int16?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [Notes] As String
 	Public Property [OffsetID] As Guid?
@@ -4487,28 +5571,27 @@ Public Class TransactionLine
 	Public Property [PaymentDiscountAmount] As Double?
 	Public Property [PaymentReference] As String
 	Public Property [Project] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ProjectDescription] As String
 	Public Property [Quantity] As Double?
 	Public Property [SerialNumber] As String
 	Public Property [Subscription] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [SubscriptionDescription] As String
 	Public Property [TrackingNumber] As String
 	Public Property [TrackingNumberDescription] As String
 	Public Property [VATCode] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [VATCodeDescription] As String
 	Public Property [VATPercentage] As Double?
 	Public Property [VATType] As String
 	Public Property [YourRef] As String
-End Class
-
-<DataServiceKey("ID")>
-Public Class UniqueErrorLog
-	Public Property [ID] As Int32
-	Public Property [ShortLogText] As String
-	Public Property [App] As String
-	Public Property [LogDate] As DateTime?
-	Public Property [ErrorInstances] As Int32
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
@@ -4531,7 +5614,18 @@ End Class
 Public Class User
 	Public Property [BirthDate] As DateTime?
 	Public Property [BirthName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
 	Public Property [Customer] As Guid
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CustomerName] As String
 	Public Property [Email] As String
 	Public Property [EndDate] As DateTime?
@@ -4544,6 +5638,15 @@ Public Class User
 	Public Property [LastName] As String
 	Public Property [MiddleName] As String
 	Public Property [Mobile] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
 	Public Property [Nationality] As String
 	Public Property [Notes] As String
 	Public Property [Phone] As String
@@ -4555,28 +5658,42 @@ Public Class User
 	Public Property [UserID] As Guid
 	Public Property [UserName] As String
 	Public Property [UserTypesList] As String
-	Public Property [UserRoles] As IENumerable(Of UserRole)
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [UserRoles] As IEnumerable(Of UserRole)
 End Class
 
 <SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("ID")>
 Public Class UserRole
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Created] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
 	Public Property [ID] As Guid
 	Public Property [UserID] As Guid?
 	Public Property [Description] As String
 	Public Property [Role] As Int32
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [RoleLevel] As Int32
-	'''<summary>Readonly Field</summary>
-	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [StartDate] As DateTime
+	Public Property [EndDate] As DateTime?
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
-	Public Property [EndDate] As DateTime?
+	Public Property [Modified] As DateTime?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [ModifierFullName] As String
 End Class
 
-<SupportedActionsSDK(False, True, False, False)>
+<SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
 Public Class VATCode
 	Public Property [Account] As Guid?
@@ -4589,6 +5706,8 @@ Public Class VATCode
 	Public Property [CalculationBasis] As Byte?
 	Public Property [Charged] As Boolean?
 	Public Property [Code] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Country] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
@@ -4645,16 +5764,19 @@ Public Class VATCode
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Percentage] As Double?
 	Public Property [TaxReturnType] As Int16?
 	Public Property [Type] As String
 	Public Property [VatDocType] As String
 	Public Property [VatMargin] As Byte
 	Public Property [VATPartialRatio] As Int16?
-	Public Property [VATPercentages] As IENumerable(Of VatPercentage)
+	Public Property [VATPercentages] As IEnumerable(Of VatPercentage)
 	Public Property [VATTransactionType] As String
 End Class
 
+<SupportedActionsSDK(False, True, False, False)>
 <DataServiceKey("ID")>
 Public Class VatPercentage
 	'''<summary>Readonly Field</summary>
@@ -4663,6 +5785,8 @@ Public Class VatPercentage
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Creator] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [CreatorFullName] As String
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
@@ -4675,6 +5799,8 @@ Public Class VatPercentage
 	'''<summary>Readonly Field</summary>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modifier] As Guid?
+	'''<summary>Readonly Field</summary>
+	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [Percentage] As Double?
 	Public Property [StartDate] As DateTime?
@@ -4682,7 +5808,7 @@ Public Class VatPercentage
 	Public Property [VATCodeID] As Guid
 End Class
 
-<SupportedActionsSDK(False, True, False, False)>
+<SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
 Public Class Warehouse
 	Public Property [Code] As String
@@ -4755,10 +5881,12 @@ Public Class Workcenter
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [ModifierFullName] As String
 	Public Property [Notes] As String
+	Public Property [ProductionArea] As Guid?
 	Public Property [RunLaborRate] As Double?
 	Public Property [SearchCode] As String
 	Public Property [SetupLaborRate] As Double?
 	Public Property [Status] As Int16?
 	Public Property [Type] As Int16?
 End Class
+
 
