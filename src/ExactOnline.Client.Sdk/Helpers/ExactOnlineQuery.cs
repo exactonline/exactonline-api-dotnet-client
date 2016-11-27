@@ -238,7 +238,11 @@ namespace ExactOnline.Client.Sdk.Helpers
 		}
 
 		/// <summary>
-		/// Returns a List of entities using the specified query
+		/// Returns a List of entities using the specified query.
+		///
+		/// Be aware that this method will possibly make multiple requests
+		/// to the Exact Online API as the amount of entities returned in one response
+		/// is limited to 60.
 		/// </summary>
 		/// <returns></returns>
 		public List<T> Get()
