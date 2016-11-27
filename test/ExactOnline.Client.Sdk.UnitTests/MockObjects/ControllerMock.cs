@@ -21,9 +21,9 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			return null;
 		}
 		
-		List<T> IController<T>.Get(string query, out string skipToken)
+		List<T> IController<T>.Get(string query, out Guid skipToken)
 		{
-			skipToken = null;
+			skipToken = Guid.Empty;
 			ODataQuery = query;
 			return null;
 		}
