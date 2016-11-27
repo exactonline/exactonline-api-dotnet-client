@@ -92,11 +92,12 @@ namespace ExactOnline.Client.Sdk.Controllers
 			// Get the response and convert it to a list of entities of the specific type
 			string response = _conn.Get(query);
 			
-			// Find skip token
+			// Search for skip token in json response
 			dynamic json = JsonConvert.DeserializeObject(response);
-			
+			string next = json["d"].__next;
+
 			// Skiptoken has format "$skiptoken=guid'x'" and we want to extract x.
-			var match = Regex.Match(json["d"].__next ?? "", @"guid'([^']*)");
+			var match = Regex.Match(next ?? "", @"guid'([^']*)");
 			
 			// Extract the skip token
 			skipToken = match.Success ? new Guid(match.Groups[1].Value) : Guid.Empty;
