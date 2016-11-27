@@ -1,12 +1,14 @@
-﻿using ExactOnline.Client.Models;
+using ExactOnline.Client.Models;
 using ExactOnline.Client.Sdk.Delegates;
 using ExactOnline.Client.Sdk.Helpers;
 using ExactOnline.Client.Sdk.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace ExactOnline.Client.Sdk.Controllers
 {
@@ -65,19 +67,45 @@ namespace ExactOnline.Client.Sdk.Controllers
 		}
 
 		/// <summary>
-		/// Gets specific collection of entities
+		/// Gets specific collection of entities.
+		/// Please notice that this method will return at max 60 entities. To retrieve all 
+		/// entities, use the Get(query, out skipToken) method.
 		/// </summary>
 		/// <param name="query">oData query</param>
 		/// <returns>List of entity Objects</returns>
 		public List<T> Get(string query)
 		{
-			// Get the response and convert it to a list of entities of the specific type
-			var response = _conn.Get(query);
-			response = ApiResponseCleaner.GetJsonArray(response);
+			var token = "";
+			return Get(query, out token);
+		}
 
+		/// <summary>
+		/// Gets specific collection of entities and return a skip token if there are more than
+		/// 60 entities to be returned.
+		/// </summary>
+		/// <param name="query">oData query</param>
+		/// <param name="skipToken">The skip token if there are more results than could be retrieved
+		/// via the REST API or <code>null</code></param>
+		/// <returns>List of entity Objects</returns>
+		public List<T> Get(string query, out string skipToken)
+		{
+			// Get the response and convert it to a list of entities of the specific type
+			string response = _conn.Get(query);
+			
+			// Find skip token
+			dynamic json = JsonConvert.DeserializeObject(response);
+			
+			// Skiptoken has format "$skiptoken=guid'x'" and we want to extract x.
+			var match = Regex.Match(json["d"].__next ?? "", @"guid'([^']*)");
+			
+			// Extract the skip token
+			skipToken = match.Success ? match.Groups[1].Value : null;
+
+			response = ApiResponseCleaner.GetJsonArray(response);
+			
 			var rc = new EntityConverter();
 			var entities = rc.ConvertJsonArrayToObjectList<T>(response);
-
+			
 			// If the entity isn't managed already, register to managed entity collection
 			foreach (var entity in entities)
 			{
@@ -85,8 +113,7 @@ namespace ExactOnline.Client.Sdk.Controllers
 			}
 
 			// Convert list
-			var returnList = entities.ConvertAll(x => x);
-			return returnList;
+			return entities.ConvertAll(x => x);
 		}
 
 		/// <summary>

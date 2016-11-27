@@ -176,6 +176,20 @@ namespace ExactOnline.Client.Sdk.Helpers
 		}
 
 		/// <summary>
+		/// Paging: Specify the skip token
+		/// </summary>
+		/// <param name="token"></param>
+		/// <returns></returns>
+		public ExactOnlineQuery<T> Skip(string token)
+		{
+			if (!string.IsNullOrWhiteSpace(token))
+			{
+				_skip = "$skiptoken=guid'" + token + "'";
+			}
+			return this;
+		}
+		
+		/// <summary>
 		/// Specify the field to order by
 		/// </summary>
 		/// <param name="orderby"></param>
@@ -223,14 +237,16 @@ namespace ExactOnline.Client.Sdk.Helpers
 			return _controller.Count(CreateODataQuery(false));
 		}
 
-
 		/// <summary>
 		/// Returns a List of entities using the specified query
 		/// </summary>
 		/// <returns></returns>
 		public List<T> Get()
 		{
-			return _controller.Get(CreateODataQuery(true));
+			var token = "";
+			var result = _controller.Get(CreateODataQuery(true), out token);
+
+			return token == null ? result : result.Concat(Skip(token).Get()).ToList();
 		}
 
 		/// <summary>
