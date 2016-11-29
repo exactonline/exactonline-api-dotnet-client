@@ -75,7 +75,7 @@ namespace ExactOnline.Client.Sdk.Controllers
 		/// <returns>List of entity Objects</returns>
 		public List<T> Get(string query)
 		{
-			var token = Guid.Empty;
+			string token;
 			return Get(query, out token);
 		}
 
@@ -84,23 +84,25 @@ namespace ExactOnline.Client.Sdk.Controllers
 		/// 60 entities to be returned.
 		/// </summary>
 		/// <param name="query">oData query</param>
-		/// <param name="skipToken">The skip token if there are more results than could be retrieved
-		/// via the REST API or <code>Guid.Empty</code></param>
+		/// <param name="token">The skip token if there are more results than could be retrieved
+		/// via the REST API or <code>null</code></param>
 		/// <returns>List of entity Objects</returns>
-		public List<T> Get(string query, out Guid skipToken)
+		public List<T> Get(string query, out string token)
 		{
 			// Get the response and convert it to a list of entities of the specific type
 			string response = _conn.Get(query);
 			
 			// Search for skip token in json response
 			dynamic json = JsonConvert.DeserializeObject(response);
+
+			// This contains the url to the API call for the remaining entities including a skiptoken.
 			string next = json["d"].__next;
 
-			// Skiptoken has format "$skiptoken=guid'x'" and we want to extract x.
-			var match = Regex.Match(next ?? "", @"guid'([^']*)");
+			// Skiptoken has format "$skiptoken=xyz" in the url and we want to extract xyz.
+			var match = Regex.Match(next ?? "", @"\$skiptoken=([^&#]*)");
 			
 			// Extract the skip token
-			skipToken = match.Success ? new Guid(match.Groups[1].Value) : Guid.Empty;
+			token = match.Success ? match.Groups[1].Value : null;
 
 			// TODO: ApiResponseCleaner should extract Guid
 			response = ApiResponseCleaner.GetJsonArray(response);

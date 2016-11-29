@@ -180,11 +180,11 @@ namespace ExactOnline.Client.Sdk.Helpers
 		/// </summary>
 		/// <param name="token"></param>
 		/// <returns></returns>
-		public ExactOnlineQuery<T> Skip(Guid token)
+		public ExactOnlineQuery<T> Skip(string token)
 		{
-			if (token != Guid.Empty)
+			if (!string.IsNullOrEmpty(token))
 			{
-				_skip = "$skiptoken=guid'" + token.ToString() + "'";
+				_skip = string.Format("$skiptoken={0}", token);
 			}
 			return this;
 		}
@@ -247,10 +247,10 @@ namespace ExactOnline.Client.Sdk.Helpers
 		/// <returns></returns>
 		public List<T> Get()
 		{
-			var token = Guid.Empty;
+			string token;
 			var result = _controller.Get(CreateODataQuery(true), out token);
 
-			return token == Guid.Empty ? result : result.Concat(Skip(token).Get()).ToList();
+			return token == null ? result : result.Concat(Skip(token).Get()).ToList();
 		}
 
 		/// <summary>
