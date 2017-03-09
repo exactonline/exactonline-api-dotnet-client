@@ -2008,7 +2008,7 @@ Public Class DirectDebitMandate
 	'''<![CDATA[Indicates the first collection hasn't been sent/confirmed with this mandate.]]>
 	Public Property [FirstSend] As Byte?
 	'''<![CDATA[Primary key]]>
-	Public Property [ID] As Guid
+	Public Property [ID] As Guid?
 	'''<![CDATA[Last modified date]]>
 	<SDKFieldType(FieldType.ReadOnly)>
 	Public Property [Modified] As DateTime?
