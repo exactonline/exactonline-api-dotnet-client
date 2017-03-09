@@ -36,6 +36,7 @@ Public Class Services
 		Services.Add("DirectDebitMandate", "Cashflow/DirectDebitMandates")
 		Services.Add("Division", "HRM/Divisions")
 		Services.Add("Document", "Documents/Documents")
+		Services.Add("CRMDocument", "read/crm/Documents")
 		Services.Add("DocumentAttachment", "Documents/DocumentAttachments")
 		Services.Add("DocumentCategory", "Documents/DocumentCategories")
 		Services.Add("DocumentFolder", "Documents/DocumentFolders")

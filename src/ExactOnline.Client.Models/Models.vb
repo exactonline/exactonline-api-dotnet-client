@@ -2188,6 +2188,82 @@ End Class
 
 <SupportedActionsSDK(True, True, True, True)>
 <DataServiceKey("ID")>
+Public Class CRMDocument
+	'''<![CDATA[Primary key]]>cd
+	Public Property [ID] As Guid
+
+	'''<![CDATA[ID of the related account of this document]]>
+	Public Property [Account] As Guid?
+
+	'''<![CDATA[Attachments linked to the document]]>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [Attachments] As IEnumerable(Of DocumentAttachment)
+
+	'''<![CDATA[Creation date]]>
+	Public Property [Created] As DateTime?
+
+	'''<![CDATA[User ID of creator]]>
+	Public Property [Creator] As Guid?
+
+	'''<![CDATA[Name of creator]]>
+	<SDKFieldType(FieldType.ReadOnly)>
+	Public Property [CreatorFullName] As String
+
+	'''<![CDATA[Division code]]>
+	Public Property [Division] As Int32?
+
+	'''<![CDATA[Entry date of the incoming document]]>
+	Public Property [DocumentDate] As DateTime?
+
+	'''<![CDATA[Id of document folder]]>
+	Public Property [DocumentFolder] As Guid?
+
+	'''<![CDATA[Url to view the document]]>
+	Public Property [DocumentViewUrl] As String
+
+	'''<![CDATA[Indicates that the document body is empty]]>
+	Public Property [HasEmptyBody] As Boolean?
+
+	'''<![CDATA[Human-readable ID, formatted as xx.xxx.xxx. Unique. May not be equal to zero]]>
+	Public Property [HID] As Int32?
+
+	'''<![CDATA[Last modified date]]>
+	Public Property [Modified] As DateTime?
+
+	'''<![CDATA[User ID of modifier]]>
+	Public Property [Modifier] As Guid?
+
+	'''<![CDATA[The opportunity linked to the document]]>
+	Public Property [Opportunity] As Guid?
+
+	'''<![CDATA[Purchase invoice number.]]>
+	Public Property [PurchaseInvoiceNumber] As Int32?
+
+	'''<![CDATA[Purchase order number.]]>
+	Public Property [PurchaseOrderNumber] As Int32?
+
+	'''<![CDATA['Our reference' of the transaction that belongs to this document]]>
+	Public Property [SalesInvoiceNumber] As Int32?
+
+	'''<![CDATA[Number of the sales order]]>
+	Public Property [SalesOrderNumber] As Int32?
+
+	'''<![CDATA[Send Method]]>
+	Public Property [SendMethod] As Int32?
+
+	'''<![CDATA[Subject of this document]]>
+	Public Property [Subject] As String
+
+	'''<![CDATA[The document type]]>
+	Public Property [Type] As Int32?
+
+	'''<![CDATA[Translated description of the document type. $filter and $orderby are not supported for this property.]]>
+	Public Property [TypeDescription] As String
+
+End Class
+
+<SupportedActionsSDK(True, True, True, True)>
+<DataServiceKey("ID")>
 Public Class DocumentAttachment
 	'''<![CDATA[Contains the attachment]]>
 	Public Property [Attachment] As Byte()
