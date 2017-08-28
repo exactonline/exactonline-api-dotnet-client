@@ -3,6 +3,7 @@ using System.Collections;
 using ExactOnline.Client.Sdk.Delegates;
 using ExactOnline.Client.Sdk.Helpers;
 using ExactOnline.Client.Sdk.Interfaces;
+using System.Linq;
 
 namespace ExactOnline.Client.Sdk.Controllers
 {
@@ -62,7 +63,8 @@ namespace ExactOnline.Client.Sdk.Controllers
 		private static object Clone(object entity)
 		{
 			object returnEntity = Activator.CreateInstance(entity.GetType(), null);
-			foreach (var property in entity.GetType().GetProperties())
+			var writableProperties = entity.GetType().GetProperties().Where(p => p.CanWrite);
+			foreach (var property in writableProperties)
 			{
 				var value = property.GetValue(entity);
 				if (value != null && value.GetType().IsGenericType && value is IEnumerable)
