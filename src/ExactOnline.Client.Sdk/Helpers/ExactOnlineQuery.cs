@@ -62,12 +62,11 @@ namespace ExactOnline.Client.Sdk.Helpers
 
 			if (!string.IsNullOrEmpty(_where))
 			{
+				if (_and != null && _and.Count > 0) {
+					_where += string.Format("+and+{0}", string.Join("+and+", _and));
+				}				
 				queryParts.Add(_where);
 			}
-
-			// Add $filter
-			queryParts.AddRange(_and);
-
 
 			// Add $select
 			if (!string.IsNullOrEmpty(_select))
