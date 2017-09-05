@@ -32,8 +32,8 @@ namespace ExactOnline.Client.Sdk.UnitTests
 				.And("Code+eq+'123'")
 				.And("Code+eq+'456'")
 				.Get();
-
-			Assert.AreEqual("$filter=Name+eq+'Test Testname'&Code+eq+'123'&Code+eq+'456'&$select=Code,Name", _controllerMock.ODataQuery);
+			
+			Assert.AreEqual("$filter=Name+eq+'Test Testname'+and+Code+eq+'123'+and+Code+eq+'456'&$select=Code,Name", _controllerMock.ODataQuery);
 		}
 
 		[TestMethod]
@@ -208,9 +208,8 @@ namespace ExactOnline.Client.Sdk.UnitTests
 				.Expand("BankAccounts")
 				.Skip(10)
 				.Top(10).Get();
-
-
-			const string expected = "$filter=Name+eq+'Test'&Name+eq+'Test2'&$select=Description,Name&$skip=10&$expand=BankAccounts&$top=10";
+				
+			const string expected = "$filter=Name+eq+'Test'+and+Name+eq+'Test2'&$select=Description,Name&$skip=10&$expand=BankAccounts&$top=10";
 			var data = _controllerMock.ODataQuery;
 			Assert.AreEqual(expected, data);
 		}
