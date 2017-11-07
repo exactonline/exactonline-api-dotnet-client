@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using ExactOnline.Client.Sdk.Interfaces;
 using System.Linq.Expressions;
 using ExactOnline.Client.Sdk.Enums;
@@ -239,18 +240,45 @@ namespace ExactOnline.Client.Sdk.Helpers
 
 		/// <summary>
 		/// Returns a List of entities using the specified query.
-		///
-		/// Be aware that this method will possibly make multiple requests
-		/// to the Exact Online API as the amount of entities returned in one response
-		/// is limited to 60.
 		/// </summary>
 		/// <returns></returns>
 		public List<T> Get()
 		{
 			string token;
-			var result = _controller.Get(CreateODataQuery(true), out token);
+			return Get(out token);
+		}
 
-			return token == null ? result : result.Concat(Skip(token).Get()).ToList();
+		/// <summary>
+		/// Returns a List of entities using the specified query.
+		/// </summary>
+		/// <param name="token">The variable to store the skiptoken in</param>
+		/// <returns></returns>
+		public List<T> Get(out string token)
+		{
+			return _controller.Get(CreateODataQuery(true), out token);
+		}
+
+		/// <summary>
+		/// Returns an IEnumerable of the pages containing the requested 
+		/// entities of the specified query. A page is represented as a list 
+		/// with at most 60 entities returned by the API.
+		///
+		/// Be aware that this enumerable will lazily fetch new pages into 
+		/// memory from the external API if they are requested.
+		///
+		/// Mutation of the query during iteration over the pages does not
+		/// affect the results produced by the method.
+		/// </summary>
+		/// <returns></returns>
+		public IEnumerable<List<T>> GetPages()
+		{
+			// We clone to query in order to prevent users changing the query
+			// during iteration
+			var query = Clone();
+			string token = null;
+			do {
+				yield return query.Get(out token);
+			} while (token != null);
 		}
 
 		/// <summary>
@@ -371,5 +399,22 @@ namespace ExactOnline.Client.Sdk.Helpers
 
             return _value;
         }
-    }
+		
+		// <summary>
+		// Generates a clone of this query and returns it.
+		// </summary>
+		public ExactOnlineQuery<T> Clone() {
+			var query = new ExactOnlineQuery<T>(_controller)
+			{
+				_select = _select,
+				_skip = _skip,
+				_expand = _expand,
+				_top = _top,
+				_orderby = _orderby,
+				_where = _where,
+			};
+			query._and.AddRange(_and);
+			return query;
+		}
+	}
 }
