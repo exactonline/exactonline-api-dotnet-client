@@ -156,13 +156,26 @@ namespace ExactOnline.Client.Sdk.Controllers
 					throw new Exception("This entity already exists");
 				}
 
-				// Get entity with linked entities (API Response for creating does not return the linked entities)
-				entity = GetEntity(GetIdentifierValue(entity), _expandfield);
+                // Get entity with linked entities (API Response for creating does not return the linked entities)
+                if (IsReadable(entity))
+                {
+                    entity = GetEntity(GetIdentifierValue(entity), _expandfield);
+                }
 			}
 			return created;
 		}
 
-		private Boolean IsUpdateable(T entity)
+        private Boolean IsReadable(T entity)
+        {
+            var actions = (SupportedActionsSDK)entity.GetType().GetCustomAttribute(typeof(SupportedActionsSDK));
+            if (actions != null)
+            {
+                return actions.CanRead;
+            }
+            return false;
+        }
+
+        private Boolean IsUpdateable(T entity)
 		{
 			var actions = (SupportedActionsSDK)entity.GetType().GetCustomAttribute(typeof(SupportedActionsSDK));
 			if (actions != null)
