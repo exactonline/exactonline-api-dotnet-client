@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using ExactOnline.Client.Sdk.Interfaces;
 using System.Linq.Expressions;
 using ExactOnline.Client.Sdk.Enums;
@@ -176,6 +177,20 @@ namespace ExactOnline.Client.Sdk.Helpers
 		}
 
 		/// <summary>
+		/// Paging: Specify the skip token
+		/// </summary>
+		/// <param name="token"></param>
+		/// <returns></returns>
+		public ExactOnlineQuery<T> Skip(string token)
+		{
+			if (!string.IsNullOrEmpty(token))
+			{
+				_skip = string.Format("$skiptoken={0}", token);
+			}
+			return this;
+		}
+		
+		/// <summary>
 		/// Specify the field to order by
 		/// </summary>
 		/// <param name="orderby"></param>
@@ -223,14 +238,47 @@ namespace ExactOnline.Client.Sdk.Helpers
 			return _controller.Count(CreateODataQuery(false));
 		}
 
-
 		/// <summary>
-		/// Returns a List of entities using the specified query
+		/// Returns a List of entities using the specified query.
 		/// </summary>
 		/// <returns></returns>
 		public List<T> Get()
 		{
-			return _controller.Get(CreateODataQuery(true));
+			string token;
+			return Get(out token);
+		}
+
+		/// <summary>
+		/// Returns a List of entities using the specified query.
+		/// </summary>
+		/// <param name="token">The variable to store the skiptoken in</param>
+		/// <returns></returns>
+		public List<T> Get(out string token)
+		{
+			return _controller.Get(CreateODataQuery(true), out token);
+		}
+
+		/// <summary>
+		/// Returns an IEnumerable of the pages containing the requested 
+		/// entities of the specified query. A page is represented as a list 
+		/// with at most 60 entities returned by the API.
+		///
+		/// Be aware that this enumerable will lazily fetch new pages into 
+		/// memory from the external API if they are requested.
+		///
+		/// Mutation of the query during iteration over the pages does not
+		/// affect the results produced by the method.
+		/// </summary>
+		/// <returns></returns>
+		public IEnumerable<List<T>> GetPages()
+		{
+			// We clone to query in order to prevent users changing the query
+			// during iteration
+			var query = Clone();
+			string token = null;
+			do {
+				yield return query.Get(out token);
+			} while (token != null);
 		}
 
 		/// <summary>
@@ -351,5 +399,22 @@ namespace ExactOnline.Client.Sdk.Helpers
 
             return _value;
         }
-    }
+		
+		// <summary>
+		// Generates a clone of this query and returns it.
+		// </summary>
+		public ExactOnlineQuery<T> Clone() {
+			var query = new ExactOnlineQuery<T>(_controller)
+			{
+				_select = _select,
+				_skip = _skip,
+				_expand = _expand,
+				_top = _top,
+				_orderby = _orderby,
+				_where = _where,
+			};
+			query._and.AddRange(_and);
+			return query;
+		}
+	}
 }
