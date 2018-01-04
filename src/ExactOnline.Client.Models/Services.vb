@@ -114,6 +114,7 @@ Public Class [Services]
 		Services.Add(GetType(Logistics.Item).FullName, "Logistics/Items")
 		Services.Add(GetType(Logistics.ItemGroup).FullName, "Logistics/ItemGroups")
 		Services.Add(GetType(Logistics.ItemVersion).FullName, "Logistics/ItemVersions")
+		Services.Add(GetType(Logistics.ItemExtraField).FullName, "read/logistics/ItemExtraField")
 		Services.Add(GetType(Logistics.SalesItemPrice).FullName, "Logistics/SalesItemPrices")
 		Services.Add(GetType(Logistics.SupplierItem).FullName, "Logistics/SupplierItem")
 		Services.Add(GetType(Logistics.Unit).FullName, "Logistics/Units")
