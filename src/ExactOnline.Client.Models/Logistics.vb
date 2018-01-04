@@ -532,5 +532,26 @@ Namespace Logistics
 		'''<summary>Type of unit. Type &apos;Time&apos; is especially important for contracts.</summary>
 		Public Property [Type] As String
 	End Class
+	
+	<SupportedActionsSDK(False, True, False, False)>
+    <DataServiceKey("ItemID")>
+    Public Class [ItemExtraField]
+        '''<summary>Primary key</summary>
+        Public Property [ItemID] As Guid
+        '''<summary>Description of the free field</summary>
+       	<SDKFieldType(FieldType.ReadOnly)>
+        Public Property [Description] As String
+        '''<summary>Determine the unique free field name as FreeField{Number},</summary>
+       	<SDKFieldType(FieldType.ReadOnly)>
+        Public Property [Number] As Int32?
+        '''<summary>The value store in free field</summary>
+       	<SDKFieldType(FieldType.ReadOnly)>
+        Public Property [Value] As String
+        '''<summary>Last modified date</summary>
+       	<SDKFieldType(FieldType.ReadOnly)>
+        Public Property [Modified] As DateTime?
+
+    End Class
+	
 
 End Namespace
