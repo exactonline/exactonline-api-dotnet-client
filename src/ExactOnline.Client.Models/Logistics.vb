@@ -543,7 +543,7 @@ Namespace Logistics
         Public Property [Description] As String
         '''<summary>Determine the unique free field name as FreeField{Number},</summary>
        	<SDKFieldType(FieldType.ReadOnly)>
-        Public Property [Number] As Int32?
+        Public Property [Number] As Int32
         '''<summary>The value store in free field</summary>
        	<SDKFieldType(FieldType.ReadOnly)>
         Public Property [Value] As String
