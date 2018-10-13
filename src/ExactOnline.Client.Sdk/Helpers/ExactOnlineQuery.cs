@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace ExactOnline.Client.Sdk.Helpers
 {
@@ -236,7 +237,14 @@ namespace ExactOnline.Client.Sdk.Helpers
             return _controller.Count(CreateODataQuery(false));
         }
 
-
+        /// <summary>
+        /// Returns a List of entities using the specified query
+        /// </summary>
+        public async Task<List<T>> GetAsync()
+        {
+            string skipToken = string.Empty;
+            return await GetAsync(skipToken);
+        }
         /// <summary>
         /// Returns a List of entities using the specified query
         /// </summary>
@@ -250,12 +258,32 @@ namespace ExactOnline.Client.Sdk.Helpers
         /// Returns a List of entities using the specified query.
         /// </summary>
         /// <param name="skipToken">The variable to store the skiptoken in</param>
+        public async Task<List<T>> GetAsync(string skiptoken)
+        {
+            FormulateSkipToken(skiptoken);
+            var entitiesToken = await _controller.GetAsync(CreateODataQuery(true), skiptoken);
+            skiptoken = entitiesToken.Item1;
+            return entitiesToken.Item2;
+        }
+        /// <summary>
+        /// Returns a List of entities using the specified query.
+        /// </summary>
+        /// <param name="skipToken">The variable to store the skiptoken in</param>
         public List<T> Get(ref string skiptoken)
         {
             FormulateSkipToken(skiptoken);
             return _controller.Get(CreateODataQuery(true), ref skiptoken);
         }
 
+        /// <summary>
+        /// Returns one instance of an entity using the specified identifier
+        /// </summary>
+        public async Task<T> GetEntityAsync(string identifier)
+        {
+            if (string.IsNullOrEmpty(identifier)) throw new ArgumentException("Get entity: Identifier cannot be empty");
+            string query = CreateODataQuery(false);
+            return await _controller.GetEntityAsync(identifier, query);
+        }
         /// <summary>
         /// Returns one instance of an entity using the specified identifier
         /// </summary>
@@ -269,6 +297,15 @@ namespace ExactOnline.Client.Sdk.Helpers
         /// <summary>
         /// Returns one instance of an entity using the specified identifier
         /// </summary>
+        public async Task<T> GetEntityAsync(Guid identifier)
+        {
+            if (identifier == Guid.Empty) throw new ArgumentException("Get entity: Identifier cannot be empty");
+            string query = CreateODataQuery(false);
+            return await _controller.GetEntityAsync(identifier.ToString(), query);
+        }
+        /// <summary>
+        /// Returns one instance of an entity using the specified identifier
+        /// </summary>
         public T GetEntity(Guid identifier)
         {
             if (identifier == Guid.Empty) throw new ArgumentException("Get entity: Identifier cannot be empty");
@@ -276,6 +313,14 @@ namespace ExactOnline.Client.Sdk.Helpers
             return _controller.GetEntity(identifier.ToString(), query);
         }
 
+                /// <summary>
+        /// Returns one instance of an entity using the specified identifier
+        /// </summary>
+        public async Task<T> GetEntityAsync(int identifier)
+        {
+            string query = CreateODataQuery(false);
+            return await _controller.GetEntityAsync(identifier.ToString(CultureInfo.InvariantCulture), query);
+        }
         /// <summary>
         /// Returns one instance of an entity using the specified identifier
         /// </summary>
@@ -288,6 +333,14 @@ namespace ExactOnline.Client.Sdk.Helpers
         /// <summary>
         /// Updates the specified entity
         /// </summary>
+        public async Task<Boolean> UpdateAsync(T entity)
+        {
+            if (entity == null) throw new ArgumentException("Update entity: Entity cannot be null");
+            return await _controller.UpdateAsync(entity);
+        }
+        /// <summary>
+        /// Updates the specified entity
+        /// </summary>
         public Boolean Update(T entity)
         {
             if (entity == null) throw new ArgumentException("Update entity: Entity cannot be null");
@@ -297,12 +350,32 @@ namespace ExactOnline.Client.Sdk.Helpers
         /// <summary>
         /// Deletes the specified entity
         /// </summary>
+        public async Task<Boolean> DeleteAsync(T entity)
+        {
+            if (entity == null) throw new ArgumentException("Delete entity: Entity cannot be null");
+            return await _controller.DeleteAsync(entity);
+        }
+        /// <summary>
+        /// Deletes the specified entity
+        /// </summary>
         public Boolean Delete(T entity)
         {
             if (entity == null) throw new ArgumentException("Delete entity: Entity cannot be null");
             return _controller.Delete(entity);
         }
 
+        /// <summary>
+        /// Inserts the specified entity into Exact Online
+        /// </summary>
+        public async Task<Boolean> InsertAsync(T entity)
+        {
+            if (entity == null) throw new ArgumentException("Insert entity: Entity cannot be null");
+            var result = await _controller.CreateAsync(entity);
+            entity = result.Item2;
+
+            var created = result.Item1;
+            return created;
+        }
         /// <summary>
         /// Inserts the specified entity into Exact Online
         /// </summary>

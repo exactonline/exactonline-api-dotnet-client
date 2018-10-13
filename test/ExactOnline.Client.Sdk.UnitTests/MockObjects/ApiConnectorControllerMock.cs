@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using ExactOnline.Client.Sdk.Interfaces;
 
 namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
@@ -149,5 +150,40 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 	    {
 	        return Stream.Null;
 	    }
-	}
+
+        public Task<string> DoGetRequestAsync(string endpoint, string parameters)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<Stream> DoGetFileRequestAsync(string endpoint)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<string> DoPostRequestAsync(string endpoint, string postdata)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<string> DoPutRequestAsync(string endpoint, string putData)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<string> DoDeleteRequestAsync(string endpoint)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<string> DoCleanRequestAsync(string uri)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<string> DoCleanRequestAsync(string uri, string oDataQuery)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 }

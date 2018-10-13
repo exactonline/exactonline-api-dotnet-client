@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using ExactOnline.Client.Sdk.Interfaces;
 
 namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
@@ -27,9 +28,12 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			return 0;
 		}
 
-		#region IAPIConnector Members
-
-		public string DoGetRequest(string endpoint, string parameters)
+        #region IAPIConnector Members
+        public Task<string> DoGetRequestAsync(string endpoint, string parameters)
+        {
+            throw new NotImplementedException();
+        }
+        public string DoGetRequest(string endpoint, string parameters)
 		{
 			return string.Empty;
 		}
@@ -60,6 +64,38 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 	        return Stream.Null;
 	    }
 
-	    #endregion
-	}
+        public Task<Stream> DoGetFileRequestAsync(string endpoint)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> DoPostRequestAsync(string endpoint, string postdata)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> DoPutRequestAsync(string endpoint, string putData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> DoDeleteRequestAsync(string endpoint)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> DoCleanRequestAsync(string uri)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> DoCleanRequestAsync(string uri, string oDataQuery)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+        #endregion
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using ExactOnline.Client.Sdk.Interfaces;
 
 namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
@@ -106,6 +107,31 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			throw new NotImplementedException();
 		}
 
-		#endregion
-	}
+        public Task<string> GetAsync(string parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> GetEntityAsync(string keyname, string guid, string parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> PostAsync(string data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> PutAsync(string keyName, string guid, string data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteAsync(string keyName, string guid)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+    }
 }

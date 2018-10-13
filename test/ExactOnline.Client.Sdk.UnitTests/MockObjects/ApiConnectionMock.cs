@@ -1,4 +1,5 @@
-﻿using ExactOnline.Client.Sdk.Interfaces;
+﻿using System.Threading.Tasks;
+using ExactOnline.Client.Sdk.Interfaces;
 
 namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 {
@@ -284,8 +285,12 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 
 			return correctJsonArray;
 		}
+        public Task<string> GetAsync(string parameters)
+        {
+            throw new System.NotImplementedException();
+        }
 
-		string IApiConnection.GetEntity(string keyname, string guid, string parameters)
+        string IApiConnection.GetEntity(string keyname, string guid, string parameters)
 		{
 			const string correctJsonObject = @"{
 	""d"": {
@@ -438,7 +443,29 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			return true;
 		}
 
-		#endregion
+        public Task<string> GetEntityAsync(string keyname, string guid, string parameters)
+        {
+            throw new System.NotImplementedException();
+        }
 
-	}
+        public Task<string> PostAsync(string data)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<bool> PutAsync(string keyName, string guid, string data)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<bool> DeleteAsync(string keyName, string guid)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
+
+        #endregion
+
+    }
 }
