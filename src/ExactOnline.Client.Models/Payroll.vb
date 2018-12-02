@@ -164,6 +164,9 @@ Namespace Payroll
 		Public Property [Initials] As String
 		'''<summary>IsActive</summary>
 		Public Property [IsActive] As Boolean
+		'''<summary>Indicates whether the employee is anonymised.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [IsAnonymised] As Byte
 		'''<summary>Language code</summary>
 		Public Property [Language] As String
 		'''<summary>Last name</summary>

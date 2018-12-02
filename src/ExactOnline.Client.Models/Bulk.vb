@@ -50,7 +50,7 @@ Namespace Bulk
 		'''<summary>Url to view the document</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [DocumentViewUrl] As String
-		'''<summary>Reference to the financial transaction</summary>
+		'''<summary>Reference to the transaction lines that make up the financial entry</summary>
 		Public Property [FinancialTransactionEntryID] As Guid?
 		'''<summary>Indicates that the document body is empty</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
@@ -182,7 +182,7 @@ Namespace Bulk
 		Public Property [DocumentSubject] As String
 		'''<summary>Date that payment should be done</summary>
 		Public Property [DueDate] As DateTime?
-		'''<summary>Reference to header of the entry</summary>
+		'''<summary>The transaction lines that make up a financial entry share the same EntryID</summary>
 		Public Property [EntryID] As Guid?
 		'''<summary>Entry number of the header</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
@@ -285,6 +285,108 @@ Namespace Bulk
 		Public Property [VATType] As String
 		'''<summary>Your reference (of customer)</summary>
 		Public Property [YourRef] As String
+	End Class
+
+	<SupportedActionsSDK(False, True, False, False)>
+	<DataServiceKey("ID")>
+	Public Class [SalesOrderLine]
+		'''<summary>Amount in the default currency of the company</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [AmountDC] As Double
+		'''<summary>Amount in the currency of the transaction</summary>
+		Public Property [AmountFC] As Double
+		'''<summary>Reference to Cost center</summary>
+		Public Property [CostCenter] As String
+		'''<summary>Description of CostCenter</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [CostCenterDescription] As String
+		'''<summary>Item cost price</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [CostPriceFC] As Double?
+		'''<summary>Reference to Cost unit</summary>
+		Public Property [CostUnit] As String
+		'''<summary>Description of CostUnit</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [CostUnitDescription] As String
+		'''<summary>Delivery date of this line</summary>
+		Public Property [DeliveryDate] As DateTime?
+		'''<summary>Description</summary>
+		Public Property [Description] As String
+		'''<summary>Discount given on the default price. Discount = (DefaultPrice of Item - PriceItem in line) / DefaultPrice of Item</summary>
+		Public Property [Discount] As Double
+		'''<summary>Division code</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Division] As Int32
+		'''<summary>Primary key</summary>
+		Public Property [ID] As Guid
+		'''<summary>Reference to the item that is sold in this sales order line</summary>
+		Public Property [Item] As Guid?
+		'''<summary>Code of Item</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ItemCode] As String
+		'''<summary>Description of Item</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ItemDescription] As String
+		'''<summary>Item Version</summary>
+		Public Property [ItemVersion] As Guid?
+		'''<summary>Description of Item Version</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ItemVersionDescription] As String
+		'''<summary>Line number</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [LineNumber] As Int32
+		'''<summary>Net price of the sales order line</summary>
+		Public Property [NetPrice] As Double?
+		'''<summary>Extra notes</summary>
+		Public Property [Notes] As String
+		'''<summary>The OrderID identifies the sales order. All the lines of a sales order have the same OrderID</summary>
+		Public Property [OrderID] As Guid
+		'''<summary>Number of sales order</summary>
+		Public Property [OrderNumber] As Int32
+		'''<summary>Price list</summary>
+		Public Property [Pricelist] As Guid?
+		'''<summary>Description of Pricelist</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [PricelistDescription] As String
+		'''<summary>The project to which the sales order line is linked. The project can be different per line. Sometimes also the project in the header is filled although this is not really used</summary>
+		Public Property [Project] As Guid?
+		'''<summary>Description of Project</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ProjectDescription] As String
+		'''<summary>Purchase order that is linked to the sales order</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [PurchaseOrder] As Guid?
+		'''<summary>Purchase order line of the purchase order that is linked to the sales order</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [PurchaseOrderLine] As Guid?
+		'''<summary>Number of the purchase order line</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [PurchaseOrderLineNumber] As Int32?
+		'''<summary>Number of the purchase order</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [PurchaseOrderNumber] As Int32?
+		'''<summary>The number of items sold in default units. The quantity shown in the entry screen is Quantity * UnitFactor</summary>
+		Public Property [Quantity] As Double?
+		'''<summary>Reference to ShopOrder</summary>
+		Public Property [ShopOrder] As Guid?
+		'''<summary>Code of item unit</summary>
+		Public Property [UnitCode] As String
+		'''<summary>Description of Unit</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [UnitDescription] As String
+		'''<summary>Price per unit in the currency of the transaction</summary>
+		Public Property [UnitPrice] As Double?
+		'''<summary>Indicates if drop shipment is used (delivery directly to customer, invoice to wholesaler)</summary>
+		Public Property [UseDropShipment] As Byte
+		'''<summary>VAT amount in the currency of the transaction</summary>
+		Public Property [VATAmount] As Double?
+		'''<summary>VAT code</summary>
+		Public Property [VATCode] As String
+		'''<summary>Description of VATCode</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [VATCodeDescription] As String
+		'''<summary>The vat percentage of the VAT code. This is the percentage at the moment the sales order is created. It&apos;s also used for the default calculation of VAT amounts and VAT base amounts</summary>
+		Public Property [VATPercentage] As Double?
 	End Class
 
 End Namespace

@@ -50,7 +50,7 @@ Namespace Documents
 		'''<summary>Url to view the document</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [DocumentViewUrl] As String
-		'''<summary>Reference to the financial transaction</summary>
+		'''<summary>Reference to the transaction lines that make up the financial entry</summary>
 		Public Property [FinancialTransactionEntryID] As Guid?
 		'''<summary>Indicates that the document body is empty</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
@@ -98,7 +98,7 @@ Namespace Documents
 		Public Property [TypeDescription] As String
 	End Class
 
-	<SupportedActionsSDK(True, True, True, True)>
+	<SupportedActionsSDK(True, True, False, True)>
 	<DataServiceKey("ID")>
 	Public Class [DocumentAttachment]
 		'''<summary>Contains the attachment</summary>

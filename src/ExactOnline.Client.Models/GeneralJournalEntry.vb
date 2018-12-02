@@ -139,6 +139,7 @@ Namespace GeneralJournalEntry
 		Public Property [ModifierFullName] As String
 		'''<summary>Extra remarks</summary>
 		Public Property [Notes] As String
+		'''<summary>OffsetID</summary>
 		Public Property [OffsetID] As Guid?
 		'''<summary>Our ref of general journal entry</summary>
 		Public Property [OurRef] As Int32?

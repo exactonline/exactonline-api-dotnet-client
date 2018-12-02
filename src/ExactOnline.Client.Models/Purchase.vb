@@ -77,11 +77,18 @@ Namespace Purchase
 		Public Property [Description] As String
 		'''<summary>The discount given on the default price. A value of 0.1 translates to 10% discount.</summary>
 		Public Property [Discount] As Double?
+		'''<summary>Expense related to the Work Breakdown Structure of the selected project. Only available with a professional service license</summary>
+		Public Property [Expense] As Guid?
+		'''<summary>Description of expense. Only available with a professional service license</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ExpenseDescription] As String
 		'''<summary>A guid that uniqely identifies the invoice line.</summary>
 		Public Property [ID] As Guid
 		'''<summary>The unique identifier of the purchase invoice this line belongs to.</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [InvoiceID] As Guid?
+		'''<summary>Purchase invoice type.</summary>
+		Public Property [InvoiceType] As Int16
 		'''<summary>Guid that identifies the purchase item. In a POST request either the Item or the PurchaseOrderLine has to be supplied.</summary>
 		Public Property [Item] As Guid?
 		'''<summary>The default unit of the purchased item.</summary>
@@ -106,6 +113,8 @@ Namespace Purchase
 		'''<summary>The number of purchased items in default units. An item has both a default unit and a purchase unit, for example piece and box with a box containing 12 pieces. The multiplication factor (12 in this example) between the default unit and purchase unit is maintained on the item card. When you GET a purchase invoice line for 1 box of items the field Quantity = 1 and QuantityInDefaultUnits = 12. </summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [QuantityInDefaultUnits] As Double?
+		'''<summary>Indicates whether the purchase invoice line needs to be rebilled. Only available with a professional service license</summary>
+		Public Property [Rebill] As Boolean?
 		'''<summary>The code of the unit in which the item is purchased. For example piece, box or kg. The value is taken from the purchase unit in the item card.</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Unit] As String

@@ -13,7 +13,12 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			return 0;
 		}
 
-		public string ODataQuery { get; set; }
+        public Task<int> CountAsync(string query)
+        {
+            return Task.FromResult(Count(query));
+        }
+
+        public string ODataQuery { get; set; }
 
 		List<T> IController<T>.Get(string query)
 		{
@@ -28,43 +33,59 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			return null;
 		}
 
-		T IController<T>.GetEntity(string guid, string parameters)
+        public Task<Models.ApiList<T>> GetAsync(string query)
+        {
+            ODataQuery = query;
+            return Task.FromResult(new Models.ApiList<T>(null,null));
+        }
+
+        T IController<T>.GetEntity(string guid, string parameters)
 		{
 
 			throw new NotImplementedException();
 		}
 
-		bool IController<T>.Create(ref T entity)
+        public Task<T> GetEntityAsync(string guid, string parameters)
+        {
+            return Task.FromResult(GetEntity(guid,parameters));
+        }
+
+        bool IController<T>.Create(ref T entity)
 		{
 			return true;
 		}
 
-		bool IController<T>.Update(T entity)
+        Task<T> IController<T>.CreateAsync(T entity)
+        {
+            return Task.FromResult(entity);
+        }
+
+        bool IController<T>.Update(T entity)
 		{
 			return true;
 		}
 
-		bool IController<T>.Delete(T entity)
+        Task<bool> IController<T>.UpdateAsync(T entity)
+        {
+            return Task.FromResult((this as IController<T>).Update(entity));
+        }
+
+        bool IController<T>.Delete(T entity)
 		{
 			return true;
 		}
 
-		#region IController<T> Members
+        Task<bool> IController<T>.DeleteAsync(T entity)
+        {
+            return Task.FromResult((this as IController<T>).Delete(entity));
+        }
+
+        #region IController<T> Members
 
 
-		public bool IsManagedEntity(T entity)
+        public bool IsManagedEntity(T entity)
 		{
 			return true;
-		}
-
-		#endregion
-
-		#region IController<T> Members
-
-
-		public Task<List<T>> GetAsync(string query)
-		{
-			throw new NotImplementedException();
 		}
 
 		#endregion

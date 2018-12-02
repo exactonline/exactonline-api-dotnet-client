@@ -4,6 +4,7 @@ using ExactOnline.Client.Sdk.Delegates;
 using ExactOnline.Client.Sdk.Helpers;
 using ExactOnline.Client.Sdk.Interfaces;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ExactOnline.Client.Sdk.Controllers
 {
@@ -111,14 +112,52 @@ namespace ExactOnline.Client.Sdk.Controllers
 			return returnValue;
 		}
 
-		/// <summary>
-		/// Deletes the entity
-		/// </summary>
-		/// <returns>True if the entity is updated</returns>
-		public Boolean Delete()
+        /// <summary>
+        /// Updates the entity
+        /// </summary>
+        /// <returns>True if the entity is updated</returns>
+        public async Task<Boolean> UpdateAsync(object entity)
+        {
+            // Convert object to json
+            var converter = new EntityConverter();
+            string json = converter.ConvertObjectToJson(OriginalEntity, entity, _entityControllerDelegate);
+
+            if(string.IsNullOrEmpty(json))
+            {
+                //Nothing to update
+                return true;
+            }
+
+            // Update entire object
+            Boolean returnValue = false;
+
+            // Update and set _originalentity to current entity (_entity)
+            if(await _connection.PutAsync(_keyName, _identifier, json).ConfigureAwait(false))
+            {
+                returnValue = true;
+                OriginalEntity = Clone(entity);
+            }
+            return returnValue;
+        }
+
+        /// <summary>
+        /// Deletes the entity
+        /// </summary>
+        /// <returns>True if the entity is updated</returns>
+        public Boolean Delete()
 		{
 			return _connection.Delete(_keyName, _identifier);
 
 		}
-	}
+
+        /// <summary>
+        /// Deletes the entity
+        /// </summary>
+        /// <returns>True if the entity is updated</returns>
+        public Task<Boolean> DeleteAsync()
+        {
+            return _connection.DeleteAsync(_keyName, _identifier);
+
+        }
+    }
 }

@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace ExactOnline.Client.Sdk.Controllers
 {
@@ -64,13 +65,21 @@ namespace ExactOnline.Client.Sdk.Controllers
 			return _conn.Count(query);
 		}
 
-		/// <summary>
-		/// Gets specific collection of entities.
-		/// Please notice that this method will return at max 60 entities. 
-		/// </summary>
-		/// <param name="query">oData query</param>
-		/// <returns>List of entity Objects</returns>
-		public List<T> Get(string query)
+        /// <summary>
+        /// Returns the number of entities of the current type
+        /// </summary>
+        public Task<int> CountAsync(string query)
+        {
+            return _conn.CountAsync(query);
+        }
+
+        /// <summary>
+        /// Gets specific collection of entities.
+        /// Please notice that this method will return at max 60 entities. 
+        /// </summary>
+        /// <param name="query">oData query</param>
+        /// <returns>List of entity Objects</returns>
+        public List<T> Get(string query)
 		{
 			string skipToken = string.Empty;
 			return Get(query, ref skipToken);
@@ -104,13 +113,40 @@ namespace ExactOnline.Client.Sdk.Controllers
 			return entities.ConvertAll(x => x);
 		}
 
-		/// <summary>
-		/// Get entity using specific GUID
-		/// </summary>
-		/// <param name="guid">Global Unique Identifier of the entity</param>
-		/// <param name="parameters">parameters</param>
-		/// <returns>Entity if exists. Null if entity not exists.</returns>
-		public T GetEntity(string guid, string parameters)
+        /// <summary>
+        /// Gets specific collection of entities and return a skipToken if there are more than
+        /// 60 entities to be returned.
+        /// </summary>
+        /// <param name="query">oData query</param>
+        /// <returns>List of entity Objects</returns>
+        public async Task<Models.ApiList<T>> GetAsync(string query)
+        {
+            // Get the response and convert it to a list of entities of the specific type
+            string response = await _conn.GetAsync(query).ConfigureAwait( false );
+
+            string skipToken = ApiResponseCleaner.GetSkipToken(response);
+            response = ApiResponseCleaner.GetJsonArray(response);
+
+            var rc = new EntityConverter();
+            var entities = rc.ConvertJsonArrayToObjectList<T>(response);
+
+            // If the entity isn't managed already, register to managed entity collection
+            foreach(var entity in entities)
+            {
+                AddEntityToManagedEntitiesCollection(entity);
+            }
+
+            // Convert list
+            return new Models.ApiList<T>(entities.ConvertAll(x => x), skipToken);
+        }
+
+        /// <summary>
+        /// Get entity using specific GUID
+        /// </summary>
+        /// <param name="guid">Global Unique Identifier of the entity</param>
+        /// <param name="parameters">parameters</param>
+        /// <returns>Entity if exists. Null if entity not exists.</returns>
+        public T GetEntity(string guid, string parameters)
 		{
 			if (guid.Contains('}') || guid.Contains('{'))
 			{
@@ -128,12 +164,36 @@ namespace ExactOnline.Client.Sdk.Controllers
 			return entity;
 		}
 
-		/// <summary>
-		/// Creates an entity in Exact Online
-		/// </summary>
-		/// <param name="entity">Entity to create</param>
-		/// <returns>True if succeed</returns>
-		public Boolean Create(ref T entity)
+        /// <summary>
+        /// Get entity using specific GUID
+        /// </summary>
+        /// <param name="guid">Global Unique Identifier of the entity</param>
+        /// <param name="parameters">parameters</param>
+        /// <returns>Entity if exists. Null if entity not exists.</returns>
+        public async Task<T> GetEntityAsync(string guid, string parameters)
+        {
+            if(guid.Contains('}') || guid.Contains('{'))
+            {
+                throw new Exception( "Bad Guid: Guid cannot contain '}' or '{'" );
+            }
+
+            // Convert the resonse to an object of the specific type
+            var response = await _conn.GetEntityAsync(_keyname, guid, parameters).ConfigureAwait(false);
+            response = ApiResponseCleaner.GetJsonObject(response);
+            var ec = new EntityConverter();
+            var entity = ec.ConvertJsonToObject<T>(response);
+
+            // If entity isn't managed already, add entity to EntityController
+            AddEntityToManagedEntitiesCollection(entity);
+            return entity;
+        }
+
+        /// <summary>
+        /// Creates an entity in Exact Online
+        /// </summary>
+        /// <param name="entity">Entity to create</param>
+        /// <returns>True if succeed</returns>
+        public Boolean Create(ref T entity)
 		{
 			var supportedActions = GetSupportedActions(entity);
 			if (!supportedActions.CanCreate)
@@ -174,12 +234,56 @@ namespace ExactOnline.Client.Sdk.Controllers
 			return created;
 		}
 
-		/// <summary>
-		/// Updates an entity in Exact Online
-		/// </summary>
-		/// <param name="entity">Entity to update</param>
-		/// <returns>True if succeeded</returns>
-		public Boolean Update(T entity)
+        /// <summary>
+        /// Creates an entity in Exact Online
+        /// </summary>
+        /// <param name="entity">Entity to create</param>
+        /// <returns>The created entity if succeed</returns>
+        public async Task<T> CreateAsync(T entity)
+        {
+            var supportedActions = GetSupportedActions(entity);
+            if(!supportedActions.CanCreate)
+            {
+                throw new Exception("Cannot create entity. Entity does not support creation. Please see the Reference Documentation.");
+            }
+
+            // Get Json code
+            var converter = new EntityConverter();
+            var emptyEntity = Activator.CreateInstance<T>();
+            var json = converter.ConvertObjectToJson(emptyEntity, entity, _entityControllerDelegate);
+
+            // Send to API
+            var response = await _conn.PostAsync(json).ConfigureAwait(false);
+            if(!response.Contains("error"))
+            {
+                // Set values of API in account entity (to ensure GUID is set)
+                response = ApiResponseCleaner.GetJsonObject(response);
+                var ec = new EntityConverter();
+                T createdEntity = ec.ConvertJsonToObject<T>(response);
+
+                // Try to add the entity to the managed entities collections
+                if(!AddEntityToManagedEntitiesCollection(createdEntity) )
+                {
+                    throw new Exception("This entity already exists");
+                }
+
+                // Check if the endpoint supports a read action. Some endpoints such as PrintQuotation only support create (POST).
+                if(supportedActions.CanRead)
+                {
+                    // Get entity with linked entities (API Response for creating does not return the linked entities)
+                    createdEntity = GetEntity(GetIdentifierValue(createdEntity), _expandfield);
+                }
+                return createdEntity;
+            }
+            throw new Exception("Response contains error.");
+        }
+
+        /// <summary>
+        /// Updates an entity in Exact Online
+        /// </summary>
+        /// <param name="entity">Entity to update</param>
+        /// <returns>True if succeeded</returns>
+        public Boolean Update(T entity)
 		{
 			if (entity == null)
 			{
@@ -195,7 +299,28 @@ namespace ExactOnline.Client.Sdk.Controllers
 			return associatedController.Update(entity);
 		}
 
-		private Boolean IsUpdateable(T entity)
+        /// <summary>
+        /// Updates an entity in Exact Online
+        /// </summary>
+        /// <param name="entity">Entity to update</param>
+        /// <returns>True if succeeded</returns>
+        public Task<Boolean> UpdateAsync(T entity)
+        {
+            if( entity == null )
+            {
+                throw new ArgumentException("Controller Update: Entity cannot be null");
+            }
+
+            // Check if entity can be updated
+            if(!IsUpdateable(entity)) throw new Exception("Cannot update entity. Entity is not updateable. Please see the Reference Documentation.");
+
+            var associatedController = (EntityController)_entityControllers[GetIdentifierValue(entity)];
+            if(associatedController == null) throw new Exception("Entity identifier value not found");
+
+            return associatedController.UpdateAsync(entity);
+        }
+
+        private Boolean IsUpdateable(T entity)
 		{
 			return GetSupportedActions(entity).CanUpdate;
 		}
@@ -228,7 +353,35 @@ namespace ExactOnline.Client.Sdk.Controllers
 			return returnValue;
 		}
 
-		private Boolean IsDeleteable(T entity)
+        /// <summary>
+        /// Deletes an entity from Exact Online
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns>True if succeeded</returns>
+        public async Task<Boolean> DeleteAsync(T entity)
+        {
+            if( entity == null )
+            {
+                throw new ArgumentException("Controller Delete: Entity cannot be null");
+            }
+
+            // Check if entity can be deleted
+            if(!IsDeleteable(entity)) throw new Exception("Cannot delete entity. Entity does not support deleting. Please see the Reference Documentation.");
+
+            // Delete entity
+            var entityIdentifier = GetIdentifierValue(entity);
+            var associatedController = (EntityController)_entityControllers[entityIdentifier];
+
+            var returnValue = false;
+            if(await associatedController.DeleteAsync().ConfigureAwait(false))
+            {
+                returnValue = true;
+                _entityControllers.Remove(entityIdentifier);
+            }
+            return returnValue;
+        }
+
+        private Boolean IsDeleteable(T entity)
 		{
 			return GetSupportedActions(entity).CanDelete;
 		}

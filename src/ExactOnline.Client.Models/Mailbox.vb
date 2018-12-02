@@ -123,6 +123,9 @@ Namespace Mailbox
 		'''<summary>Name of creator</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [CreatorFullName] As String
+		'''<summary>Indicates that the scanning service must be done in (1) Europe or (0) both (inside or outside Europe)</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [EuropeProcessing] As Byte
 		'''<summary>Administration from which the mail message is sent. This is used for mail messages of type Bank only. When used for a mail message of type bank, the value is reserved for internal use and will then be ignored.</summary>
 		Public Property [ForDivision] As Int32?
 		'''<summary>Primary key</summary>

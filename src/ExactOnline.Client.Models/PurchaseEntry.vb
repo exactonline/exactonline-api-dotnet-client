@@ -46,6 +46,7 @@ Namespace PurchaseEntry
 		'''<summary>Description of ExternalLink</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [ExternalLinkDescription] As String
+		'''<summary>External link</summary>
 		Public Property [ExternalLinkReference] As String
 		'''<summary>A positive value of the amount indicates that the amount is to be paid to the suppliers G bank account.In case of a credit invoice the amount should have negative value when retrieved or posted to Exact.</summary>
 		Public Property [GAccountAmountFC] As Double?
@@ -168,6 +169,8 @@ Namespace PurchaseEntry
 		Public Property [LineNumber] As Int32?
 		'''<summary>Extra remarks</summary>
 		Public Property [Notes] As String
+		'''<summary>Percentage of re-invoice part of a cost to the owner of the company.</summary>
+		Public Property [PrivateUsePercentage] As Double?
 		'''<summary>Reference to project</summary>
 		Public Property [Project] As Guid?
 		'''<summary>Description of Project</summary>

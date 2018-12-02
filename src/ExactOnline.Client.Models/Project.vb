@@ -86,6 +86,8 @@ Namespace Project
 		Public Property [ProjectDescription] As String
 		'''<summary>Quantity of the transaction</summary>
 		Public Property [Quantity] As Double?
+		'''<summary>Skip validation</summary>
+		Public Property [SkipValidation] As Boolean
 		'''<summary>Subscription linked to the transaction</summary>
 		Public Property [Subscription] As Guid?
 		'''<summary>Account linked to the subscription</summary>
@@ -209,6 +211,8 @@ Namespace Project
 		Public Property [BudgetedHoursPerHourType] As IEnumerable(Of Models.Project.ProjectHourBudget)
 		'''<summary>Budgeted amount of revenue in the default currency of the company</summary>
 		Public Property [BudgetedRevenue] As Double?
+		'''<summary>BudgetOverrunHours: 10-Allowed, 20-Not Allowed</summary>
+		Public Property [BudgetOverrunHours] As Byte?
 		'''<summary>Budget type</summary>
 		Public Property [BudgetType] As Int16?
 		'''<summary>Budget type description</summary>
@@ -252,6 +256,8 @@ Namespace Project
 		Public Property [FixedPriceItemDescription] As String
 		'''<summary>Primary key</summary>
 		Public Property [ID] As Guid
+		'''<summary>Internal notes not to be printed in invoice</summary>
+		Public Property [InternalNotes] As String
 		'''<summary>Is invoice as quoted</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [InvoiceAsQuoted] As Boolean
@@ -1076,6 +1082,8 @@ Namespace Project
 		Public Property [ProjectDescription] As String
 		'''<summary>Quantity of the transaction</summary>
 		Public Property [Quantity] As Double?
+		'''<summary>Skip validation</summary>
+		Public Property [SkipValidation] As Boolean
 		'''<summary>Start time of the transaction</summary>
 		Public Property [StartTime] As DateTime?
 		'''<summary>Subscription linked to the transaction</summary>

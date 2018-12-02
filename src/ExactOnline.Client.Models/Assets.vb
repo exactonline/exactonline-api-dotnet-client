@@ -125,7 +125,7 @@ Namespace Assets
 		Public Property [StartDate] As DateTime?
 		'''<summary>Identifies the status of the Asset. (see AssetStatus table to see the possibilities)</summary>
 		Public Property [Status] As Int16?
-		'''<summary>Reference to Transaction</summary>
+		'''<summary>Reference to the transaction lines that make up the financial entry.</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [TransactionEntryID] As Guid?
 		'''<summary>Entry number of transaction</summary>

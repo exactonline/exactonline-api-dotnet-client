@@ -229,6 +229,26 @@ Namespace Logistics
 
 	<SupportedActionsSDK(False, True, False, False)>
 	<DataServiceKey("ID")>
+	Public Class [ItemExtraField]
+		'''<summary>Description of the free field</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Description] As String
+		'''<summary>Item Identidy</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ItemID] As Guid
+		'''<summary>Item last modified date</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Modified] As DateTime?
+		'''<summary>Used to determine the unique free field name as FreeField{Number}, first of all this is used for the external communication</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Number] As Int32
+		'''<summary>The value store in free field</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Value] As String
+	End Class
+
+	<SupportedActionsSDK(False, True, False, False)>
+	<DataServiceKey("ID")>
 	Public Class [ItemGroup]
 		'''<summary>Code of the item group</summary>
 		Public Property [Code] As String
@@ -436,6 +456,8 @@ Namespace Logistics
 	<SupportedActionsSDK(True, True, True, True)>
 	<DataServiceKey("ID")>
 	Public Class [SupplierItem]
+		'''<summary>Copy purchase remarks to purchase lines</summary>
+		Public Property [CopyRemarks] As Byte
 		'''<summary>Country of origin code</summary>
 		Public Property [CountryOfOrigin] As String
 		'''<summary>Description of country of origin</summary>
@@ -483,6 +505,8 @@ Namespace Logistics
 		'''<summary>Name of modifier</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [ModifierFullName] As String
+		'''<summary>Notes</summary>
+		Public Property [Notes] As String
 		'''<summary>The number of days between placing an order with a supplier and receiving items from the supplier</summary>
 		Public Property [PurchaseLeadTime] As Int32?
 		'''<summary>Purchase price</summary>

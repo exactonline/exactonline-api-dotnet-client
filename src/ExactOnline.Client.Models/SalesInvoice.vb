@@ -152,6 +152,8 @@ Namespace SalesInvoice
 		Public Property [Description] As String
 		'''<summary>Discount percentage</summary>
 		Public Property [Discount] As Double?
+		'''<summary>Discount Type</summary>
+		Public Property [DiscountType] As Int16?
 		'''<summary>Division code</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Division] As Int32?

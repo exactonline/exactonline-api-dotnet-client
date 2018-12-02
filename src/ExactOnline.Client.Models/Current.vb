@@ -11,6 +11,10 @@ Namespace Current
 		Public Property [DivisionCustomerCode] As String
 		'''<summary>Owner account name of the division</summary>
 		Public Property [DivisionCustomerName] As String
+		'''<summary>Owner account SIRET Number of the division for French legislation</summary>
+		Public Property [DivisionCustomerSiretNumber] As String
+		'''<summary>Owner account VAT Number of the division</summary>
+		Public Property [DivisionCustomerVatNumber] As String
 		'''<summary>Email address of the user</summary>
 		Public Property [Email] As String
 		'''<summary>Employee ID</summary>

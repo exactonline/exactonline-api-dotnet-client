@@ -8,6 +8,7 @@ using ExactOnline.Client.Sdk.UnitTests.MockObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ExactOnline.Client.Sdk.UnitTests
 {
@@ -68,7 +69,7 @@ namespace ExactOnline.Client.Sdk.UnitTests
 			Assert.AreEqual("Currently the SDK doesn't support entities with a compound key.", exceptionMessage);
 		}
 
-		[TestMethod]
+        [TestMethod]
 		[TestCategory("Unit Test")]
 		public void Controller_Delete_WithEntity_Succeeds()
 		{
@@ -80,7 +81,19 @@ namespace ExactOnline.Client.Sdk.UnitTests
 			Assert.IsFalse(accountController.IsManagedEntity(testAccount));
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Unit Test")]
+        public async Task Controller_Delete_WithEntity_SucceedsAsync()
+        {
+            var accountController = new Controller<Account>(_mockConnection);
+            Account testAccount = await accountController.GetEntityAsync("dummyGUID", string.Empty).ConfigureAwait(false);
+
+            // Delete Entity and Test if Entity still exists
+            Assert.IsTrue(await accountController.DeleteAsync(testAccount).ConfigureAwait(false));
+            Assert.IsFalse(accountController.IsManagedEntity(testAccount));
+        }
+
+        [TestMethod]
 		[TestCategory("Unit Test"), ExpectedException(typeof(ArgumentException))]
 		public void Controller_Delete_WithoutEntity_Fails()
 		{
@@ -88,7 +101,15 @@ namespace ExactOnline.Client.Sdk.UnitTests
 			accountController.Delete(null);
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Unit Test"), ExpectedException(typeof(ArgumentException))]
+        public async Task Controller_Delete_WithoutEntity_FailsAsync()
+        {
+            var accountController = new Controller<Account>(_mockConnection);
+            await accountController.DeleteAsync(null).ConfigureAwait(false);
+        }
+
+        [TestMethod]
 		[TestCategory("Unit Test")]
 		public void Controller_Get_Succeeds()
 		{
@@ -96,7 +117,15 @@ namespace ExactOnline.Client.Sdk.UnitTests
 			accountController.Get(string.Empty);
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Unit Test")]
+        public async Task Controller_Get_SucceedsAsync()
+        {
+            var accountController = new Controller<Account>(_mockConnection);
+            await accountController.GetAsync(string.Empty).ConfigureAwait(false);
+        }
+
+        [TestMethod]
 		[TestCategory("Unit Test")]
 		public void Controller_GetMultipleTimes_Succeeds()
 		{
@@ -106,7 +135,17 @@ namespace ExactOnline.Client.Sdk.UnitTests
 			var accounts = accountController.Get(string.Empty);
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Unit Test")]
+        public async Task Controller_GetMultipleTimes_SucceedsAsync()
+        {
+            var accountController = new Controller<Account>(_mockConnection);
+
+            // Get accounts again to test for double entitycontrollers
+            var accounts = await accountController.GetAsync(string.Empty).ConfigureAwait(false);
+        }
+
+        [TestMethod]
 		[TestCategory("Unit Test"), ExpectedException(typeof(ArgumentException))]
 		public void Controller_Update_WithoutEntity_Fails()
 		{
@@ -114,7 +153,15 @@ namespace ExactOnline.Client.Sdk.UnitTests
 			Assert.IsFalse(accountController.Update(null));
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Unit Test"), ExpectedException(typeof(ArgumentException))]
+        public async Task Controller_Update_WithoutEntity_FailsAsync()
+        {
+            var accountController = new Controller<Account>(_mockConnection);
+            Assert.IsFalse(await accountController.UpdateAsync(null).ConfigureAwait(false));
+        }
+
+        [TestMethod]
 		[TestCategory("Unit Test")]
 		public void Controller_Update_WithEntity_Succeeds()
 		{
@@ -123,7 +170,16 @@ namespace ExactOnline.Client.Sdk.UnitTests
 			Assert.IsTrue(accountController.Update(testAccount));
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Unit Test")]
+        public async Task Controller_Update_WithEntity_SucceedsAsync()
+        {
+            var accountController = new Controller<Account>(_mockConnection);
+            Account testAccount = await accountController.GetEntityAsync( "dummyGUID", string.Empty ).ConfigureAwait(false);
+            Assert.IsTrue( await accountController.UpdateAsync( testAccount ).ConfigureAwait(false) );
+        }
+
+        [TestMethod]
 		[TestCategory("Unit Test")]
 		public void Controller_Test_ManagedEntities_WithLinkedEntities_Succeeds()
 		{
@@ -140,5 +196,23 @@ namespace ExactOnline.Client.Sdk.UnitTests
 			SalesInvoiceLine line = ((List<SalesInvoiceLine>)invoice.SalesInvoiceLines)[0];
 			Assert.IsTrue(invoicelines.IsManagedEntity(line), "SalesInvoiceLine isn't a managed entity");
 		}
-	}
+
+        [TestMethod]
+        [TestCategory( "Unit Test" )]
+        public async Task Controller_Test_ManagedEntities_WithLinkedEntities_SucceedsAsync()
+        {
+            // Test if controller registrates linked entities
+            IApiConnector conn = new ApiConnectorControllerMock();
+            var controllerList = new ControllerList( conn, string.Empty );
+
+            var salesinvoicecontroller = ( Controller<SalesInvoice> )controllerList.GetController<SalesInvoice>();
+            var invoicelines = ( Controller<SalesInvoiceLine> )controllerList.GetController<SalesInvoiceLine>();
+            salesinvoicecontroller.GetManagerForEntity = controllerList.GetEntityManager;
+
+            // Verify if sales invoice lines are registrated entities
+            var invoice = (await salesinvoicecontroller.GetAsync( "" ).ConfigureAwait(false)).List[0];
+            SalesInvoiceLine line = ( ( List<SalesInvoiceLine> )invoice.SalesInvoiceLines )[0];
+            Assert.IsTrue( invoicelines.IsManagedEntity( line ), "SalesInvoiceLine isn't a managed entity" );
+        }
+    }
 }

@@ -214,6 +214,9 @@ Namespace CRM
 		Public Property [IsAccountant] As Byte
 		'''<summary>Indicates whether the accounti is an agency</summary>
 		Public Property [IsAgency] As Byte
+		'''<summary>Indicates whtether the account is anonymised.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [IsAnonymised] As Byte
 		'''<summary>Obsolete</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [IsBank] As Boolean?
@@ -245,6 +248,8 @@ Namespace CRM
 		Public Property [LanguageDescription] As String
 		'''<summary>Latitude (used by Google maps)</summary>
 		Public Property [Latitude] As Double?
+		'''<summary>Reference to Lead purpose of an account</summary>
+		Public Property [LeadPurpose] As Guid?
 		'''<summary>Reference to Lead source of an account</summary>
 		Public Property [LeadSource] As Guid?
 		'''<summary>Bytes of the logo image</summary>
@@ -270,12 +275,12 @@ Namespace CRM
 		'''<summary>Name of modifier</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [ModifierFullName] As String
-        '''<summary>Account name</summary>
-        Public Property [Name] As String
-        ''' <summary>Dutch government identification number</summary>
-        Public Property [OINNumber] As String
-        '''<summary>ID of the parent account</summary>
-        Public Property [Parent] As Guid?
+		'''<summary>Account name</summary>
+		Public Property [Name] As String
+		'''<summary>Dutch government identification number</summary>
+		Public Property [OINNumber] As String
+		'''<summary>ID of the parent account</summary>
+		Public Property [Parent] As Guid?
 		'''<summary>Indicates the loan repayment plan for UK legislation</summary>
 		Public Property [PayAsYouEarn] As String
 		'''<summary>Code of default payment condition for purchase</summary>
@@ -786,6 +791,9 @@ Namespace CRM
 		Public Property [IdentificationUser] As Guid?
 		'''<summary>Initials</summary>
 		Public Property [Initials] As String
+		'''<summary>Indicates whether the contact is anonymised.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [IsAnonymised] As Byte
 		'''<summary>Indicates whether contacts are excluded from the marketing list</summary>
 		Public Property [IsMailingExcluded] As Boolean?
 		'''<summary>Indicates if this is the main contact of the linked account</summary>
@@ -797,6 +805,10 @@ Namespace CRM
 		Public Property [Language] As String
 		'''<summary>Last name. Provide at least first name or last name to create a new contact</summary>
 		Public Property [LastName] As String
+		'''<summary>Reference to purpose of an contact</summary>
+		Public Property [LeadPurpose] As Guid?
+		'''<summary>Reference to source of an contact</summary>
+		Public Property [LeadSource] As Guid?
 		'''<summary>The user should be able to do a full text search on these notes to gather contacts for a marketing campaign</summary>
 		Public Property [MarketingNotes] As String
 		'''<summary>Middle name</summary>
@@ -862,6 +874,8 @@ Namespace CRM
 		Public Property [Attachments] As IEnumerable(Of Models.CRM.DocumentsAttachment)
 		'''<summary>Body of this document</summary>
 		Public Property [Body] As String
+		'''<summary>ID of the related contact of this document</summary>
+		Public Property [Contact] As Guid?
 		'''<summary>Creation date</summary>
 		Public Property [Created] As DateTime
 		'''<summary>User ID of creator</summary>
@@ -923,6 +937,164 @@ Namespace CRM
 		Public Property [CanShowInWebView] As Boolean
 		'''<summary>Primary key</summary>
 		Public Property [ID] As Guid
+	End Class
+
+	<SupportedActionsSDK(True, True, True, True)>
+	<DataServiceKey("ID")>
+	Public Class [HostingOpportunity]
+		'''<summary>Lead to which the opportunity applies</summary>
+		Public Property [Account] As Guid?
+		'''<summary>Accountant linked to the opportunity</summary>
+		Public Property [Accountant] As Guid?
+		'''<summary>Code of the Accountant</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [AccountantCode] As String
+		'''<summary>Name of the Accountant</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [AccountantName] As String
+		'''<summary>Code of Account</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [AccountCode] As String
+		'''<summary>Name of Account</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [AccountName] As String
+		'''<summary>Indicates the date before/on the NextAction is supposed to be done</summary>
+		Public Property [ActionDate] As DateTime?
+		'''<summary>Amount in the default currency of the company. AmountDC = AmountFC * RateFC</summary>
+		Public Property [AmountDC] As Double?
+		'''<summary>Amount in the currency of the transaction</summary>
+		Public Property [AmountFC] As Double?
+		'''<summary>Indicate the date back to lead development</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [BackToLeadDevelopment] As DateTime?
+		'''<summary>Reference to the campaign opportunity is related to</summary>
+		Public Property [Campaign] As Guid?
+		'''<summary>Description of Campaign</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [CampaignDescription] As String
+		'''<summary>Reference to the channel opportunity is related to</summary>
+		Public Property [Channel] As Int16?
+		'''<summary>Description of Channel</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ChannelDescription] As String
+		'''<summary>The date when the opportunity is expected to be closed</summary>
+		Public Property [CloseDate] As DateTime?
+		'''<summary>Creation date</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Created] As DateTime?
+		'''<summary>User ID of creator</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Creator] As Guid?
+		'''<summary>Name of the creator</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [CreatorFullName] As String
+		'''<summary>Currency code</summary>
+		Public Property [Currency] As String
+		'''<summary>Description related to customer demand</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [CustomerDemandsDescription] As String
+		'''<summary>DMU fields-Unit Name</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [DecisionMakingUnitName] As String
+		'''<summary>DMU fields- Unit Role</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [DecisionMakingUnitRole] As String
+		'''<summary>Description of the time frame</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [DecisionTimeframe] As String
+		'''<summary>Indicate the date when dispatch to sales</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [DispatchToSales] As DateTime?
+		'''<summary>Division code</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Division] As Int32?
+		'''<summary>Primary key</summary>
+		Public Property [ID] As Guid
+		'''<summary>Aware of associated prices</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [IsAssociatedPrice] As Byte?
+		'''<summary>Standard product solves customer demands</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [IsCustomerDemandsMeet] As Byte?
+		'''<summary>Name of the lead developer</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [LeadDeveloper] As Guid?
+		'''<summary>The source of the lead/opportunity</summary>
+		Public Property [LeadSource] As Guid?
+		'''<summary>Description of LeadSource</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [LeadSourceDescription] As String
+		'''<summary>Last modified date</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Modified] As DateTime?
+		'''<summary>User ID of modifier</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Modifier] As Guid?
+		'''<summary>Name of the last modifier</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ModifierFullName] As String
+		'''<summary>Name of the opportunity</summary>
+		Public Property [Name] As String
+		'''<summary>Indicates what follow up action is to be undertaken to move the opportunity towards a deal. Is used in combination with ActionDate</summary>
+		Public Property [NextAction] As String
+		'''<summary>Notes of the opportunity</summary>
+		Public Property [Notes] As String
+		'''<summary>Code of Opportunity Department</summary>
+		Public Property [OpportunityDepartmentCode] As Int16?
+		'''<summary>Description of Opportunity Department</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [OpportunityDepartmentDescription] As String
+		'''<summary>The stage of the opportunity. This is a list defined by the user</summary>
+		Public Property [OpportunityStage] As Guid?
+		'''<summary>Description of OpportunityStage</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [OpportunityStageDescription] As String
+		'''<summary>Status: 1=Open, 2=Closed won, 3=Closed lost</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [OpportunityStatus] As Int32?
+		'''<summary>Code of Opportunity Type</summary>
+		Public Property [OpportunityType] As Int16?
+		'''<summary>Description of Opportunity Type</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [OpportunityTypeDescription] As String
+		'''<summary>The resource who owns the opportunity and is responsible to close the opportunity (either won or lost)</summary>
+		Public Property [Owner] As Guid?
+		'''<summary>Name of Owner</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [OwnerFullName] As String
+		'''<summary>The chance that the opportunity will be closed and won. The default for the probability depends on the default from the opportunity stage</summary>
+		Public Property [Probability] As Double?
+		'''<summary>Reference to project</summary>
+		Public Property [Project] As Guid?
+		'''<summary>Code of Project</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ProjectCode] As String
+		'''<summary>Description of Project</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ProjectDescription] As String
+		'''<summary>Exchange rate from original to division currency</summary>
+		Public Property [RateFC] As Double?
+		'''<summary>Indicate the reason back</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ReasonBack] As String
+		'''<summary>Indicates the reason why the opportunity was lost.</summary>
+		Public Property [ReasonCode] As Guid?
+		'''<summary>Description of ReasonCode</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ReasonCodeDescription] As String
+		'''<summary>Reseller linked to the opportunity</summary>
+		Public Property [Reseller] As Guid?
+		'''<summary>Code of the Reseller</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ResellerCode] As String
+		'''<summary>Name of the Reseller</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ResellerName] As String
+		'''<summary>Reference to Sales type</summary>
+		Public Property [SalesType] As Guid?
+		'''<summary>Description of SalesType</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [SalesTypeDescription] As String
 	End Class
 
 	<SupportedActionsSDK(True, True, True, True)>
@@ -998,6 +1170,11 @@ Namespace CRM
 		Public Property [NextAction] As String
 		'''<summary>Notes of the opportunity</summary>
 		Public Property [Notes] As String
+		'''<summary>Code of Opportunity Department</summary>
+		Public Property [OpportunityDepartmentCode] As Int16?
+		'''<summary>Description of Opportunity Department</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [OpportunityDepartmentDescription] As String
 		'''<summary>The stage of the opportunity. This is a list defined by the user</summary>
 		Public Property [OpportunityStage] As Guid?
 		'''<summary>Description of OpportunityStage</summary>
@@ -1143,6 +1320,9 @@ Namespace CRM
 		Public Property [IdentificationUser] As Guid?
 		'''<summary>Initials</summary>
 		Public Property [Initials] As String
+		'''<summary>Indicates whether the contact is anonymised.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [IsAnonymised] As Byte
 		'''<summary>Indicates whether contacts are excluded from the marketing list</summary>
 		Public Property [IsMailingExcluded] As Boolean?
 		'''<summary>Indicates if this is the main contact of the linked account</summary>

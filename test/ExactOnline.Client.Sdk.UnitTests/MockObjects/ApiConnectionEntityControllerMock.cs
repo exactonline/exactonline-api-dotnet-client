@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using ExactOnline.Client.Sdk.Interfaces;
 
 namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
@@ -10,7 +11,12 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			return 0;
 		}
 
-		public string Data { get; set; }
+        public Task<int> CountAsync(string parameters)
+        {
+            return Task.FromResult(Count(parameters));
+        }
+
+        public string Data { get; set; }
 
 		#region IApiConnection Members
 
@@ -19,12 +25,22 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			throw new NotImplementedException();
 		}
 
-		string IApiConnection.GetEntity(string keyname, string guid, string parameters)
+        Task<string> IApiConnection.GetAsync(string parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        string IApiConnection.GetEntity(string keyname, string guid, string parameters)
 		{
 			throw new NotImplementedException();
 		}
 
-		string IApiConnection.Post(string data)
+        Task<string> IApiConnection.GetEntityAsync(string keyname, string guid, string parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        string IApiConnection.Post(string data)
 		{
 			Data = data;
 
@@ -85,27 +101,47 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			}";
 		}
 
-		bool IApiConnection.Put(string keyName, string guid, string data)
+        Task<string> IApiConnection.PostAsync(string data)
+        {
+            return Task.FromResult((this as IApiConnection).Post(data));
+        }
+
+        bool IApiConnection.Put(string keyName, string guid, string data)
 		{
 			Data = data;
 			return true;
 		}
 
-		bool IApiConnection.Delete(string keyName, string guid)
+        Task<bool> IApiConnection.PutAsync(string keyName, string guid, string data)
+        {
+            return Task.FromResult((this as IApiConnection).Put(keyName,guid,data));
+        }
+
+        bool IApiConnection.Delete(string keyName, string guid)
 		{
 			return (keyName.Equals("ID") && guid.Equals("c931ef6c-ecdf-40db-87de-0d2c629ef322"));
 		}
 
-		#endregion
+        Task<bool> IApiConnection.DeleteAsync(string keyName, string guid)
+        {
+            return Task.FromResult((this as IApiConnection).Delete(keyName, guid));
+        }
 
-		#region IApiConnection Members
+        #endregion
+
+        #region IApiConnection Members
 
 
-		public string GetEntity(string keyname, string guid, string parameters)
+        public string GetEntity(string keyname, string guid, string parameters)
 		{
 			throw new NotImplementedException();
 		}
 
-		#endregion
-	}
+        public Task<string> GetEntityAsync(string keyname, string guid, string parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+    }
 }

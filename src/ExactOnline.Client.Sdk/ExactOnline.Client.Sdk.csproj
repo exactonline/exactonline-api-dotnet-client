@@ -60,6 +60,7 @@
     <Compile Include="Exceptions\InternalServerErrorException.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Exceptions\UnauthorizedException.cs" />
+    <Compile Include="Models\ApiList.cs" />
     <Compile Include="Helpers\ExactOnlineQuery.cs" />
     <Compile Include="Helpers\JsDateTimeConverter.cs" />
     <Compile Include="Delegates\ManagerForEntitiesDelegate.cs" />

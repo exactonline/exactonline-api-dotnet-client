@@ -108,7 +108,7 @@ Namespace SalesOrder
 		Public Property [Division] As Int32?
 		'''<summary>The EntryID identifies the goods delivery. All the lines of a goods delivery have the same EntryID</summary>
 		Public Property [EntryID] As Guid?
-		'''<summary>Primary key</summary>
+		'''<summary>The unique identifier of a stock transaction for a goods delivery line. A goods delivery line can be split into multiple storage locations. In this case, multiple storage locations will have the same stock transaction ID.</summary>
 		Public Property [ID] As Guid
 		'''<summary>Reference to item</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
@@ -197,8 +197,10 @@ Namespace SalesOrder
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [AmountDC] As Double
 		'''<summary>Discount amount in the default currency of the company</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [AmountDiscount] As Double?
-		'''<summary>Discount amount exclude VAT in the default currency of the company</summary>
+		'''<summary>Discount amount excluding VAT in the default currency of the company</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [AmountDiscountExclVat] As Double?
 		'''<summary>Amount in the currency of the transaction</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
@@ -232,7 +234,7 @@ Namespace SalesOrder
 		Public Property [CreatorFullName] As String
 		'''<summary>Currency code</summary>
 		Public Property [Currency] As String
-		'''<summary>Reference to delivery customer</summary>
+		'''<summary>Reference to the delivery customer. For an existing sales order this value can not be changed.</summary>
 		Public Property [DeliverTo] As Guid?
 		'''<summary>Reference to contact person of delivery customer</summary>
 		Public Property [DeliverToContactPerson] As Guid?
@@ -247,6 +249,7 @@ Namespace SalesOrder
 		'''<summary>Delivery date</summary>
 		Public Property [DeliveryDate] As DateTime?
 		'''<summary>Shipping status</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [DeliveryStatus] As Int16?
 		'''<summary>Description of DeliveryStatus</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
@@ -267,13 +270,14 @@ Namespace SalesOrder
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [DocumentSubject] As String
 		'''<summary>Invoice status</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [InvoiceStatus] As Int16?
 		'''<summary>Description of InvoiceStatus</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [InvoiceStatusDescription] As String
-		'''<summary>Reference to the Customer who will receive the invoice</summary>
+		'''<summary>Reference to the customer who will receive the invoice. For an existing sales order this value can not be changed.</summary>
 		Public Property [InvoiceTo] As Guid?
-		'''<summary>Reference to the Contact person of the customer who will receive the invoice</summary>
+		'''<summary>Reference to the contact person of the customer who will receive the invoice</summary>
 		Public Property [InvoiceToContactPerson] As Guid?
 		'''<summary>Name of the contact person of the customer who will receive the invoice</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
@@ -292,7 +296,7 @@ Namespace SalesOrder
 		Public Property [ModifierFullName] As String
 		'''<summary>Order date</summary>
 		Public Property [OrderDate] As DateTime?
-		'''<summary>Customer who ordered the sales order</summary>
+		'''<summary>Customer who ordered the sales order. For an existing sales order this value can not be changed.</summary>
 		Public Property [OrderedBy] As Guid?
 		'''<summary>Contact person of the customer who ordered the sales order</summary>
 		Public Property [OrderedByContactPerson] As Guid?

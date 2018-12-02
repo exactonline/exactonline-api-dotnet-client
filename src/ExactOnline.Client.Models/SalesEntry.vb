@@ -110,6 +110,12 @@ Namespace SalesEntry
 		Public Property [VATAmountDC] As Double?
 		'''<summary>Vat amount in the currency of the transaction</summary>
 		Public Property [VATAmountFC] As Double?
+		'''<summary>Withholding tax amount</summary>
+		Public Property [WithholdingTaxAmountDC] As Double?
+		'''<summary>Withholding tax base amount to calculate withholding amount</summary>
+		Public Property [WithholdingTaxBaseAmount] As Double?
+		'''<summary>Withholding tax percentage</summary>
+		Public Property [WithholdingTaxPercentage] As Double?
 		'''<summary>The invoice number of the customer</summary>
 		Public Property [YourRef] As String
 	End Class

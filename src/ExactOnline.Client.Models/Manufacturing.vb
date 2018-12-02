@@ -453,7 +453,6 @@ Namespace Manufacturing
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [ShopOrderNumber] As Int32?
 		'''<summary>ID of storage location reversed to</summary>
-		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [StorageLocation] As Guid?
 		'''<summary>Code of storage location reversed to</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
@@ -1499,6 +1498,8 @@ Namespace Manufacturing
 	<SupportedActionsSDK(True, True, True, True)>
 	<DataServiceKey("ID")>
 	Public Class [Workcenter]
+		'''<summary>Capacity of the work center</summary>
+		Public Property [Capacity] As Int32?
 		'''<summary>Code of the work center</summary>
 		Public Property [Code] As String
 		'''<summary>Reference to CostCenters</summary>

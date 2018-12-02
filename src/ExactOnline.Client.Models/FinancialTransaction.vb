@@ -42,7 +42,7 @@ Namespace FinancialTransaction
 		Public Property [Modified] As DateTime?
 		'''<summary>Opening balance in the currency of the transaction</summary>
 		Public Property [OpeningBalanceFC] As Double?
-		'''<summary>Status: 5 = Rejected, 20 = Open, 50 = Processed</summary>
+		'''<summary>Status: 20 = Open, 50 = Processed</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Status] As Int16?
 		'''<summary>Description of Status</summary>
@@ -95,6 +95,7 @@ Namespace FinancialTransaction
 		'''<summary>Name of creator</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [CreatorFullName] As String
+		'''<summary>Date</summary>
 		Public Property [Date] As DateTime?
 		'''<summary>Description</summary>
 		Public Property [Description] As String
@@ -144,6 +145,7 @@ Namespace FinancialTransaction
 		'''<summary>Reference to offset line</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [OffsetID] As Guid?
+		'''<summary>Invoice number</summary>
 		Public Property [OurRef] As Int32?
 		'''<summary>Reference to a project</summary>
 		Public Property [Project] As Guid?
@@ -200,7 +202,7 @@ Namespace FinancialTransaction
 		Public Property [Modified] As DateTime?
 		'''<summary>Opening balance in the currency of the transaction</summary>
 		Public Property [OpeningBalanceFC] As Double?
-		'''<summary>Status: 5 = Rejected, 20 = Open, 50 = Processed</summary>
+		'''<summary>Status: 20 = Open, 50 = Processed</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Status] As Int16?
 		'''<summary>Description of Status</summary>
@@ -253,6 +255,7 @@ Namespace FinancialTransaction
 		'''<summary>Name of creator</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [CreatorFullName] As String
+		'''<summary>Date</summary>
 		Public Property [Date] As DateTime?
 		'''<summary>Description</summary>
 		Public Property [Description] As String
@@ -302,6 +305,7 @@ Namespace FinancialTransaction
 		'''<summary>Reference to offset line</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [OffsetID] As Guid?
+		'''<summary>Invoice number</summary>
 		Public Property [OurRef] As Int32?
 		'''<summary>Reference to a project</summary>
 		Public Property [Project] As Guid?
@@ -458,7 +462,7 @@ Namespace FinancialTransaction
 		Public Property [DocumentSubject] As String
 		'''<summary>Date that payment should be done</summary>
 		Public Property [DueDate] As DateTime?
-		'''<summary>Reference to header of the entry</summary>
+		'''<summary>The transaction lines that make up a financial entry share the same EntryID</summary>
 		Public Property [EntryID] As Guid?
 		'''<summary>Entry number of the header</summary>
 		<SDKFieldType(FieldType.ReadOnly)>

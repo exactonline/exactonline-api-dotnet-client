@@ -2,6 +2,7 @@
 using ExactOnline.Client.Sdk.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Threading.Tasks;
 
 namespace ExactOnline.Client.Sdk.UnitTests
 {
@@ -43,8 +44,14 @@ namespace ExactOnline.Client.Sdk.UnitTests
 			_connector.DoDeleteRequest(string.Empty);
 		}
 
+        [TestMethod]
+        [TestCategory( "Unit Test" ), ExpectedException( typeof( ArgumentException ) )]
+        public async Task ApiConnector_DoDeleteRequest_With_EmptyValues_FailsAsync()
+        {
+            await _connector.DoDeleteRequestAsync( string.Empty ).ConfigureAwait(false);
+        }
 
 
 
-	}
+    }
 }

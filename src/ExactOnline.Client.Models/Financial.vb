@@ -286,7 +286,7 @@ Namespace Financial
 		'''<summary>Name of creator</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [CreatorFullName] As String
-		'''<summary>Description of the element. Note that this description is only used for division-specific taxonomies (or reporting schemes). For general taxonomies, the descriptions are stored in the TaxonomyLabels table</summary>
+		'''<summary>Description of the element. Note that this description is only used for division-specific taxonomies (or reporting schemes).</summary>
 		Public Property [Description] As String
 		'''<summary>Division is optional. For taxonomies of Taxonomies.Type = 0 (general taxonomies), the Division is empty. For division specific taxonomies it is mandatory</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
@@ -481,6 +481,72 @@ Namespace Financial
 		Public Property [Year] As Int32
 	End Class
 
+	<SupportedActionsSDK(True, True, False, False)>
+	<DataServiceKey("ID")>
+	Public Class [OfficialReturn]
+		'''<summary>Total liquidation amount of the official return</summary>
+		Public Property [Amount] As Double?
+		'''<summary>Creation date</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Created] As DateTime?
+		'''<summary>User ID of creator</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Creator] As Guid?
+		'''<summary>CreatorFullName</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [CreatorFullName] As String
+		'''<summary>Description of the official return</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Description] As String
+		'''<summary>Division code</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Division] As Int32?
+		'''<summary>Document linked to the official return.</summary>
+		Public Property [Document] As Guid?
+		'''<summary>DocumentSubject</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [DocumentSubject] As String
+		'''<summary>Frequency Monthly = 10,	TwoMonthly = 20, Quarterly = 30, Yearly = 40,FinancialYearQuarter = 100</summary>
+		Public Property [Frequency] As Int16?
+		'''<summary>Primary key</summary>
+		Public Property [ID] As Guid
+		'''<summary>IsCorrection</summary>
+		Public Property [IsCorrection] As Byte?
+		'''<summary>Last modified date</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Modified] As DateTime?
+		'''<summary>User ID of modifier</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Modifier] As Guid?
+		'''<summary>Name of modifier</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ModifierFullName] As String
+		'''<summary>Financial period (for annual returns = 0)</summary>
+		Public Property [Period] As Int16?
+		'''<summary>Registration data of the presenting proof document, JSON serialized dictionary  &lt;table class=&quot;enum&quot; style=&quot;width:30%&quot;&gt;  &lt;tr&gt;&lt;td colspan=&quot;2&quot; align=&quot;center&quot;&gt;&lt;b&gt;Spanish legislation Keys:&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;  &lt;tr&gt;&lt;td&gt;registrationEntryNumber&lt;/td&gt;&lt;td&gt;Registration entry number&lt;/td&gt;&lt;/tr&gt;  &lt;tr&gt;&lt;td&gt;safeCodeVerification&lt;/td&gt;&lt;td&gt;Tax authorities CSV&lt;/td&gt;&lt;/tr&gt;  &lt;tr&gt;&lt;td&gt;vatPresenter&lt;/td&gt;&lt;td&gt;VAT number of the presenter&lt;/td&gt;&lt;/tr&gt;  &lt;tr&gt;&lt;td&gt;surnameNameCompanyName&lt;/td&gt;&lt;td&gt;Name of the presenter&lt;/td&gt;&lt;/tr&gt;  &lt;tr&gt;&lt;td&gt;capacityOf&lt;/td&gt;&lt;td&gt;COLABORADOR&lt;/td&gt;&lt;/tr&gt;  &lt;tr&gt;&lt;td&gt;receiptNumber&lt;/td&gt;&lt;td&gt;Receipt number&lt;/td&gt;&lt;/tr&gt;  &lt;/table&gt;</summary>
+		Public Property [PresentationData] As String
+		'''<summary>Presentation date of the official return to the tax authorities</summary>
+		Public Property [PresentationDate] As DateTime?
+		'''<summary>For performance reasons presentation attachment is Write-Only.</summary>
+		Public Property [PresentationFile] As Byte()
+		'''<summary>File name of presentation attachment.</summary>
+		Public Property [PresentationFileName] As String
+		'''<summary>Reference of the official return</summary>
+		Public Property [Reference] As String
+		'''<summary>Source of the official return : 1 - EOL, 2 - RestAPI</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Source] As Int16?
+		'''<summary>Status of the official return</summary>
+		Public Property [Status] As Int16?
+		'''<summary>Type of the official return</summary>
+		Public Property [Type] As Int16?
+		'''<summary>Official return type description</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [TypeDescription] As String
+		'''<summary>Financial year of the official return</summary>
+		Public Property [Year] As Int16?
+	End Class
+
 	<SupportedActionsSDK(False, True, False, False)>
 	<DataServiceKey("CurrencyCode")>
 	Public Class [OutstandingInvoicesOverview]
@@ -517,11 +583,13 @@ Namespace Financial
 		Public Property [Amount] As Double
 		'''<summary>Amount in transit</summary>
 		Public Property [AmountInTransit] As Double
+		'''<summary>Approval status:&lt;br&gt;  						null - Invoice was entered before approval functionality was activated (treated as Approved for payments)&lt;br&gt;  						1 - N/A (used for non-electronic payment methods)&lt;br&gt;  						2 - Awaiting review&lt;br&gt;  						3 - Awaiting approval&lt;br&gt;  						4 - Approved</summary>
+		Public Property [ApprovalStatus] As Int16?
 		'''<summary>Code of Currency</summary>
 		Public Property [CurrencyCode] As String
 		'''<summary>Description</summary>
 		Public Property [Description] As String
-		'''<summary>Date the invoice should be paid</summary>
+		'''<summary>Date the invoice is due (This due date is not the discount due date)</summary>
 		Public Property [DueDate] As DateTime
 		'''<summary>Entry number</summary>
 		Public Property [EntryNumber] As Int32
@@ -595,7 +663,7 @@ Namespace Financial
 		Public Property [CurrencyCode] As String
 		'''<summary>Description</summary>
 		Public Property [Description] As String
-		'''<summary>Date the invoice should be paid</summary>
+		'''<summary>Date the invoice is due (This due date is not the discount due date)</summary>
 		Public Property [DueDate] As DateTime
 		'''<summary>Entry number</summary>
 		Public Property [EntryNumber] As Int32

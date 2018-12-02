@@ -97,7 +97,7 @@ Namespace PurchaseOrder
 		'''<summary>All the lines of a goods receipt have the same GoodsReceiptID</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [GoodsReceiptID] As Guid?
-		'''<summary>Primary key</summary>
+		'''<summary>The unique identifier of a stock transaction for a goods receipt line. A goods receipt line can be split into multiple storage locations. In this case, multiple storage locations will have the same stock transaction ID.</summary>
 		Public Property [ID] As Guid
 		'''<summary>ID of the received item</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
@@ -412,6 +412,9 @@ Namespace PurchaseOrder
 		'''<summary>Code the supplier uses for this item</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [SupplierItemCode] As String
+		'''<summary>Indicate if the notes content should be copied from SupplierItem&apos;s remarks. The default follows the CopyRemarks value from SupplierItem. Values: 0 = Do not copy remark, 1 = Copy remark</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [SupplierItemCopyRemarks] As Byte
 		'''<summary>Code of item unit</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Unit] As String

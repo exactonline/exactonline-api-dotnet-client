@@ -109,6 +109,8 @@ Namespace HRM
 		'''<summary>Division code</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Division] As Int32?
+		'''<summary>The end date by which the cost center has to be inactive</summary>
+		Public Property [EndDate] As DateTime?
 		'''<summary>Primary key</summary>
 		Public Property [ID] As Guid
 		'''<summary>Last modified date</summary>
@@ -141,6 +143,8 @@ Namespace HRM
 		'''<summary>Division code</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Division] As Int32?
+		'''<summary>The end date by which the cost unit has to be inactive</summary>
+		Public Property [EndDate] As DateTime?
 		'''<summary>Primary key</summary>
 		Public Property [ID] As Guid
 		'''<summary>Last modified date</summary>
@@ -433,10 +437,13 @@ Namespace HRM
 	<DataServiceKey("ID")>
 	Public Class [LeaveBuildUpRegistration]
 		'''<summary>Creation date</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Created] As DateTime
 		'''<summary>User ID of creator</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Creator] As Guid?
 		'''<summary>Name of creator</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [CreatorFullName] As String
 		'''<summary>Date of leave build up</summary>
 		Public Property [Date] As DateTime
@@ -447,8 +454,10 @@ Namespace HRM
 		'''<summary>Employee linked to the leave build up</summary>
 		Public Property [Employee] As Guid
 		'''<summary>Employee full name</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [EmployeeFullName] As String
 		'''<summary>Numeric ID of the employee</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [EmployeeHID] As Int32
 		'''<summary>Total number of leave build up hours</summary>
 		Public Property [Hours] As Double
@@ -457,18 +466,24 @@ Namespace HRM
 		'''<summary>Type of leave</summary>
 		Public Property [LeaveType] As Guid
 		'''<summary>Code for type of leave</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [LeaveTypeCode] As String
 		'''<summary>Description for type of leave</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [LeaveTypeDescription] As String
 		'''<summary>Last modified date</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Modified] As DateTime
 		'''<summary>User ID of modifier</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Modifier] As Guid?
 		'''<summary>Name of modifier</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [ModifierFullName] As String
 		'''<summary>Extra information for leave build up</summary>
 		Public Property [Notes] As String
 		'''<summary>Status of leave build up, 1 = Submitted, 2 = Approved, 3 = Rejected</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Status] As Int16
 	End Class
 
@@ -476,20 +491,25 @@ Namespace HRM
 	<DataServiceKey("ID")>
 	Public Class [LeaveRegistration]
 		'''<summary>Creation date</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Created] As DateTime
 		'''<summary>User ID of creator</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Creator] As Guid?
 		'''<summary>Name of creator</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [CreatorFullName] As String
 		'''<summary>Description of leave</summary>
 		Public Property [Description] As String
 		'''<summary>Division code</summary>
 		Public Property [Division] As Int32?
-		'''<summary>Employee linked to the leave</summary>
+		'''<summary>Employee linked to the leave registration</summary>
 		Public Property [Employee] As Guid
 		'''<summary>Employee full name</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [EmployeeFullName] As String
 		'''<summary>Numeric ID of the employee</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [EmployeeHID] As Int32
 		'''<summary>End date of leave</summary>
 		Public Property [EndDate] As DateTime
@@ -506,14 +526,18 @@ Namespace HRM
 		'''<summary>Type of leave</summary>
 		Public Property [LeaveType] As Guid
 		'''<summary>Code for type of leave</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [LeaveTypeCode] As String
 		'''<summary>Description for type of leave</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [LeaveTypeDescription] As String
 		'''<summary>Last modified date</summary>
 		Public Property [Modified] As DateTime
 		'''<summary>User ID of modifier</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Modifier] As Guid?
 		'''<summary>Name of modifier</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [ModifierFullName] As String
 		'''<summary>Extra information for leave</summary>
 		Public Property [Notes] As String
@@ -522,6 +546,7 @@ Namespace HRM
 		'''<summary>Start time on the first day of leave stored as DateTime, and the date should be ignored</summary>
 		Public Property [StartTime] As DateTime?
 		'''<summary>Status of leave, 1 = Submitted, 2 = Approved, 3 = Rejected</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Status] As Int16
 	End Class
 

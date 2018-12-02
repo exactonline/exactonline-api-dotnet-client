@@ -48,8 +48,10 @@ Namespace Sales
 		Public Property [Account] As Guid?
 		'''<summary>Customer account name</summary>
 		Public Property [AccountName] As String
-		'''<summary>Standard price</summary>
+		'''<summary>ID of the base price. &lt;br&gt;&lt;br&gt; If base price = use the standard sales price, it shows null. &lt;br&gt;&lt;br&gt; If base price = set sales price, it shows ID of the sales price within this volume discount.</summary>
 		Public Property [BasePrice] As Guid?
+		'''<summary>Amount of the base price. &lt;br&gt;&lt;br&gt; If base price = use the standard sales price, it shows the latest item sales price.&lt;br&gt;&lt;br&gt; If base price = set sales price, it shows the base price which defined in price list.</summary>
+		Public Property [BasePriceAmount] As Double
 		'''<summary>Creation date</summary>
 		<SDKFieldType(FieldType.ReadOnly)>
 		Public Property [Created] As DateTime?
@@ -68,7 +70,7 @@ Namespace Sales
 		Public Property [Division] As Int32?
 		'''<summary>End date</summary>
 		Public Property [EndDate] As DateTime?
-		'''<summary>Indicates whether discount or the new price is leading : 1-Discount, 2-New price. &lt;br&gt;&lt;br&gt; Scenario &lt;br&gt;&lt;br&gt; 1. When entry method is Discount and use base price, Discounted price = (1- SalesPriceListDetails.Discount) * SalesPriceListDetails.BasePrice &lt;br&gt;&lt;br&gt; 2. When entry method is Discount and use Item&apos;s standard sales price, Discounted price = (1- SalesPriceListDetails.Discount) * SalesItemPrices.Price &lt;br&gt;&lt;br&gt; 3. When entry method is New price, Discounted price = SalesPriceListDetails.NewPrice</summary>
+		'''<summary>Indicates whether discount or the new price is leading : 1-Discount, 2-New price. &lt;br&gt;&lt;br&gt; Scenario &lt;br&gt;&lt;br&gt; 1. When entry method is Discount and use base price, Discounted price = (1 - SalesPriceListDetails.Discount) * SalesPriceListDetails.BasePriceAmount &lt;br&gt;&lt;br&gt; 2. When entry method is Discount and use Item&apos;s standard sales price, Discounted price = (1 - SalesPriceListDetails.Discount) * SalesItemPrices.Price &lt;br&gt;&lt;br&gt; 3. When entry method is New price, Discounted price = SalesPriceListDetails.NewPrice</summary>
 		Public Property [EntryMethod] As Int16
 		'''<summary>Primary key</summary>
 		Public Property [ID] As Guid

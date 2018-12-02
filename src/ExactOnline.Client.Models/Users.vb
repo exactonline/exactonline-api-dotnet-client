@@ -39,6 +39,9 @@ Namespace Users
 		Public Property [HasTwoStepVerification] As Boolean
 		'''<summary>Initials</summary>
 		Public Property [Initials] As String
+		'''<summary>Indicates whether the user is anonymised.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [IsAnonymised] As Byte
 		'''<summary>Language (culture) that is used in Exact Online</summary>
 		Public Property [Language] As String
 		'''<summary>The last time this user logged in</summary>

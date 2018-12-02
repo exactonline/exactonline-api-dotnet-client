@@ -74,6 +74,68 @@ Namespace Cashflow
 		Public Property [Type] As Int16?
 	End Class
 
+	<SupportedActionsSDK(False, True, True, False)>
+	<DataServiceKey("ID")>
+	Public Class [ImportNotification]
+		'''<summary>Number of the bank account related to the notification.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [BankAccount] As String
+		'''<summary>ID of the bank account related to the notification.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [BankAccountID] As Guid?
+		'''<summary>Creation date</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Created] As DateTime?
+		'''<summary>Division code</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Division] As Int32?
+		'''<summary>ID of the document related to the notification.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Document] As Guid?
+		'''<summary>Primary key</summary>
+		Public Property [ID] As Guid
+		'''<summary>Code of the import result</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Result] As Int16?
+		'''<summary>Description of the import result</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ResultDescription] As String
+		'''<summary>ID of the user that requested a retry of the import.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [RetriedBy] As Guid?
+		'''<summary>Date when the retry was requested.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [RetriedOn] As DateTime?
+	End Class
+
+	<SupportedActionsSDK(False, True, False, False)>
+	<DataServiceKey("ID")>
+	Public Class [ImportNotificationDetail]
+		'''<summary>ID of the notification these details belong to.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [CashflowImportNotification] As Guid
+		'''<summary>ID of the cashflow transaction feed related to this notification.</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [CashflowTransactionFeed] As Guid?
+		'''<summary>Creation date</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Created] As DateTime
+		'''<summary>Division code</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Division] As Int32
+		'''<summary>Primary key</summary>
+		Public Property [ID] As Guid
+		'''<summary>Termed message</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [Message] As String
+		'''<summary>Response code</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ResponseCode] As Int16
+		'''<summary>Additional information about the response</summary>
+		<SDKFieldType(FieldType.ReadOnly)>
+		Public Property [ResponseCodeArguments] As String
+	End Class
+
 	<SupportedActionsSDK(False, True, False, False)>
 	<DataServiceKey("ID")>
 	Public Class [Payment]
@@ -319,6 +381,8 @@ Namespace Cashflow
 		Public Property [AccountContact] As Guid?
 		'''<summary>Name of the contact person of the customer.</summary>
 		Public Property [AccountContactName] As String
+		'''<summary>Country code of the customer.</summary>
+		Public Property [AccountCountry] As String
 		'''<summary>Name of the customer.</summary>
 		Public Property [AccountName] As String
 		'''<summary>The amount in default currency (division currency). Receivables are matched on this amount.</summary>

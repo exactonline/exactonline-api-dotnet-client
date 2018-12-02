@@ -1,4 +1,5 @@
 ﻿using ExactOnline.Client.Sdk.Interfaces;
+using System.Threading.Tasks;
 
 namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 {
@@ -11,7 +12,12 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			return 0;
 		}
 
-		string IApiConnection.Get(string parameters)
+        Task<int> IApiConnection.CountAsync(string parameters)
+        {
+            return Task.FromResult((this as IApiConnection).Count(parameters));
+        }
+
+        string IApiConnection.Get(string parameters)
 		{
 			const string correctJsonArray = @"{
 			""d"": {
@@ -285,7 +291,12 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			return correctJsonArray;
 		}
 
-		string IApiConnection.GetEntity(string keyname, string guid, string parameters)
+        Task<string> IApiConnection.GetAsync(string parameters)
+        {
+            return Task.FromResult((this as IApiConnection).Get(parameters));
+        }
+
+        string IApiConnection.GetEntity(string keyname, string guid, string parameters)
 		{
 			const string correctJsonObject = @"{
 	""d"": {
@@ -423,22 +434,42 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			return correctJsonObject;
 		}
 
-		string IApiConnection.Post(string data)
+        Task<string> IApiConnection.GetEntityAsync(string keyname, string guid, string parameters)
+        {
+            return Task.FromResult((this as IApiConnection).GetEntity(keyname, guid, parameters));
+        }
+
+        string IApiConnection.Post(string data)
 		{
-			return "";
+            return "";
 		}
 
-		bool IApiConnection.Put(string keyName, string guid, string data)
+        Task<string> IApiConnection.PostAsync(string data)
+        {
+            return Task.FromResult((this as IApiConnection).Post(data));
+        }
+
+        bool IApiConnection.Put(string keyName, string guid, string data)
 		{
 			return true;
 		}
 
-		bool IApiConnection.Delete(string keyName, string guid)
+        Task<bool> IApiConnection.PutAsync(string keyName, string guid, string data)
+        {
+            return Task.FromResult((this as IApiConnection).Put(keyName, guid,data));
+        }
+
+        bool IApiConnection.Delete(string keyName, string guid)
 		{
 			return true;
 		}
 
-		#endregion
+        Task<bool> IApiConnection.DeleteAsync(string keyName, string guid)
+        {
+            return Task.FromResult((this as IApiConnection).Delete(keyName, guid));
+        }
 
-	}
+        #endregion
+
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using ExactOnline.Client.Models.Current;
 using ExactOnline.Client.Sdk.Delegates;
 using ExactOnline.Client.Sdk.Helpers;
@@ -75,6 +76,20 @@ namespace ExactOnline.Client.Sdk.Controllers
         }
 
         /// <summary>
+        /// Returns the current user data
+        /// </summary>
+        /// <returns>Me entity</returns>
+        public async Task<Me> CurrentMeAsync()
+        {
+            var conn = new ApiConnection(_apiConnector, _exactOnlineApiUrl + "current/Me");
+            string response = await conn.GetAsync("$select=CurrentDivision").ConfigureAwait(false);
+            response = ApiResponseCleaner.GetJsonArray(response);
+            var converter = new EntityConverter();
+            var currentMe = converter.ConvertJsonArrayToObjectList<Me>(response);
+            return currentMe.FirstOrDefault();
+        }
+
+        /// <summary>
         /// returns the attachment for the given url
         /// </summary>
         /// <returns>Stream</returns>
@@ -82,6 +97,16 @@ namespace ExactOnline.Client.Sdk.Controllers
         {
             var conn = new ApiConnection(_apiConnector, url);
             return conn.GetFile();
+        }
+
+        /// <summary>
+        /// returns the attachment for the given url
+        /// </summary>
+        /// <returns>Stream</returns>
+        public Task<Stream> GetAttachmentAsync( string url )
+        {
+            var conn = new ApiConnection( _apiConnector, url );
+            return conn.GetFileAsync();
         }
 
         /// <summary>
@@ -105,10 +130,31 @@ namespace ExactOnline.Client.Sdk.Controllers
 			throw new Exception("Cannot get division. Please specify division explicitly via the constructor.");
 		}
 
-		/// <summary>
-		/// Returns instance of ExactOnlineQuery that can be used to manipulate data in Exact Online
-		/// </summary>
-		public ExactOnlineQuery<T> For<T>() where T : class
+        /// <summary>
+        /// return the division number of the current user
+        /// </summary>
+        /// <returns>Division number</returns>
+        public async Task<int> GetDivisionAsync()
+        {
+            if(_division > 0)
+            {
+                return _division;
+            }
+
+            var currentMe = await CurrentMeAsync().ConfigureAwait(false);
+            if(currentMe != null)
+            {
+                _division = currentMe.CurrentDivision;
+                return _division;
+            }
+
+            throw new Exception( "Cannot get division. Please specify division explicitly via the constructor." );
+        }
+
+        /// <summary>
+        /// Returns instance of ExactOnlineQuery that can be used to manipulate data in Exact Online
+        /// </summary>
+        public ExactOnlineQuery<T> For<T>() where T : class
 		{
 			var controller = _controllers.GetController<T>();
 			return new ExactOnlineQuery<T>(controller);
