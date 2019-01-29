@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "src\ConsoleApplication\ConsoleApplication.csproj", "{1BCFE70C-8B33-4FD2-9BBE-A7BD076282A8}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ExactOnline.Client.Models", "src\ExactOnline.Client.Models\ExactOnline.Client.Models.vbproj", "{BD9A83F1-1106-45BB-BCBA-A54D6C213FDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExactOnline.Client.OAuth", "src\ExactOnline.Client.OAuth\ExactOnline.Client.OAuth.csproj", "{610FE8C1-F026-4567-8B47-8CB6338251F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExactOnline.Client.Sdk", "src\ExactOnline.Client.Sdk\ExactOnline.Client.Sdk.csproj", "{EE442AA1-C51A-4531-92DA-A7D9C7B73973}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExactOnline.Client.Models", "src\ExactOnline.Client.Models\ExactOnline.Client.Models.csproj", "{0FBE029A-DD5E-0A4A-3EE2-6F330EB60B7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{1BCFE70C-8B33-4FD2-9BBE-A7BD076282A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BCFE70C-8B33-4FD2-9BBE-A7BD076282A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BCFE70C-8B33-4FD2-9BBE-A7BD076282A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD9A83F1-1106-45BB-BCBA-A54D6C213FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD9A83F1-1106-45BB-BCBA-A54D6C213FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD9A83F1-1106-45BB-BCBA-A54D6C213FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD9A83F1-1106-45BB-BCBA-A54D6C213FDC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{610FE8C1-F026-4567-8B47-8CB6338251F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{610FE8C1-F026-4567-8B47-8CB6338251F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{610FE8C1-F026-4567-8B47-8CB6338251F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,8 +29,15 @@ Global
 		{EE442AA1-C51A-4531-92DA-A7D9C7B73973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE442AA1-C51A-4531-92DA-A7D9C7B73973}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE442AA1-C51A-4531-92DA-A7D9C7B73973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FBE029A-DD5E-0A4A-3EE2-6F330EB60B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FBE029A-DD5E-0A4A-3EE2-6F330EB60B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FBE029A-DD5E-0A4A-3EE2-6F330EB60B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FBE029A-DD5E-0A4A-3EE2-6F330EB60B7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B14361DA-2008-41BE-87E1-DA0FDE6CAAD6}
 	EndGlobalSection
 EndGlobal

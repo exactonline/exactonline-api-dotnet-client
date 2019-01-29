@@ -1,0 +1,77 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net471</TargetFramework>
+    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ExactOnline.Client.Models.xml</DocumentationFile>
+    <NoWarn />
+    <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109,42353,42354,42355</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ExactOnline.Client.Models.xml</DocumentationFile>
+    <NoWarn />
+    <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109,42353,42354,42355</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0FBE029A-DD5E-0A4A-3EE2-6F330EB60B7C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ExactOnline.Client.Models</RootNamespace>
+    <AssemblyName>ExactOnline.Client.Models</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>On</OptionStrict>
+    <OptionInfer>Off</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HRM\" />
+    <Folder Include="Accountancy\" />
+    <Folder Include="Assets\" />
+    <Folder Include="FinancialTransaction\" />
+    <Folder Include="Budget\" />
+    <Folder Include="Activities\" />
+    <Folder Include="General\" />
+    <Folder Include="Mailbox\" />
+    <Folder Include="GeneralJournalEntry\" />
+    <Folder Include="Current\" />
+    <Folder Include="Webhooks\" />
+    <Folder Include="VAT\" />
+    <Folder Include="Users\" />
+    <Folder Include="Workflow\" />
+    <Folder Include="SalesEntry\" />
+    <Folder Include="Purchase\" />
+    <Folder Include="PurchaseEntry\" />
+    <Folder Include="Sales\" />
+    <Folder Include="OpeningBalance\" />
+    <Folder Include="SalesInvoice\" />
+    <Folder Include="PurchaseOrder\" />
+    <Folder Include="SalesOrder\" />
+  </ItemGroup>
+</Project>
