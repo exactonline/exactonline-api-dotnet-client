@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
 	<metadata>
 		<id>ExactOnline.Client.Sdk</id>
-		<version>2.0.3</version>
+		<version>3.0.0</version>
 		<title>Exact Online Client SDK</title>
 		<authors>Exact</authors>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -13,8 +13,8 @@
 		<copyright>Exact</copyright>
 		<tags>Exact Online Client SDK</tags>
 		<dependencies>
-			<group targetFramework=".NETFramework4.5">
-				<dependency id="Newtonsoft.Json" version="6.0.1" />
+			<group targetFramework=".NETFramework4.7.1">
+				<dependency id="Newtonsoft.Json" version="12.0.1" />
 				<dependency id="DotNetOpenAuth.Core" version="4.3.4.13329" />
 				<dependency id="DotNetOpenAuth.OAuth2.Client" version="4.3.4.13329" />
 				<dependency id="DotNetOpenAuth.OAuth2.ClientAuthorization" version="4.3.4.13329" />
@@ -25,7 +25,7 @@
 			</group>
 		</dependencies>
 		<references>
-			<group targetFramework=".NETFramework4.5">
+			<group targetFramework=".NETFramework4.7.1">
 				<reference file="ExactOnline.Client.Models.dll" />
 				<reference file="ExactOnline.Client.OAuth.dll" />
 				<reference file="ExactOnline.Client.Sdk.dll" />				
@@ -33,8 +33,8 @@
 		</references>
 	</metadata>
 	<files>
-		<file src="bin\Release\ExactOnline.Client.Models.dll" target="lib\net45\ExactOnline.Client.Models.dll" />
-		<file src="bin\Release\ExactOnline.Client.OAuth.dll" target="lib\net45\ExactOnline.Client.OAuth.dll" />
-		<file src="bin\Release\ExactOnline.Client.Sdk.dll" target="lib\net45\ExactOnline.Client.Sdk.dll" />
+		<file src="..\..\Release\ExactOnline.Client.Models.dll" target="lib\net45\ExactOnline.Client.Models.dll" />
+		<file src="..\..\Release\ExactOnline.Client.OAuth.dll" target="lib\net45\ExactOnline.Client.OAuth.dll" />
+		<file src="..\..\Release\ExactOnline.Client.Sdk.dll" target="lib\net45\ExactOnline.Client.Sdk.dll" />
 	</files>
 </package>

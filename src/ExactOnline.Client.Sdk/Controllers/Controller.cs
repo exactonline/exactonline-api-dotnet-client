@@ -45,7 +45,7 @@ namespace ExactOnline.Client.Sdk.Controllers
 				throw new Exception("Cannot find 'DataServiceKey' field. This entity cannot be managed by the Controller");
 			}
 			var key = (DataServiceKey)enumerable.First();
-			_keyname = key.DataServiceKey;
+			_keyname = key.DataServiceKeyName;
 			_entityControllerDelegate = GetEntityController;
 		}
 

@@ -9,8 +9,7 @@ namespace ExactOnline.Client.Sdk.UnitTests.Tools
 		public static string GetJsonFromFile(string filename)
 		{
 			string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-			string jsonpath = path.Substring(0, path.IndexOf("bin")) + "Json\\";
-			string filepath = jsonpath + filename;
+			string filepath = path + Path.DirectorySeparatorChar  + "Json" + Path.DirectorySeparatorChar + filename;
 
 			string text = "";
 			try
