@@ -11,8 +11,8 @@ namespace ExactOnline.Client.Sdk.Interfaces
         T GetEntity(string guid, string parameters);
         Task<T> GetEntityAsync(string guid, string parameters);
 
-        Boolean Create(ref T entity);
-        Task<T> CreateAsync(T entity);
+        Boolean Create(ref T entity, Boolean readAfterInsert);
+        Task<T> CreateAsync(T entity, Boolean readAfterInsert);
 
         Boolean Update(T entity);
         Task<Boolean> UpdateAsync(T entity);

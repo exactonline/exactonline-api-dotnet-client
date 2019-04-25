@@ -192,8 +192,9 @@ namespace ExactOnline.Client.Sdk.Controllers
         /// Creates an entity in Exact Online
         /// </summary>
         /// <param name="entity">Entity to create</param>
+        /// <param name="readAfterInsert">Whether to read the entity after insert, to retrieve linked entities.</param>
         /// <returns>True if succeed</returns>
-        public Boolean Create(ref T entity)
+        public Boolean Create(ref T entity, Boolean readAfterInsert)
 		{
 			var supportedActions = GetSupportedActions(entity);
 			if (!supportedActions.CanCreate)
@@ -225,7 +226,7 @@ namespace ExactOnline.Client.Sdk.Controllers
 				}
 
 				// Check if the endpoint supports a read action. Some endpoints such as PrintQuotation only support create (POST).
-				if (supportedActions.CanRead)
+				if (readAfterInsert && supportedActions.CanRead)
 				{
 					// Get entity with linked entities (API Response for creating does not return the linked entities)
 					entity = GetEntity(GetIdentifierValue(entity), _expandfield);
@@ -238,8 +239,9 @@ namespace ExactOnline.Client.Sdk.Controllers
         /// Creates an entity in Exact Online
         /// </summary>
         /// <param name="entity">Entity to create</param>
+        /// <param name="readAfterInsert">Whether to read the entity after insert, to retrieve linked entities.</param>
         /// <returns>The created entity if succeed</returns>
-        public async Task<T> CreateAsync(T entity)
+        public async Task<T> CreateAsync(T entity, Boolean readAfterInsert)
         {
             var supportedActions = GetSupportedActions(entity);
             if(!supportedActions.CanCreate)
@@ -268,10 +270,10 @@ namespace ExactOnline.Client.Sdk.Controllers
                 }
 
                 // Check if the endpoint supports a read action. Some endpoints such as PrintQuotation only support create (POST).
-                if(supportedActions.CanRead)
+                if(readAfterInsert && supportedActions.CanRead)
                 {
                     // Get entity with linked entities (API Response for creating does not return the linked entities)
-                    createdEntity = GetEntity(GetIdentifierValue(createdEntity), _expandfield);
+                    createdEntity = await GetEntityAsync(GetIdentifierValue(createdEntity), _expandfield).ConfigureAwait(false);
                 }
                 return createdEntity;
             }
