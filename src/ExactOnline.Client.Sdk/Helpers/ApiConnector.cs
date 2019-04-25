@@ -460,7 +460,9 @@ namespace ExactOnline.Client.Sdk.Helpers
                 {
                     Limit = response.Headers["X-RateLimit-Limit"].ToNullableInt(),
                     Remaining = response.Headers["X-RateLimit-Remaining"].ToNullableInt(),
-                    Reset = response.Headers["X-RateLimit-Reset"].ToNullableLong()
+                    Reset = response.Headers["X-RateLimit-Reset"].ToNullableLong(),
+                    MinutelyLimit = response.Headers["X-RateLimit-Minutely-Limit"].ToNullableInt(),
+                    MinutelyRemaining = response.Headers["X-RateLimit-Minutely-Remaining"].ToNullableInt()
                 }
             };
 
