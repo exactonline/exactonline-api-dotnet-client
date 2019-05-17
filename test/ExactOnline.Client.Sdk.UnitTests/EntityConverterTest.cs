@@ -8,7 +8,6 @@ using ExactOnline.Client.Sdk.UnitTests.Tools;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-
 namespace ExactOnline.Client.Sdk.UnitTests
 {
 
@@ -185,10 +184,23 @@ namespace ExactOnline.Client.Sdk.UnitTests
 			string json = _entityConverter.ConvertDynamicObjectToJson(account);
 			Assert.AreNotEqual(jsonValue, json);
 		}
-		#endregion
 
-		#region Json to Dynamic Tests
-		[TestCategory("Unit Test")]
+
+        [TestCategory("Unit Test")]
+        [TestMethod]
+        public void EntityConverter_ConvertObject_WithJsonPropertyAttributeSpecifyingDifferentPropertyToJson_SerializesToCorrectJson()
+        {
+            var bankaccount = new BankAccount();
+            bankaccount.BankAccountName = "value";
+            const string jsonValue = @"{""BankAccount"":""value""}";
+
+            string json = _entityConverter.ConvertObjectToJson(new BankAccount(), bankaccount, null);
+            Assert.AreEqual(jsonValue, json);
+        }
+        #endregion
+
+        #region Json to Dynamic Tests
+        [TestCategory("Unit Test")]
 		[TestMethod]
 		public void EntityConverter_ConvertJsonToDynamicObject_WithCorrectJson_Succeeds()
 		{
@@ -437,4 +449,6 @@ namespace ExactOnline.Client.Sdk.UnitTests
 		public string Description { get; set; }
 		public Guid? Item { get; set; }
 	}
+
+    
 }

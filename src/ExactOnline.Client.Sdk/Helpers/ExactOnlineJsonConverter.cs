@@ -222,7 +222,9 @@ namespace ExactOnline.Client.Sdk.Helpers
 			writer.WriteStartObject();
 			foreach (var field in writeableFields)
 			{
-				string fieldName = field.Name;
+			    var jsonPropertyAttribute =  field.GetCustomAttribute<JsonPropertyAttribute>();
+                string fieldName = jsonPropertyAttribute?.PropertyName ?? field.Name;
+			   
 				object fieldValue = field.GetValue(value);
 				fieldValue = CheckDateFormat(fieldValue);
 
