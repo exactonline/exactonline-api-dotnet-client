@@ -7,7 +7,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Web.Script.Serialization;
 
 namespace ExactOnline.Client.Sdk.Helpers
 {
@@ -25,15 +24,13 @@ namespace ExactOnline.Client.Sdk.Helpers
 		/// <returns></returns>
 		public static string GetJsonObject(string response)
 		{
-			var serializer = new JavaScriptSerializer();
-			serializer.RegisterConverters(new JavaScriptConverter[] { new JssDateTimeConverter() });
 			var oldCulture = Thread.CurrentThread.CurrentCulture;
 			Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
 			string output;
 			try
 			{
-				var dict = (Dictionary<string, object>)serializer.Deserialize<object>(response);
+				var dict = (Dictionary<string, object>)JsonConvert.DeserializeObject<object>(response);
 				var d = (Dictionary<string, object>)dict["d"];
 				output = GetJsonFromDictionary(d);
 			}
@@ -46,15 +43,14 @@ namespace ExactOnline.Client.Sdk.Helpers
 
 		public static string GetSkipToken(string response)
 		{
-			var serializer = new JavaScriptSerializer();
-			serializer.RegisterConverters(new JavaScriptConverter[] { new JssDateTimeConverter() });
 			var oldCulture = Thread.CurrentThread.CurrentCulture;
 			Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 			string token = string.Empty;
+
 			try
-			{
-				var dict = (Dictionary<string, object>)serializer.Deserialize<object>(response);
-				var innerPart = dict["d"];
+            {
+                var dict = (Dictionary<string, object>)JsonConvert.DeserializeObject<object>(response);
+                var innerPart = dict["d"];
 				if (innerPart.GetType() == typeof(Dictionary<string, object>))
 				{
 					var d = (Dictionary<string, object>)dict["d"];
@@ -86,16 +82,15 @@ namespace ExactOnline.Client.Sdk.Helpers
 		/// </summary>
 		public static string GetJsonArray(string response)
 		{
-			var serializer = new JavaScriptSerializer();
-			serializer.RegisterConverters(new JavaScriptConverter[] { new JssDateTimeConverter() });
 
 			var oldCulture = Thread.CurrentThread.CurrentCulture;
 			Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+
 			try
 			{
 				ArrayList results;
-				var dict = (Dictionary<string, object>)serializer.Deserialize<object>(response);
-				var innerPart = dict["d"];
+                var dict = (Dictionary<string, object>)JsonConvert.DeserializeObject<object>(response);
+                var innerPart = dict["d"];
 				if (innerPart.GetType() == typeof(Dictionary<string, object>))
 				{
 					var d = (Dictionary<string, object>)dict["d"];
