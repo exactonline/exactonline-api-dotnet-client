@@ -194,4 +194,4 @@ ModelManifest.xml
 testapp.config
 
 *.lock
-/.vs
+**/.vs
