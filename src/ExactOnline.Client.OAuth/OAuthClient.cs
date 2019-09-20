@@ -27,7 +27,7 @@ namespace ExactOnline.Client.OAuth
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="authorization"></param>
         /// <param name="refreshToken"></param>
@@ -58,22 +58,7 @@ namespace ExactOnline.Client.OAuth
 
 			if (authorization.AccessToken == null || refreshFailed)
 			{
-                if (throwExceptionIfNotAuthorized)
-                {
-                    //Throw an exception if a login dialog cannot be shown, for example the client is used in server side
-                    //code and cannot show a dialog to the user. This way the calling code can handle the exception and implement
-                    //it's own login dialog
-                    throw new UnauthorizedAccessException("Not authorized to use Exact Online API.");
-                }
-                else
-                {
-                    using (var loginDialog = new LoginForm(_redirectUri))
-                    {
-                        loginDialog.AuthorizationUri = GetAuthorizationUri(authorization);
-                        loginDialog.ShowDialog();
-                        ProcessUserAuthorization(loginDialog.AuthorizationUri, authorization);
-                    }
-                }
+                throw new UnauthorizedAccessException("Not authorized to use Exact Online API.");
 			}
 		}
 
