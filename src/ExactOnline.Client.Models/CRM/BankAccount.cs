@@ -5,7 +5,7 @@ namespace ExactOnline.Client.Models.CRM
 {
     [SupportedActionsSDK(true, true, true, true)]
     [DataServiceKey("ID")]
-    public class BankAccount
+    public class BankAccount : IExactOnlineEntity
     {
         /// <summary>Account (customer, supplier) to which the bank account belongs</summary>
         public Guid? Account { get; set; }

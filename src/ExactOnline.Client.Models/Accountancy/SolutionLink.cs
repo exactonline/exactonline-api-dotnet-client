@@ -4,7 +4,7 @@ namespace ExactOnline.Client.Models.Accountancy
 
     [SupportedActionsSDK(true, true, true, true)]
     [DataServiceKey("ID")]
-    public class SolutionLink
+    public class SolutionLink : IExactOnlineEntity
     {
         /// <summary>ID of account to which solution is linked</summary>
         public Guid Account { get; set; }

@@ -4,7 +4,7 @@ namespace ExactOnline.Client.Models.Accountancy
 {
     [SupportedActionsSDK(true, true, true, true)]
     [DataServiceKey("ID")]
-    public class AccountInvolvedAccount
+    public class AccountInvolvedAccount : IExactOnlineEntity
     {
         /// <summary>ID of account</summary>
         public Guid? Account { get; set; }

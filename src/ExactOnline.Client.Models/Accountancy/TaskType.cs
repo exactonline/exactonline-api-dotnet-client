@@ -4,7 +4,7 @@ namespace ExactOnline.Client.Models.Accountancy
 
     [SupportedActionsSDK(true, true, true, true)]
     [DataServiceKey("ID")]
-    public class TaskType
+    public class TaskType : IExactOnlineEntity
     {
         /// <summary>Creation date</summary>
         [SDKFieldType(FieldType.ReadOnly)]

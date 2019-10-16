@@ -4,7 +4,7 @@ namespace ExactOnline.Client.Models.CRM
 {
     [SupportedActionsSDK(false, true, false, false)]
     [DataServiceKey("ID")]
-    public class AccountClassification
+    public class AccountClassification : IExactOnlineEntity
     {
         /// <summary>Reference to Account classification name</summary>
         public Guid? AccountClassificationName { get; set; }
