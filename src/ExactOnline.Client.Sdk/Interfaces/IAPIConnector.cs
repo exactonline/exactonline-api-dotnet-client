@@ -1,8 +1,8 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-
-namespace ExactOnline.Client.Sdk.Interfaces
+﻿namespace ExactOnline.Client.Sdk.Interfaces
 {
+    using System.IO;
+    using System.Threading.Tasks;
+
     public interface IApiConnector
     {
         string DoGetRequest(string endpoint, string parameters);
@@ -22,8 +22,14 @@ namespace ExactOnline.Client.Sdk.Interfaces
 
         string DoCleanRequest(string uri); // Request without Content-Type for $count function
         Task<string> DoCleanRequestAsync(string uri); // Request without Content-Type for $count function
-        string DoCleanRequest(string uri, string oDataQuery); // Request without Content-Type for $count function, including parameters
-        Task<string> DoCleanRequestAsync(string uri, string oDataQuery); // Request without Content-Type for $count function, including parameters
+
+        string
+            DoCleanRequest(string uri,
+                string oDataQuery); // Request without Content-Type for $count function, including parameters
+
+        Task<string>
+            DoCleanRequestAsync(string uri,
+                string oDataQuery); // Request without Content-Type for $count function, including parameters
 
         int GetCurrentDivision(string website);
         Task<int> GetCurrentDivisionAsync(string website);

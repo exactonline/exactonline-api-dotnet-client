@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using ExactOnline.Client.Models.Accountancy;
 using ExactOnline.Client.Models.Activities;
 using ExactOnline.Client.Models.Assets;
 using ExactOnline.Client.Models.Budget;
+using ExactOnline.Client.Models.Bulk;
 using ExactOnline.Client.Models.Cashflow;
 using ExactOnline.Client.Models.CRM;
 using ExactOnline.Client.Models.Current;
@@ -31,20 +33,17 @@ using ExactOnline.Client.Models.VAT;
 using ExactOnline.Client.Models.Webhooks;
 using ExactOnline.Client.Models.Workflow;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using Bulk = ExactOnline.Client.Models.Bulk;
 using DocDocument = ExactOnline.Client.Models.Documents;
 using CRMDocument = ExactOnline.Client.Models.CRM.Document;
+using Document = ExactOnline.Client.Models.Bulk.Document;
 using HRMDivision = ExactOnline.Client.Models.HRM.Division;
 using ManufacturingTimeTransaction = ExactOnline.Client.Models.Manufacturing.TimeTransaction;
 using ProjectTimeTransaction = ExactOnline.Client.Models.Project.TimeTransaction;
+using SalesOrderLine = ExactOnline.Client.Models.Bulk.SalesOrderLine;
 using SystemBaseDivision = ExactOnline.Client.Models.SystemBase.Division;
 
 public class Services
 {
-    [JsonProperty(PropertyName = "services")]
-    public Dictionary<string, string> ServicesDictionary = new Dictionary<string, string>();
-
     public Services()
     {
         ServicesDictionary.Add(typeof(AccountInvolvedAccount).FullName, "Accountancy/AccountInvolvedAccounts");
@@ -62,10 +61,10 @@ public class Services
         ServicesDictionary.Add(typeof(AssetGroup).FullName, "Assets/AssetGroups");
         ServicesDictionary.Add(typeof(DepreciationMethod).FullName, "Assets/DepreciationMethods");
         ServicesDictionary.Add(typeof(Budget).FullName, "Budget/Budgets");
-        ServicesDictionary.Add(typeof(Bulk.Document).FullName, "Bulk/Documents/Documents");
-        ServicesDictionary.Add(typeof(Bulk.DocumentAttachment).FullName, "Bulk/Documents/DocumentAttachments");
-        ServicesDictionary.Add(typeof(Bulk.FinancialTransactionLine).FullName, "Bulk/Financial/TransactionLines");
-        ServicesDictionary.Add(typeof(Bulk.SalesOrderLine).FullName, "Bulk/SalesOrder/SalesOrderLines");
+        ServicesDictionary.Add(typeof(Document).FullName, "Bulk/Documents/Documents");
+        ServicesDictionary.Add(typeof(DocumentAttachment).FullName, "Bulk/Documents/DocumentAttachments");
+        ServicesDictionary.Add(typeof(FinancialTransactionLine).FullName, "Bulk/Financial/TransactionLines");
+        ServicesDictionary.Add(typeof(SalesOrderLine).FullName, "Bulk/SalesOrder/SalesOrderLines");
         ServicesDictionary.Add(typeof(Bank).FullName, "Cashflow/Banks");
         ServicesDictionary.Add(typeof(DirectDebitMandate).FullName, "Cashflow/DirectDebitMandates");
         ServicesDictionary.Add(typeof(ImportNotification).FullName, "Cashflow/ImportNotifications");
@@ -116,7 +115,8 @@ public class Services
         ServicesDictionary.Add(typeof(Journal).FullName, "Financial/Journals");
         ServicesDictionary.Add(typeof(JournalStatusList).FullName, "Read/Financial/JournalStatusList");
         ServicesDictionary.Add(typeof(OfficialReturn).FullName, "Financial/OfficialReturns");
-        ServicesDictionary.Add(typeof(OutstandingInvoicesOverview).FullName, "Read/Financial/OutstandingInvoicesOverview");
+        ServicesDictionary.Add(typeof(OutstandingInvoicesOverview).FullName,
+            "Read/Financial/OutstandingInvoicesOverview");
         ServicesDictionary.Add(typeof(PayablesList).FullName, "Read/Financial/PayablesList");
         ServicesDictionary.Add(typeof(ProfitLossOverview).FullName, "Read/Financial/ProfitLossOverview");
         ServicesDictionary.Add(typeof(ReceivablesList).FullName, "Read/Financial/ReceivablesList");
@@ -131,7 +131,8 @@ public class Services
         ServicesDictionary.Add(typeof(TransactionLine).FullName, "FinancialTransaction/TransactionLines");
         ServicesDictionary.Add(typeof(Currency).FullName, "General/Currencies");
         ServicesDictionary.Add(typeof(GeneralJournalEntry).FullName, "GeneralJournalEntry/GeneralJournalEntries");
-        ServicesDictionary.Add(typeof(GeneralJournalEntryLine).FullName, "GeneralJournalEntry/GeneralJournalEntryLines");
+        ServicesDictionary.Add(typeof(GeneralJournalEntryLine).FullName,
+            "GeneralJournalEntry/GeneralJournalEntryLines");
         ServicesDictionary.Add(typeof(AbsenceRegistration).FullName, "HRM/AbsenceRegistrations");
         ServicesDictionary.Add(typeof(AbsenceRegistrationTransaction).FullName, "HRM/AbsenceRegistrationTransactions");
         ServicesDictionary.Add(typeof(Costcenter).FullName, "HRM/Costcenters");
@@ -152,7 +153,8 @@ public class Services
         ServicesDictionary.Add(typeof(BatchQuantitiesPerWarehouse).FullName, "");
         ServicesDictionary.Add(typeof(ItemWarehouse).FullName, "Inventory/ItemWarehouses");
         ServicesDictionary.Add(typeof(ItemWarehousePlanningDetail).FullName, "Inventory/ItemWarehousePlanningDetails");
-        ServicesDictionary.Add(typeof(ItemWarehouseStorageLocation).FullName, "Inventory/ItemWarehouseStorageLocations");
+        ServicesDictionary.Add(typeof(ItemWarehouseStorageLocation).FullName,
+            "Inventory/ItemWarehouseStorageLocations");
         ServicesDictionary.Add(typeof(ProcessStockCount).FullName, "Inventory/ProcessStockCount");
         ServicesDictionary.Add(typeof(ProcessWarehouseTransfer).FullName, "Inventory/ProcessWarehouseTransfer");
         ServicesDictionary.Add(typeof(SerialNumber).FullName, "Inventory/SerialNumbers");
@@ -192,21 +194,25 @@ public class Services
         ServicesDictionary.Add(typeof(RecentTimeTransaction).FullName, "Read/Manufacturing/RecentTimeTransactions");
         ServicesDictionary.Add(typeof(ShopOrder).FullName, "Manufacturing/ShopOrders");
         ServicesDictionary.Add(typeof(ShopOrderMaterialPlan).FullName, "Manufacturing/ShopOrderMaterialPlans");
-        ServicesDictionary.Add(typeof(ShopOrderMaterialPlanDetail).FullName, "Manufacturing/ShopOrderMaterialPlanDetails");
+        ServicesDictionary.Add(typeof(ShopOrderMaterialPlanDetail).FullName,
+            "Manufacturing/ShopOrderMaterialPlanDetails");
         ServicesDictionary.Add(typeof(ShopOrderReceipt).FullName, "Manufacturing/ShopOrderReceipts");
         ServicesDictionary.Add(typeof(ShopOrderReversal).FullName, "Manufacturing/ShopOrderReversals");
         ServicesDictionary.Add(typeof(ShopOrderRoutingStepPlan).FullName, "Manufacturing/ShopOrderRoutingStepPlans");
         ServicesDictionary.Add(typeof(StageForDeliveryReceipt).FullName, "Manufacturing/StageForDeliveryReceipts");
         ServicesDictionary.Add(typeof(StageForDeliveryReversal).FullName, "Manufacturing/StageForDeliveryReversals");
-        ServicesDictionary.Add(typeof(StartedTimedTimeTransaction).FullName, "Read/Manufacturing/StartedTimedTimeTransactions");
+        ServicesDictionary.Add(typeof(StartedTimedTimeTransaction).FullName,
+            "Read/Manufacturing/StartedTimedTimeTransactions");
         ServicesDictionary.Add(typeof(SubOrderReceipt).FullName, "Manufacturing/SubOrderReceipts");
         ServicesDictionary.Add(typeof(SubOrderReversal).FullName, "Manufacturing/SubOrderReversals");
         ServicesDictionary.Add(typeof(TimedTimeTransaction).FullName, "Manufacturing/TimedTimeTransactions");
         ServicesDictionary.Add(typeof(ManufacturingTimeTransaction).FullName, "Manufacturing/TimeTransactions");
         ServicesDictionary.Add(typeof(Workcenter).FullName, "Manufacturing/Workcenters");
         ServicesDictionary.Add(typeof(OpeningBalanceAfterEntry).FullName, "OpeningBalance/CurrentYear/AfterEntry");
-        ServicesDictionary.Add(typeof(OpeningBalancePreviousYearAfterEntry).FullName, "OpeningBalance/PreviousYear/AfterEntry");
-        ServicesDictionary.Add(typeof(OpeningBalancePreviousYearProcessed).FullName, "OpeningBalance/PreviousYear/Processed");
+        ServicesDictionary.Add(typeof(OpeningBalancePreviousYearAfterEntry).FullName,
+            "OpeningBalance/PreviousYear/AfterEntry");
+        ServicesDictionary.Add(typeof(OpeningBalancePreviousYearProcessed).FullName,
+            "OpeningBalance/PreviousYear/Processed");
         ServicesDictionary.Add(typeof(OpeningBalanceProcessed).FullName, "OpeningBalance/CurrentYear/Processed");
         ServicesDictionary.Add(typeof(ActiveEmployment).FullName, "Payroll/ActiveEmployments");
         ServicesDictionary.Add(typeof(Employee).FullName, "Payroll/Employees");
@@ -231,16 +237,23 @@ public class Services
         ServicesDictionary.Add(typeof(ProjectRestrictionRebilling).FullName, "Project/ProjectRestrictionRebillings");
         ServicesDictionary.Add(typeof(RecentCost).FullName, "Read/Project/RecentCosts");
         ServicesDictionary.Add(typeof(RecentHour).FullName, "Read/Project/RecentHours");
-        ServicesDictionary.Add(typeof(TimeAndBillingAccountDetail).FullName, "Read/Project/TimeAndBillingAccountDetails");
-        ServicesDictionary.Add(typeof(TimeAndBillingActivitiesAndExpense).FullName, "Read/Project/TimeAndBillingActivitiesAndExpenses");
+        ServicesDictionary.Add(typeof(TimeAndBillingAccountDetail).FullName,
+            "Read/Project/TimeAndBillingAccountDetails");
+        ServicesDictionary.Add(typeof(TimeAndBillingActivitiesAndExpense).FullName,
+            "Read/Project/TimeAndBillingActivitiesAndExpenses");
         ServicesDictionary.Add(typeof(TimeAndBillingEntryAccount).FullName, "Read/Project/TimeAndBillingEntryAccounts");
         ServicesDictionary.Add(typeof(TimeAndBillingEntryProject).FullName, "Read/Project/TimeAndBillingEntryProjects");
-        ServicesDictionary.Add(typeof(TimeAndBillingEntryRecentAccount).FullName, "Read/Project/TimeAndBillingEntryRecentAccounts");
-        ServicesDictionary.Add(typeof(TimeAndBillingEntryRecentActivitiesAndExpense).FullName, "Read/Project/TimeAndBillingEntryRecentActivitiesAndExpenses");
-        ServicesDictionary.Add(typeof(TimeAndBillingEntryRecentHourCostType).FullName, "Read/Project/TimeAndBillingEntryRecentHourCostTypes");
-        ServicesDictionary.Add(typeof(TimeAndBillingEntryRecentProject).FullName, "Read/Project/TimeAndBillingEntryRecentProjects");
+        ServicesDictionary.Add(typeof(TimeAndBillingEntryRecentAccount).FullName,
+            "Read/Project/TimeAndBillingEntryRecentAccounts");
+        ServicesDictionary.Add(typeof(TimeAndBillingEntryRecentActivitiesAndExpense).FullName,
+            "Read/Project/TimeAndBillingEntryRecentActivitiesAndExpenses");
+        ServicesDictionary.Add(typeof(TimeAndBillingEntryRecentHourCostType).FullName,
+            "Read/Project/TimeAndBillingEntryRecentHourCostTypes");
+        ServicesDictionary.Add(typeof(TimeAndBillingEntryRecentProject).FullName,
+            "Read/Project/TimeAndBillingEntryRecentProjects");
         ServicesDictionary.Add(typeof(TimeAndBillingItemDetail).FullName, "Read/Project/TimeAndBillingItemDetails");
-        ServicesDictionary.Add(typeof(TimeAndBillingProjectDetail).FullName, "Read/Project/TimeAndBillingProjectDetails");
+        ServicesDictionary.Add(typeof(TimeAndBillingProjectDetail).FullName,
+            "Read/Project/TimeAndBillingProjectDetails");
         ServicesDictionary.Add(typeof(TimeCorrection).FullName, "Project/TimeCorrections");
         ServicesDictionary.Add(typeof(ProjectTimeTransaction).FullName, "Project/TimeTransactions");
         ServicesDictionary.Add(typeof(PurchaseInvoice).FullName, "Purchase/PurchaseInvoices");
@@ -266,13 +279,16 @@ public class Services
         ServicesDictionary.Add(typeof(GoodsDeliveryLine).FullName, "SalesOrder/GoodsDeliveryLines");
         ServicesDictionary.Add(typeof(PrintedSalesOrder).FullName, "SalesOrder/PrintedSalesOrders");
         ServicesDictionary.Add(typeof(SalesOrder).FullName, "SalesOrder/SalesOrders");
-        ServicesDictionary.Add(typeof(SalesOrderLine).FullName, "SalesOrder/SalesOrderLines");
+        ServicesDictionary.Add(typeof(ExactOnline.Client.Models.SalesOrder.SalesOrderLine).FullName,
+            "SalesOrder/SalesOrderLines");
         ServicesDictionary.Add(typeof(Subscription).FullName, "Subscription/Subscriptions");
         ServicesDictionary.Add(typeof(SubscriptionLine).FullName, "Subscription/SubscriptionLines");
         ServicesDictionary.Add(typeof(SubscriptionLineType).FullName, "Subscription/SubscriptionLineTypes");
         ServicesDictionary.Add(typeof(SubscriptionReasonCode).FullName, "Subscription/SubscriptionReasonCodes");
-        ServicesDictionary.Add(typeof(SubscriptionRestrictionEmployee).FullName, "Subscription/SubscriptionRestrictionEmployees");
-        ServicesDictionary.Add(typeof(SubscriptionRestrictionItem).FullName, "Subscription/SubscriptionRestrictionItems");
+        ServicesDictionary.Add(typeof(SubscriptionRestrictionEmployee).FullName,
+            "Subscription/SubscriptionRestrictionEmployees");
+        ServicesDictionary.Add(typeof(SubscriptionRestrictionItem).FullName,
+            "Subscription/SubscriptionRestrictionItems");
         ServicesDictionary.Add(typeof(SubscriptionType).FullName, "Subscription/SubscriptionTypes");
         ServicesDictionary.Add(typeof(AccountantInfo).FullName, "System/AccountantInfo");
         ServicesDictionary.Add(typeof(AvailableFeature).FullName, "System/AvailableFeatures");
@@ -285,5 +301,7 @@ public class Services
         ServicesDictionary.Add(typeof(WebhookSubscription).FullName, "Webhooks/WebhookSubscriptions");
         ServicesDictionary.Add(typeof(RequestAttachment).FullName, "Workflow/RequestAttachments");
     }
-}
 
+    [JsonProperty("services")]
+    public Dictionary<string, string> ServicesDictionary { get; } = new Dictionary<string, string>();
+}

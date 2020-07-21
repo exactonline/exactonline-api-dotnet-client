@@ -1,11 +1,10 @@
-﻿
-namespace ExactOnline.Client.Sdk.Enums
+﻿namespace ExactOnline.Client.Sdk.Enums
 {
-	public enum RequestTypeEnum
-	{
-		GET,
-		POST,
-		PUT,
-		DELETE
-	}
+    public enum RequestTypeEnum
+    {
+        GET,
+        POST,
+        PUT,
+        DELETE
+    }
 }

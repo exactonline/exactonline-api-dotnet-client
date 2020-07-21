@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace ExactOnline.Client.Sdk.Interfaces
+﻿namespace ExactOnline.Client.Sdk.Interfaces
 {
-	public interface IController<T>
-	{
-		List<T> Get(string query);
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using ExactOnline.Client.Sdk.Models;
+
+    public interface IController<T>
+    {
+        List<T> Get(string query);
 
         T GetEntity(string guid, string parameters);
         Task<T> GetEntityAsync(string guid, string parameters);
@@ -25,7 +26,7 @@ namespace ExactOnline.Client.Sdk.Interfaces
 
         void RegistrateLinkedEntityField(string fieldname);
 
-		List<T> Get(string query, ref string skipToken);
-        Task<Models.ApiList<T>> GetAsync( string query );
+        List<T> Get(string query, ref string skipToken);
+        Task<ApiList<T>> GetAsync(string query);
     }
 }

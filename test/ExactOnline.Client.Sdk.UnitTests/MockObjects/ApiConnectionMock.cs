@@ -1,16 +1,14 @@
-﻿using ExactOnline.Client.Sdk.Interfaces;
-using System.Threading.Tasks;
-
-namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
+﻿namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 {
-	public sealed class ApiConnectionMock : IApiConnection
-	{
-		#region IApiConnection Members
+    using System.Threading.Tasks;
+    using ExactOnline.Client.Sdk.Interfaces;
 
-		int IApiConnection.Count(string parameters)
-		{
-			return 0;
-		}
+    public sealed class ApiConnectionMock : IApiConnection
+    {
+        int IApiConnection.Count(string parameters)
+        {
+            return 0;
+        }
 
         Task<int> IApiConnection.CountAsync(string parameters)
         {
@@ -18,8 +16,8 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         string IApiConnection.Get(string parameters)
-		{
-			const string correctJsonArray = @"{
+        {
+            const string correctJsonArray = @"{
 			""d"": {
 				""results"": [
 					{
@@ -288,8 +286,8 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 			}
 		}";
 
-			return correctJsonArray;
-		}
+            return correctJsonArray;
+        }
 
         Task<string> IApiConnection.GetAsync(string parameters)
         {
@@ -297,8 +295,8 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         string IApiConnection.GetEntity(string keyname, string guid, string parameters)
-		{
-			const string correctJsonObject = @"{
+        {
+            const string correctJsonObject = @"{
 	""d"": {
 		""__metadata"": {
 			""uri"": ""https://start.exactonline.nl/api/v1/499156/crm/Accounts(guid'71b961de-b9f3-49fe-883d-0f46c7e0e89b')"",
@@ -431,8 +429,8 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 		""Website"": null
 	}
 }";
-			return correctJsonObject;
-		}
+            return correctJsonObject;
+        }
 
         Task<string> IApiConnection.GetEntityAsync(string keyname, string guid, string parameters)
         {
@@ -440,9 +438,9 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         string IApiConnection.Post(string data)
-		{
+        {
             return "";
-		}
+        }
 
         Task<string> IApiConnection.PostAsync(string data)
         {
@@ -450,26 +448,23 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         bool IApiConnection.Put(string keyName, string guid, string data)
-		{
-			return true;
-		}
+        {
+            return true;
+        }
 
         Task<bool> IApiConnection.PutAsync(string keyName, string guid, string data)
         {
-            return Task.FromResult((this as IApiConnection).Put(keyName, guid,data));
+            return Task.FromResult((this as IApiConnection).Put(keyName, guid, data));
         }
 
         bool IApiConnection.Delete(string keyName, string guid)
-		{
-			return true;
-		}
+        {
+            return true;
+        }
 
         Task<bool> IApiConnection.DeleteAsync(string keyName, string guid)
         {
             return Task.FromResult((this as IApiConnection).Delete(keyName, guid));
         }
-
-        #endregion
-
     }
 }

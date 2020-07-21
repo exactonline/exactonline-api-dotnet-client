@@ -1,4 +1,4 @@
 ﻿namespace ExactOnline.Client.Sdk.Delegates
 {
-	public delegate string AccessTokenManagerDelegate();
+    public delegate string AccessTokenManagerDelegate();
 }

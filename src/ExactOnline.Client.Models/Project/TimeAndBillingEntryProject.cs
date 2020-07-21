@@ -8,8 +8,10 @@ namespace ExactOnline.Client.Models.Project
     {
         /// <summary>Code</summary>
         public string ProjectCode { get; set; }
+
         /// <summary>Description</summary>
         public string ProjectDescription { get; set; }
+
         /// <summary>Primary key</summary>
         public Guid ProjectId { get; set; }
     }

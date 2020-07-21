@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-
-namespace ExactOnline.Client.Sdk.Models
+﻿namespace ExactOnline.Client.Sdk.Models
 {
+    using System.Collections.Generic;
+
     public class ApiList<T>
     {
-        public ApiList( List<T> list, string skipToken )
+        public ApiList(List<T> list, string skipToken)
         {
-            this.List = list;
-            this.SkipToken = skipToken;
+            List = list;
+            SkipToken = skipToken;
         }
 
         public List<T> List { get; }

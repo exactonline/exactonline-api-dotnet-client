@@ -2,5 +2,3 @@ public enum FieldType
 {
     ReadOnly
 }
-
-

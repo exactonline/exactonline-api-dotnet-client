@@ -1,11 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace ExactOnline.Client.Sdk.Interfaces
+﻿namespace ExactOnline.Client.Sdk.Interfaces
 {
-	public interface IApiConnection
-	{
-		string Get(string parameters);
+    using System;
+    using System.Threading.Tasks;
+
+    public interface IApiConnection
+    {
+        string Get(string parameters);
         Task<string> GetAsync(string parameters);
 
         string GetEntity(string keyname, string guid, string parameters);
@@ -22,6 +22,5 @@ namespace ExactOnline.Client.Sdk.Interfaces
 
         int Count(string parameters);
         Task<int> CountAsync(string parameters);
-
     }
 }

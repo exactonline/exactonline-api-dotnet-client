@@ -1,63 +1,75 @@
-﻿
-namespace ExactOnline.Client.Sdk.Enums
+﻿namespace ExactOnline.Client.Sdk.Enums
 {
     public enum OperatorEnum
     {
         /// <summary>
-        /// Equal
+        ///     Equal
         /// </summary>
         Eq,
+
         /// <summary>
-        /// Not equal
+        ///     Not equal
         /// </summary>
         Ne,
+
         /// <summary>
-        /// Greater than
+        ///     Greater than
         /// </summary>
         Gt,
+
         /// <summary>
-        /// Greater than or equal
+        ///     Greater than or equal
         /// </summary>
         Ge,
+
         /// <summary>
-        /// Less than
+        ///     Less than
         /// </summary>
         Lt,
+
         /// <summary>
-        /// Less than or equal
+        ///     Less than or equal
         /// </summary>
         Le,
+
         /// <summary>
-        /// Logical and
+        ///     Logical and
         /// </summary>
         And,
+
         /// <summary>
-        /// Logical or
+        ///     Logical or
         /// </summary>
         Or,
+
         /// <summary>
-        /// Logical negation
+        ///     Logical negation
         /// </summary>
         Not,
+
         /// <summary>
-        /// Addition	
+        ///     Addition
         /// </summary>
         Add,
+
         /// <summary>
-        /// Subtraction	
+        ///     Subtraction
         /// </summary>
         Sub,
+
         /// <summary>
-        /// Multiplication
+        ///     Multiplication
         /// </summary>
         Mul,
+
         /// <summary>
-        /// Division
+        ///     Division
         /// </summary>
         Div,
+
         /// <summary>
-        /// Modulo
+        ///     Modulo
         /// </summary>
-        Mod,
+        Mod
     }
 }

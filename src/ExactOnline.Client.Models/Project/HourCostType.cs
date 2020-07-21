@@ -9,6 +9,7 @@ namespace ExactOnline.Client.Models.Project
         /// <summary>Description of Item</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public string ItemDescription { get; set; }
+
         /// <summary>Primary key</summary>
         public Guid ItemId { get; set; }
     }
