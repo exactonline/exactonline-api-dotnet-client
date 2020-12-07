@@ -1,29 +1,27 @@
-﻿using System;
-using System.Threading.Tasks;
-using ExactOnline.Client.Sdk.Interfaces;
-
-namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
+﻿namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 {
-	public sealed class ApiConnectionEntityControllerMock : IApiConnection
-	{
-		public int Count(string parameters)
-		{
-			return 0;
-		}
+    using System;
+    using System.Threading.Tasks;
+    using ExactOnline.Client.Sdk.Interfaces;
+
+    public sealed class ApiConnectionEntityControllerMock : IApiConnection
+    {
+        public string Data { get; set; }
+
+        public int Count(string parameters)
+        {
+            return 0;
+        }
 
         public Task<int> CountAsync(string parameters)
         {
             return Task.FromResult(Count(parameters));
         }
 
-        public string Data { get; set; }
-
-		#region IApiConnection Members
-
-		string IApiConnection.Get(string parameters)
-		{
-			throw new NotImplementedException();
-		}
+        string IApiConnection.Get(string parameters)
+        {
+            throw new NotImplementedException();
+        }
 
         Task<string> IApiConnection.GetAsync(string parameters)
         {
@@ -31,9 +29,9 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         string IApiConnection.GetEntity(string keyname, string guid, string parameters)
-		{
-			throw new NotImplementedException();
-		}
+        {
+            throw new NotImplementedException();
+        }
 
         Task<string> IApiConnection.GetEntityAsync(string keyname, string guid, string parameters)
         {
@@ -41,10 +39,10 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         string IApiConnection.Post(string data)
-		{
-			Data = data;
+        {
+            Data = data;
 
-			return @"{
+            return @"{
 				""d"": {
 					""__metadata"": {
 						""uri"": ""https://start.exactonline.nl/api/v1/{CurrentDivision}/salesinvoice/SalesInvoices(guid'0f8f1d9d-8a1e-49a2-b3ad-6664f58b4982')"",
@@ -99,7 +97,7 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 					}
 				}
 			}";
-		}
+        }
 
         Task<string> IApiConnection.PostAsync(string data)
         {
@@ -107,41 +105,35 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         bool IApiConnection.Put(string keyName, string guid, string data)
-		{
-			Data = data;
-			return true;
-		}
+        {
+            Data = data;
+            return true;
+        }
 
         Task<bool> IApiConnection.PutAsync(string keyName, string guid, string data)
         {
-            return Task.FromResult((this as IApiConnection).Put(keyName,guid,data));
+            return Task.FromResult((this as IApiConnection).Put(keyName, guid, data));
         }
 
         bool IApiConnection.Delete(string keyName, string guid)
-		{
-			return (keyName.Equals("ID") && guid.Equals("c931ef6c-ecdf-40db-87de-0d2c629ef322"));
-		}
+        {
+            return keyName.Equals("ID") && guid.Equals("c931ef6c-ecdf-40db-87de-0d2c629ef322");
+        }
 
         Task<bool> IApiConnection.DeleteAsync(string keyName, string guid)
         {
             return Task.FromResult((this as IApiConnection).Delete(keyName, guid));
         }
 
-        #endregion
-
-        #region IApiConnection Members
-
 
         public string GetEntity(string keyname, string guid, string parameters)
-		{
-			throw new NotImplementedException();
-		}
+        {
+            throw new NotImplementedException();
+        }
 
         public Task<string> GetEntityAsync(string keyname, string guid, string parameters)
         {
             throw new NotImplementedException();
         }
-
-        #endregion
     }
 }

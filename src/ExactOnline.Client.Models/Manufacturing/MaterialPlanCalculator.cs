@@ -1,30 +1,37 @@
-﻿using System;
-
-namespace ExactOnline.Client.Models.Manufacturing
+﻿namespace ExactOnline.Client.Models.Manufacturing
 {
+    using System;
+
     public class MaterialPlanCalculator
     {
         /// <summary>Fixed calculator</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public FixedCalculator FixedCalculator { get; set; }
+
         /// <summary>Materials per piece calculator</summary>
         [SDKFieldType(FieldType.ReadOnly)]
-		public MaterialsPerPieceCalculator MaterialsPerPieceCalculator { get; set; }
+        public MaterialsPerPieceCalculator MaterialsPerPieceCalculator { get; set; }
+
         /// <summary>Pieces per material calculator</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public PiecesPerMaterialCalculator PiecesPerMaterialCalculator { get; set; }
+
         /// <summary>Bar calculator</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public BarCalculator BarCalculator { get; set; }
+
         /// <summary>Sheet calculator</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public SheetCalculator SheetCalculator { get; set; }
+
         /// <summary>Coil wire length calculator</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public CoilWireLengthCalculator CoilWireLengthCalculator { get; set; }
+
         /// <summary>Coil wire weight calculator</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public CoilWireWeightCalculator CoilWireWeightCalculator { get; set; }
+
         /// <summary>Volume calculator</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public VolumeCalculator VolumeCalculator { get; set; }
@@ -35,6 +42,7 @@ namespace ExactOnline.Client.Models.Manufacturing
         /// <summary>Fixed quantity</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public Double? FixedQuantity { get; set; }
+
         /// <summary>Pieces per make item</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public Double? PiecesPerMakeItem { get; set; }
@@ -45,6 +53,7 @@ namespace ExactOnline.Client.Models.Manufacturing
         /// <summary>Materials per piece</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public Double? MaterialsPerPiece { get; set; }
+
         /// <summary>Pieces per make item</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public Double? PiecesPerMakeItem { get; set; }
@@ -55,6 +64,7 @@ namespace ExactOnline.Client.Models.Manufacturing
         /// <summary>Pieces per material</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public Double? PiecesPerMaterial { get; set; }
+
         /// <summary>Pieces per make item</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public Double? PiecesPerMakeItem { get; set; }
@@ -64,18 +74,23 @@ namespace ExactOnline.Client.Models.Manufacturing
     {
         /// <summary>Pieces per material</summary>
         [SDKFieldType(FieldType.ReadOnly)]
-        public String ItemStockUnit { get; set;}
+        public String ItemStockUnit { get; set; }
+
         /// <summary>Shape unit</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public String ShapeUnit { get; set; }
+
         /// <summary>Conversion unit factor</summary>
         public Double? ConversionUnitFactor { get; set; }
+
         /// <summary>Conversion unit factor type - 1 := 1 stockUnit = X shapeunits, 2 := 1 Shape Unit = X Stock Units</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public Int32? ConversionUnitFactorType { get; set; }
+
         /// <summary>Conversion unit description</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public String ConversionUnitDescription { get; set; }
+
         /// <summary>Pieces per make item</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public Double? PiecesPerMakeItem { get; set; }
@@ -158,7 +173,6 @@ namespace ExactOnline.Client.Models.Manufacturing
 
     public class SheetCalculator : CalculatorBase
     {
-
         /// <summary>Sheet length unit</summary>
         [SDKFieldType(FieldType.ReadOnly)]
         public String SheetLengthUnit { get; set; }
@@ -252,7 +266,7 @@ namespace ExactOnline.Client.Models.Manufacturing
 
         /// <summary>Weight per length unit</summary>
         [SDKFieldType(FieldType.ReadOnly)]
-        public String WeightPerLengthUnit{ get; set; }
+        public String WeightPerLengthUnit { get; set; }
 
         /// <summary>Weight per length unit factor</summary>
         [SDKFieldType(FieldType.ReadOnly)]
@@ -353,4 +367,3 @@ namespace ExactOnline.Client.Models.Manufacturing
         public Boolean IsCalculated { get; set; }
     }
 }
-

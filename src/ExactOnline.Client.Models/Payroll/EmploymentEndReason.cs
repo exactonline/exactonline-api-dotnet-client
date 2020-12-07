@@ -8,6 +8,7 @@ namespace ExactOnline.Client.Models.Payroll
     {
         /// <summary>Employment end reason description</summary>
         public string Description { get; set; }
+
         /// <summary>Primary key</summary>
         public Int32 ID { get; set; }
     }

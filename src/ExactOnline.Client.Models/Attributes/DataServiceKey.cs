@@ -1,5 +1,4 @@
 using System;
-
 using Newtonsoft.Json;
 
 public class DataServiceKey : Attribute
@@ -19,6 +18,5 @@ public class DataServiceKey : Attribute
         DataServiceKeyName = dataServiceKey;
     }
 
-    [JsonProperty(PropertyName = "dataServiceKey")]
-    public string DataServiceKeyName { get; set; }
+    [JsonProperty("dataServiceKey")] public string DataServiceKeyName { get; set; }
 }

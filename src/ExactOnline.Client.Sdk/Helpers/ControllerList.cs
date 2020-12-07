@@ -1,76 +1,72 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using ExactOnline.Client.Models;
-using ExactOnline.Client.Sdk.Controllers;
-using ExactOnline.Client.Sdk.Interfaces;
-
-namespace ExactOnline.Client.Sdk.Helpers
+﻿namespace ExactOnline.Client.Sdk.Helpers
 {
-	/// <summary>
-	/// Manages instances of controllers
-	/// </summary>
-	public class ControllerList
-	{
-		private readonly IApiConnector _connector;
-		private readonly string _baseUrl;
-		private readonly Hashtable _controllers;
-		private readonly Dictionary<string, string> _services;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using ExactOnline.Client.Models.Current;
+    using ExactOnline.Client.Sdk.Controllers;
+    using ExactOnline.Client.Sdk.Interfaces;
 
-		public ControllerList(IApiConnector connector, string baseUrl)
-		{
-			_baseUrl = baseUrl;
-			_connector = connector;
-			_controllers = new Hashtable();
-			_services = new Services().ServicesDictionary;
-		}
+    /// <summary>
+    ///     Manages instances of controllers
+    /// </summary>
+    public class ControllerList
+    {
+        private readonly string _baseUrl;
+        private readonly IApiConnector _connector;
+        private readonly Hashtable _controllers;
+        private readonly Dictionary<string, string> _services;
 
-		/// <summary>
-		/// Method for getting the correct EntityManager. This method is used as a Delegate
-		/// </summary>
-		public IEntityManager GetEntityManager(Type type)
-		{
-			var method = typeof(ControllerList).GetMethod("GetController");
-			var genericMethod = method.MakeGenericMethod(new[] { type });
-			var controller = (IEntityManager)genericMethod.Invoke(this, null);
-			return controller;
-		}
+        public ControllerList(IApiConnector connector, string baseUrl)
+        {
+            _baseUrl = baseUrl;
+            _connector = connector;
+            _controllers = new Hashtable();
+            _services = new Services().ServicesDictionary;
+        }
 
-		/// <summary>
-		/// Returns an instance of Controller with the specified type
-		/// </summary>
-		public IController<T> GetController<T>() where T : class
-		{
-			var typename = typeof(T).FullName;
-			var returncontroller = (Controller<T>)_controllers[typename];
+        /// <summary>
+        ///     Method for getting the correct EntityManager. This method is used as a Delegate
+        /// </summary>
+        public IEntityManager GetEntityManager(Type type)
+        {
+            var method = typeof(ControllerList).GetMethod("GetController");
+            var genericMethod = method.MakeGenericMethod(type);
+            return (IEntityManager)genericMethod.Invoke(this, null);
+        }
 
-			// If not exists: create
-			if (returncontroller == null)
-			{
-				ApiConnection conn;
+        /// <summary>
+        ///     Returns an instance of Controller with the specified type
+        /// </summary>
+        public IController<T> GetController<T>() where T : class
+        {
+            var typename = typeof(T).FullName;
+            var returncontroller = (Controller<T>)_controllers[typename];
 
-				if (typename == typeof(ExactOnline.Client.Models.Current.Me).FullName)
-				{
-					conn = new ApiConnection(_connector, _baseUrl + "system/Me");
-				}
-				else if (_services.ContainsKey(typename))
-				{
-					conn = new ApiConnection(_connector, _baseUrl + _services[typename]);
-				}
-				else
-				{
-					throw new InvalidOperationException("Specified entity is not known in Exact Online. Please check the reference documentation");
-				}
+            // If not exists: create
+            if (returncontroller == null)
+            {
+                ApiConnection conn;
 
-				returncontroller = new Controller<T>(conn)
-				{
-					GetManagerForEntity = GetEntityManager
-				};
-				_controllers.Add(typename, returncontroller);
-			}
+                if (typename == typeof(Me).FullName)
+                {
+                    conn = new ApiConnection(_connector, _baseUrl + "system/Me");
+                }
+                else if (_services.ContainsKey(typename))
+                {
+                    conn = new ApiConnection(_connector, _baseUrl + _services[typename]);
+                }
+                else
+                {
+                    throw new InvalidOperationException(
+                        "Specified entity is not known in Exact Online. Please check the reference documentation");
+                }
 
-			return returncontroller;
-		}
+                returncontroller = new Controller<T>(conn) {GetManagerForEntity = GetEntityManager};
+                _controllers.Add(typename, returncontroller);
+            }
 
-	}
+            return returncontroller;
+        }
+    }
 }

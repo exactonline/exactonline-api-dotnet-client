@@ -1,25 +1,15 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-using ExactOnline.Client.Sdk.Interfaces;
-
-namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
+﻿namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 {
-	class ApiConnectorControllerMock : IApiConnector
-	{
-		public int Count()
-		{
-			return 0;
-		}
+    using System.IO;
+    using System.Threading.Tasks;
+    using ExactOnline.Client.Sdk.Interfaces;
 
-        Task<int> CountAsync()
-        {
-            return Task.FromResult(Count());
-        }
-
+    internal class ApiConnectorControllerMock : IApiConnector
+    {
         public string DoCleanRequest(string uri)
-		{
-			return "";
-		}
+        {
+            return "";
+        }
 
         public Task<string> DoCleanRequestAsync(string uri)
         {
@@ -27,18 +17,18 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         public string DoCleanRequest(string uri, string oDataQuery)
-		{
-			return "";
-		}
+        {
+            return "";
+        }
 
         public Task<string> DoCleanRequestAsync(string uri, string oDataQuery)
         {
-            return Task.FromResult(DoCleanRequest(uri,oDataQuery));
+            return Task.FromResult(DoCleanRequest(uri, oDataQuery));
         }
 
         public string DoGetRequest(string endpoint, string parameters)
-		{
-			return @"{
+        {
+            return @"{
 	""d"": {
 		""results"": [
 			{
@@ -139,7 +129,7 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 		]
 	}
 }";
-		}
+        }
 
         public Task<string> DoGetRequestAsync(string endpoint, string parameters)
         {
@@ -147,9 +137,9 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         public string DoPostRequest(string endpoint, string postdata)
-		{
-			return string.Empty;
-		}
+        {
+            return string.Empty;
+        }
 
         public Task<string> DoPostRequestAsync(string endpoint, string postdata)
         {
@@ -157,9 +147,9 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         public string DoPutRequest(string endpoint, string putData)
-		{
-			return string.Empty;
-		}
+        {
+            return string.Empty;
+        }
 
         public Task<string> DoPutRequestAsync(string endpoint, string putData)
         {
@@ -167,9 +157,9 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         public string DoDeleteRequest(string endpoint)
-		{
-			return string.Empty;
-		}
+        {
+            return string.Empty;
+        }
 
         public Task<string> DoDeleteRequestAsync(string endpoint)
         {
@@ -177,9 +167,9 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         public int GetCurrentDivision(string website)
-		{
-			return -1;
-		}
+        {
+            return -1;
+        }
 
         public Task<int> GetCurrentDivisionAsync(string website)
         {
@@ -187,13 +177,23 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         public Stream DoGetFileRequest(string endpoint)
-	    {
-	        return Stream.Null;
-	    }
+        {
+            return Stream.Null;
+        }
 
         public Task<Stream> DoGetFileRequestAsync(string endpoint)
         {
             return Task.FromResult(DoGetFileRequest(endpoint));
+        }
+
+        public int Count()
+        {
+            return 0;
+        }
+
+        private Task<int> CountAsync()
+        {
+            return Task.FromResult(Count());
         }
     }
 }

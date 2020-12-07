@@ -1,22 +1,21 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-using ExactOnline.Client.Sdk.Interfaces;
-
-namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
+﻿namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
 {
+    using System;
+    using System.IO;
+    using System.Threading.Tasks;
+    using ExactOnline.Client.Sdk.Interfaces;
 
-	/// <summary>
-	/// Simulates APIConnector class
-	/// </summary>
-	public class ApiConnectorMock : IApiConnector
-	{
-		public String Data { get; set; }
+    /// <summary>
+    ///     Simulates APIConnector class
+    /// </summary>
+    public class ApiConnectorMock : IApiConnector
+    {
+        public String Data { get; set; }
 
-		public string DoCleanRequest(string uri)
-		{
-			return "";
-		}
+        public string DoCleanRequest(string uri)
+        {
+            return "";
+        }
 
         public Task<string> DoCleanRequestAsync(string uri)
         {
@@ -24,62 +23,50 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         public string DoCleanRequest(string uri, string oDataQuery)
-		{
-			return "";
-		}
+        {
+            return "";
+        }
 
         public Task<string> DoCleanRequestAsync(string uri, string oDataQuery)
         {
-            return Task.FromResult(DoCleanRequest(uri,oDataQuery));
+            return Task.FromResult(DoCleanRequest(uri, oDataQuery));
         }
-
-        public int Count()
-		{
-			return 0;
-		}
-
-        public Task<int> CountAsync()
-        {
-            return Task.FromResult(Count());
-        }
-
-        #region IAPIConnector Members
 
         public string DoGetRequest(string endpoint, string parameters)
-		{
-			return string.Empty;
-		}
+        {
+            return string.Empty;
+        }
 
         public Task<string> DoGetRequestAsync(string endpoint, string parameters)
         {
-            return Task.FromResult(DoGetRequest(endpoint,parameters));
+            return Task.FromResult(DoGetRequest(endpoint, parameters));
         }
 
         public string DoPostRequest(string endpoint, string postdata)
-		{
-			Data = postdata;
-			return string.Empty;
-		}
+        {
+            Data = postdata;
+            return string.Empty;
+        }
 
         public Task<string> DoPostRequestAsync(string endpoint, string postdata)
         {
-            return Task.FromResult(DoPostRequest(endpoint,postdata));
+            return Task.FromResult(DoPostRequest(endpoint, postdata));
         }
 
         public string DoPutRequest(string endpoint, string putData)
-		{
-			return string.Empty;
-		}
+        {
+            return string.Empty;
+        }
 
         public Task<string> DoPutRequestAsync(string endpoint, string putData)
         {
-            return Task.FromResult(DoPutRequest(endpoint,putData));
+            return Task.FromResult(DoPutRequest(endpoint, putData));
         }
 
         public string DoDeleteRequest(string endpoint)
-		{
-			return string.Empty;
-		}
+        {
+            return string.Empty;
+        }
 
         public Task<string> DoDeleteRequestAsync(string endpoint)
         {
@@ -87,9 +74,9 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         public int GetCurrentDivision(string website)
-		{
-			return -1;
-		}
+        {
+            return -1;
+        }
 
         public Task<int> GetCurrentDivisionAsync(string website)
         {
@@ -97,15 +84,23 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
         }
 
         public Stream DoGetFileRequest(string endpointy)
-	    {
-	        return Stream.Null;
-	    }
+        {
+            return Stream.Null;
+        }
 
         public Task<Stream> DoGetFileRequestAsync(string endpointy)
         {
             return Task.FromResult(DoGetFileRequest(endpointy));
         }
 
-        #endregion
+        public int Count()
+        {
+            return 0;
+        }
+
+        public Task<int> CountAsync()
+        {
+            return Task.FromResult(Count());
+        }
     }
 }

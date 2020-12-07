@@ -1,7 +1,7 @@
-using System;
-
 namespace ExactOnline.Client.Models.Webhooks
 {
+    using System;
+
     [SupportedActionsSDK(true, true, false, true)]
     [DataServiceKey("ID")]
     public class WebhookSubscription
