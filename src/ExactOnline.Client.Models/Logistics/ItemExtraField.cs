@@ -3,7 +3,7 @@
 namespace ExactOnline.Client.Models.Logistics
 {
     [SupportedActionsSDK(false, true, false, false)]
-    [DataServiceKey("ID")]
+    [DataServiceKey("ItemID")]
     public class ItemExtraField
     {
         /// <summary>Description of the free field</summary>
