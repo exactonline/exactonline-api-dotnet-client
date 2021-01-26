@@ -57,7 +57,7 @@ namespace ExactOnline.Client.Sdk.PerformanceTests
 				// Set Mock Connection and Create object
 				var controllerMock = new ApiConnectionEntityControllerMock();
 				var controller = new Controller<SalesInvoice>(controllerMock);
-				controller.Create(ref newInvoice);
+				controller.Create(ref newInvoice, true);
 			}
 		}
 
@@ -79,7 +79,7 @@ namespace ExactOnline.Client.Sdk.PerformanceTests
 				// Set Mock Connection and Create object
 				var controllerMock = new ApiConnectionEntityControllerMock();
 				var controller = new Controller<SalesInvoice>(controllerMock);
-				controller.Create(ref newInvoice);
+				controller.Create(ref newInvoice, true);
 			}
 		}
 	}

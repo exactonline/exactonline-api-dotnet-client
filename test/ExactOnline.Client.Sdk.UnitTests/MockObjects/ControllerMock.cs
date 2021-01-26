@@ -50,12 +50,12 @@ namespace ExactOnline.Client.Sdk.UnitTests.MockObjects
             return Task.FromResult(GetEntity(guid,parameters));
         }
 
-        bool IController<T>.Create(ref T entity)
+        bool IController<T>.Create(ref T entity, bool readAfterInsert)
 		{
 			return true;
 		}
 
-        Task<T> IController<T>.CreateAsync(T entity)
+        Task<T> IController<T>.CreateAsync(T entity, bool readAfterInsert)
         {
             return Task.FromResult(entity);
         }
