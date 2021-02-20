@@ -4,7 +4,7 @@ namespace ExactOnline.Client.Models.Accountancy
 
     [SupportedActionsSDK(true, true, true, true)]
     [DataServiceKey("ID")]
-    public class InvolvedUserRole
+    public class InvolvedUserRole : IExactOnlineEntity
     {
         /// <summary>Code of the involved user role</summary>
         public string Code { get; set; }

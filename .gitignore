@@ -19,6 +19,8 @@ bld/
 # Roslyn cache directories
 *.ide/
 
+.idea/
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
@@ -194,4 +196,4 @@ ModelManifest.xml
 testapp.config
 
 *.lock
-/.vs
+**/.vs

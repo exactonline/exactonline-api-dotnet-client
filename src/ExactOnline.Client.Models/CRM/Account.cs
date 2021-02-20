@@ -5,7 +5,7 @@ namespace ExactOnline.Client.Models.CRM
 
     [SupportedActionsSDK(true, true, true, true)]
     [DataServiceKey("ID")]
-    public class Account
+    public class Account : IExactOnlineEntity
     {
         /// <summary>Reference to the accountant of the customer. Conditions: The referred accountant must have value &gt; 0 in the field IsAccountant</summary>
         public Guid? Accountant { get; set; }

@@ -4,7 +4,7 @@ namespace ExactOnline.Client.Models.CRM
 
     [SupportedActionsSDK(false, true, false, false)]
     [DataServiceKey("ID")]
-    public class AddressState
+    public class AddressState : IExactOnlineEntity
     {
         /// <summary>Country code</summary>
         public String Country { get; set; }

@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExactOnline.Client.Sdk", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3F1610DB-DF11-43C3-B024-427B17186896}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExactOnline.Client.OAuth", "src\ExactOnline.Client.OAuth\ExactOnline.Client.OAuth.csproj", "{610FE8C1-F026-4567-8B47-8CB6338251F6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExactOnline.Client.Sdk.UnitTests", "test\ExactOnline.Client.Sdk.UnitTests\ExactOnline.Client.Sdk.UnitTests.csproj", "{866362D4-39CA-4FAA-99C0-2BE23530E881}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExactOnline.Client.Models", "src\ExactOnline.Client.Models\ExactOnline.Client.Models.csproj", "{0FBE029A-DD5E-0A4A-3EE2-6F330EB60B7C}"
@@ -26,12 +24,6 @@ Global
 		{EE442AA1-C51A-4531-92DA-A7D9C7B73973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE442AA1-C51A-4531-92DA-A7D9C7B73973}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE442AA1-C51A-4531-92DA-A7D9C7B73973}.Release|Any CPU.Build.0 = Release|Any CPU
-		{610FE8C1-F026-4567-8B47-8CB6338251F6}.Browser|Any CPU.ActiveCfg = Release|Any CPU
-		{610FE8C1-F026-4567-8B47-8CB6338251F6}.Browser|Any CPU.Build.0 = Release|Any CPU
-		{610FE8C1-F026-4567-8B47-8CB6338251F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{610FE8C1-F026-4567-8B47-8CB6338251F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{610FE8C1-F026-4567-8B47-8CB6338251F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{610FE8C1-F026-4567-8B47-8CB6338251F6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{866362D4-39CA-4FAA-99C0-2BE23530E881}.Browser|Any CPU.ActiveCfg = Release|Any CPU
 		{866362D4-39CA-4FAA-99C0-2BE23530E881}.Browser|Any CPU.Build.0 = Release|Any CPU
 		{866362D4-39CA-4FAA-99C0-2BE23530E881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

@@ -4,7 +4,7 @@ namespace ExactOnline.Client.Models.CRM
 
     [SupportedActionsSDK(false, true, false, false)]
     [DataServiceKey("ID")]
-    public class AccountClassificationName
+    public class AccountClassificationName : IExactOnlineEntity
     {
         /// <summary>Creation date</summary>
         [SDKFieldType(FieldType.ReadOnly)]

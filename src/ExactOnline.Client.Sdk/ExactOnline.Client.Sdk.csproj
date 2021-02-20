@@ -1,15 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+   <PropertyGroup>
+     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EE442AA1-C51A-4531-92DA-A7D9C7B73973}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ExactOnline.Client.Sdk</RootNamespace>
     <AssemblyName>ExactOnline.Client.Sdk</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -31,57 +29,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="Microsoft.CSharp" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.Reflection" Version="4.3.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Controllers\Controller.cs" />
-    <Compile Include="Controllers\EntityController.cs" />
-    <Compile Include="Controllers\SimpleController.cs" />
-    <Compile Include="Delegates\AccessTokenManagerDelegate.cs" />
-    <Compile Include="Delegates\GetEntityControllerDelegate.cs" />
-    <Compile Include="Enums\OperatorEnum.cs" />
-    <Compile Include="Exceptions\TooManyRequestsException.cs" />
-    <Compile Include="Helpers\ApiConnection.cs" />
-    <Compile Include="Helpers\ApiConnector.cs" />
-    <Compile Include="Helpers\ApiResponseCleaner.cs" />
-    <Compile Include="Helpers\ControllerList.cs" />
-    <Compile Include="Helpers\ExactOnlineJsonConverter.cs" />
-    <Compile Include="Controllers\ExactOnlineClient.cs" />
-    <Compile Include="Helpers\EntityConverter.cs" />
-    <Compile Include="Exceptions\BadRequestException.cs" />
-    <Compile Include="Exceptions\ForbiddenException.cs" />
-    <Compile Include="Exceptions\IncorrectJsonException.cs" />
-    <Compile Include="Exceptions\InternalServerErrorException.cs" />
-    <Compile Include="Exceptions\NotFoundException.cs" />
-    <Compile Include="Exceptions\UnauthorizedException.cs" />
-    <Compile Include="Models\ApiList.cs" />
-    <Compile Include="Helpers\ExactOnlineQuery.cs" />
-    <Compile Include="Helpers\JsDateTimeConverter.cs" />
-    <Compile Include="Delegates\ManagerForEntitiesDelegate.cs" />
-    <Compile Include="Enums\RequestTypeEnum.cs" />
-    <Compile Include="Helpers\StringExtensions.cs" />
-    <Compile Include="Helpers\TestApp.cs" />
-    <Compile Include="Interfaces\IApiConnection.cs" />
-    <Compile Include="Interfaces\IApiConnector.cs" />
-    <Compile Include="Interfaces\IController.cs" />
-    <Compile Include="Interfaces\IEntityManager.cs" />
-    <Compile Include="Models\EolResponseHeader.cs" />
-    <Compile Include="Models\RateLimit.cs" />
-    <Compile Include="Models\ServerMessage.cs" />
-    <Compile Include="Models\ServerMessageError.cs" />
-    <Compile Include="Models\ServerMessageErrorMessage.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="obj\**" />
+	  <EmbeddedResource Remove="obj\**" />
+	  <None Remove="obj\**" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="ExactOnline.Client.Sdk.csproj.bak" />
+	  <None Remove="ExactOnline.Client.sdk.nuspec" />
+	  <None Remove="packages.config" />
+	</ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExactOnline.Client.Models\ExactOnline.Client.Models.csproj">
@@ -89,12 +52,7 @@
       <Name>ExactOnline.Client.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <PropertyGroup>
+   <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup> 
 </Project>

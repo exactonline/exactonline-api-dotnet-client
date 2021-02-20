@@ -4,7 +4,7 @@ namespace ExactOnline.Client.Models.CRM
 
     [SupportedActionsSDK(false, true, false, false)]
     [DataServiceKey("ID")]
-    public class AccountClass
+    public class AccountClass : IExactOnlineEntity
     {
         /// <summary>Classification code</summary>
         public String Code { get; set; }

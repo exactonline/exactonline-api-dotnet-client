@@ -5,7 +5,7 @@ namespace ExactOnline.Client.Models.CRM
 {
     [SupportedActionsSDK(false, true, false, false)]
     [DataServiceKey("ID")]
-    public class Document
+    public class Document : IExactOnlineEntity
     {
         /// <summary>ID of the related account of this document</summary>
         public Guid? Account { get; set; }

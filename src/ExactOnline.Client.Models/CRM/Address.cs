@@ -4,7 +4,7 @@ namespace ExactOnline.Client.Models.CRM
 
     [SupportedActionsSDK(true, true, true, true)]
     [DataServiceKey("ID")]
-    public class Address
+    public class Address : IExactOnlineEntity
     {
         /// <summary>Account linked to the address</summary>
         public Guid? Account { get; set; }

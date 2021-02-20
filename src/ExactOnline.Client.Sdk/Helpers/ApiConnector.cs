@@ -18,7 +18,7 @@ namespace ExactOnline.Client.Sdk.Helpers
 	/// </summary>
 	public class ApiConnector : IApiConnector
 	{
-		private readonly AccessTokenManagerDelegate _accessTokenDelegate;
+		private readonly string _accessToken;
         private readonly ExactOnlineClient _client;
 
 		#region Constructor
@@ -26,12 +26,11 @@ namespace ExactOnline.Client.Sdk.Helpers
 		/// <summary>
 		/// Creates new instance of ApiConnector
 		/// </summary>
-		/// <param name="accessTokenDelegate">Valid oAuth Access Token</param>
-		public ApiConnector(AccessTokenManagerDelegate accessTokenDelegate, ExactOnlineClient client)
+		/// <param name="accessToken">Valid oAuth Access Token</param>
+		public ApiConnector(string accessToken, ExactOnlineClient client)
 		{
             _client = client;
-			if (accessTokenDelegate == null) throw new ArgumentException("accessTokenDelegate");
-			_accessTokenDelegate = accessTokenDelegate;
+            _accessToken = accessToken ?? throw new ArgumentException("accessToken");
 		}
 
 		#endregion
@@ -293,7 +292,7 @@ namespace ExactOnline.Client.Sdk.Helpers
 			request.ServicePoint.Expect100Continue = false;
 			request.Method = RequestTypeEnum.GET.ToString();
 			request.ContentType = "application/json";
-			request.Headers.Add("Authorization", "Bearer " + _accessTokenDelegate());
+			request.Headers.Add("Authorization", "Bearer " + _accessToken);
 			return GetResponse(request);
 		}
 
@@ -308,7 +307,7 @@ namespace ExactOnline.Client.Sdk.Helpers
             request.ServicePoint.Expect100Continue = false;
             request.Method = RequestTypeEnum.GET.ToString();
             request.ContentType = "application/json";
-            request.Headers.Add("Authorization", "Bearer " + _accessTokenDelegate());
+            request.Headers.Add("Authorization", "Bearer " + _accessToken);
             return GetResponseAsync(request);
         }
 
@@ -355,7 +354,7 @@ namespace ExactOnline.Client.Sdk.Helpers
 			{
 				request.Accept = acceptContentType;
 			}
-			request.Headers.Add("Authorization", "Bearer " + _accessTokenDelegate());
+			request.Headers.Add("Authorization", "Bearer " + _accessToken);
 
 			return request;
 		}
@@ -373,7 +372,7 @@ namespace ExactOnline.Client.Sdk.Helpers
 			try
 			{
 				response = request.GetResponse();
-                
+
 				using (Stream responseStream = response.GetResponseStream())
 				{
 					if (responseStream != null)
@@ -395,9 +394,10 @@ namespace ExactOnline.Client.Sdk.Helpers
                 SetEolResponseHeaders(response);
             }
 
+#if DEBUG
 			Debug.WriteLine(responseValue);
 			Debug.WriteLine("");
-
+#endif
 			return responseValue;
         }
 
@@ -464,9 +464,9 @@ namespace ExactOnline.Client.Sdk.Helpers
                 }
             };
 
-            
+
         }
-        
+
         private Stream GetResponseFile(HttpWebRequest request)
         {
             Debug.WriteLine("RESPONSE");

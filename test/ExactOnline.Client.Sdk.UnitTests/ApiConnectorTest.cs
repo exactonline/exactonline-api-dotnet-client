@@ -19,7 +19,7 @@ namespace ExactOnline.Client.Sdk.UnitTests
 		[TestInitialize]
 		public void Setup()
 		{
-			_connector = new ApiConnector(GetAccessToken, null);
+			_connector = new ApiConnector(GetAccessToken(), null);
 		}
 
 		
@@ -34,7 +34,7 @@ namespace ExactOnline.Client.Sdk.UnitTests
 		[TestCategory("Unit Test")]
 		public void ApiConnector_Constructor_WithDelegate_Succeeds()
 		{
-			var connector = new ApiConnector(GetAccessToken, null);
+			var connector = new ApiConnector(GetAccessToken(), null);
 		}
 
 		[TestMethod]
