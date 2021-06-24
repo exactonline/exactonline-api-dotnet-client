@@ -1,37 +1,39 @@
 ﻿using ExactOnline.Client.OAuth;
+using ExactOnline.Client.Sdk.Helpers;
 using System;
 
 namespace ConsoleApplication
 {
-	public class Connector
-	{
-		private readonly string _clientId;
-		private readonly string _clientSecret;
-		private readonly Uri _callbackUrl;
-		private readonly UserAuthorization _authorization;
+    public static class Connector
+    {
+        private static string _clientId;
+        private static string _clientSecret;
+        private static Uri _callbackUrl;
+        private static UserAuthorization _authorization;
 
-		public string EndPoint
-		{
-			get
-			{
-				return "https://start.exactonline.nl";
-			}
-		}
+        public static string EndPoint
+        {
+            get
+            {
+                return "https://start.exactonline.nl";
+            }
+        }
 
-		public Connector(string clientId, string clientSecret, Uri callbackUrl)
-		{
-			_clientId = clientId;
-			_clientSecret = clientSecret;
-			_callbackUrl = callbackUrl;
-			_authorization = new UserAuthorization();
-		}
+        static Connector()
+        {
+            var testApp = new TestApp();
+            _clientId = Convert.ToString(testApp.ClientId);
+            _clientSecret = testApp.ClientSecret;
+            _callbackUrl = testApp.CallbackUrl;
+            _authorization = new UserAuthorization();
+        }
 
-		public string GetAccessToken()
-		{
-			UserAuthorizations.Authorize(_authorization, EndPoint, _clientId, _clientSecret, _callbackUrl);
+        public static string GetAccessToken()
+        {
+            UserAuthorizations.Authorize(_authorization, EndPoint, _clientId, _clientSecret, _callbackUrl);
 
-			return _authorization.AccessToken;
-		}
+            return _authorization.AccessToken;
+        }
 
-	}
+    }
 }
