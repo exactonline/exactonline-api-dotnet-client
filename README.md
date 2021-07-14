@@ -13,6 +13,12 @@ The Exact Online Client SDK provides a rich application framework and simplifies
 
 The sample code in this document is in C#
 
+You can open sample console application solution that recommends you how to use ExactOnline.Client.Sdk
+
+```
+ConsoleApplication.sln
+```
+
 <h4>1.	Reference Libraries</h4>
 
 Include following references in your web project:
