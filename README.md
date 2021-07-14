@@ -9,9 +9,7 @@ C# client SDK for the Exact Online RESTFul API
 
 <h3>Quick Guide</h3>
 
-The Exact Online Client SDK provides a rich application framework and simplifies the interconnection with the Exact Online RESTful API. The Exact Online API can help you to quickly integrate with Exact Online and build innovative apps within the .NET environment. This document describes how to get started using the Exact Online Client SDK. 
-
-The sample code in this document is in C#
+The Exact Online Client SDK provides a rich application framework and simplifies the interconnection with the Exact Online RESTful API. The Exact Online API can help you to quickly integrate with Exact Online and build innovative apps within the .NET environment. This document describes how to get started using the Exact Online Client SDK. The sample code in this document is in C#
 
 You can open sample console application solution that recommends you how to use ExactOnline.Client.Sdk
 
