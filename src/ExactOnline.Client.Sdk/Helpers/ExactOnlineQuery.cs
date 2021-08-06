@@ -374,8 +374,18 @@ namespace ExactOnline.Client.Sdk.Helpers
         /// </summary>
         public Boolean Insert(ref T entity)
         {
+            return Insert(ref entity, true);
+        }
+
+        /// <summary>
+        /// Inserts the specified entity into Exact Online
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <param name="readAfterInsert">Whether to read the entity after insert, to retrieve linked entities.</param>
+        public Boolean Insert(ref T entity, bool readAfterInsert)
+        {
             if (entity == null) throw new ArgumentException("Insert entity: Entity cannot be null");
-            return _controller.Create(ref entity);
+            return _controller.Create(ref entity, readAfterInsert);
         }
 
         /// <summary>
@@ -383,8 +393,18 @@ namespace ExactOnline.Client.Sdk.Helpers
         /// </summary>
         public Task<T> InsertAsync(T entity)
         {
-            if( entity == null ) throw new ArgumentException( "Insert entity: Entity cannot be null" );
-            return _controller.CreateAsync(entity);
+            return InsertAsync(entity, true);
+        }
+
+        /// <summary>
+        /// Inserts the specified entity into Exact Online
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <param name="readAfterInsert">Whether to read the entity after insert, to retrieve linked entities.</param>
+        public Task<T> InsertAsync(T entity, bool readAfterInsert)
+        {
+            if(entity == null) throw new ArgumentException("Insert entity: Entity cannot be null");
+            return _controller.CreateAsync(entity, readAfterInsert);
         }
 
         /// <summary>
