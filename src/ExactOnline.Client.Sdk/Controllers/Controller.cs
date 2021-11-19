@@ -189,36 +189,22 @@ namespace ExactOnline.Client.Sdk.Controllers
         }
 
         /// <summary>
-        /// Creates an entity in Exact Online
+        /// Creates an entity in Exact Online and performs a readback
         /// </summary>
         /// <param name="entity">Entity to create</param>
         /// <returns>True if succeed</returns>
         public Boolean Create(ref T entity)
-		{
-			var supportedActions = GetSupportedActions(entity);
-			if (!supportedActions.CanCreate)
-			{
-				throw new Exception("Cannot create entity. Entity does not support creation. Please see the Reference Documentation.");
-			}
-
-			// Get Json code
-			var created = false;
-			var converter = new EntityConverter();
-			var emptyEntity = Activator.CreateInstance<T>();
-			var json = converter.ConvertObjectToJson(emptyEntity, entity, _entityControllerDelegate);
-
-			// Send to API
-			var response = _conn.Post(json);
-			if (!response.Contains("error"))
+        {
+            var created = false;
+            var supportedActions = GetSupportedActions(entity);
+			var response = PerformEntityCreation(entity, supportedActions);
+            if (!response.Contains("error"))
 			{
 				created = true;
 
-				// Set values of API in account entity (to ensure GUID is set)
-				response = ApiResponseCleaner.GetJsonObject(response);
-				var ec = new EntityConverter();
-				entity = ec.ConvertJsonToObject<T>(response);
+                entity = ConvertResponseToEntity(response);
 
-				// Try to add the entity to the managed entities collections
+                // Try to add the entity to the managed entities collections
 				if (!AddEntityToManagedEntitiesCollection(entity))
 				{
 					throw new Exception("This entity already exists");
@@ -233,6 +219,56 @@ namespace ExactOnline.Client.Sdk.Controllers
 			}
 			return created;
 		}
+
+        /// <summary>
+        /// Creates an entity in Exact Online
+        /// </summary>
+        /// <param name="entity">Entity to create</param>
+        /// <returns>True if succeed</returns>
+        public Boolean CreateWithoutReadback(T entity)
+        {
+            var created = false;
+            var supportedActions = GetSupportedActions(entity);
+            var response = PerformEntityCreation(entity, supportedActions);
+            if (!response.Contains("error"))
+            {
+                created = true;
+
+                entity = ConvertResponseToEntity(response);
+
+                // Try to add the entity to the managed entities collections
+                if (!AddEntityToManagedEntitiesCollection(entity))
+                {
+                    throw new Exception("This entity already exists");
+                }
+            }
+            return created;
+        }
+
+        private static T ConvertResponseToEntity(string response)
+        {
+            response = ApiResponseCleaner.GetJsonObject(response);
+            var ec = new EntityConverter();
+            return ec.ConvertJsonToObject<T>(response);
+        }
+
+        private string PerformEntityCreation(T entity, SupportedActionsSDK supportedActions)
+        {
+            if (!supportedActions.CanCreate)
+            {
+                throw new Exception(
+                    "Cannot create entity. Entity does not support creation. Please see the Reference Documentation.");
+            }
+
+            // Get Json code
+            var converter = new EntityConverter();
+            var emptyEntity = Activator.CreateInstance<T>();
+            var json = converter.ConvertObjectToJson(emptyEntity, entity, _entityControllerDelegate);
+
+            // Send to API
+            var response = _conn.Post(json);
+            return response;
+        }
 
         /// <summary>
         /// Creates an entity in Exact Online
