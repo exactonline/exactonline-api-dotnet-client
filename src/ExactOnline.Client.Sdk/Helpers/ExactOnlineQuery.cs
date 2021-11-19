@@ -370,12 +370,25 @@ namespace ExactOnline.Client.Sdk.Helpers
         }
 
         /// <summary>
-        /// Inserts the specified entity into Exact Online
+        /// Inserts the specified entity into Exact Online and updates the entity passed as argument
+        /// The cost of this method is 2 API calls
+        /// ExactOnline only supports 60 API calls per minute
+        /// If this limit is a concern, use InsertWithoutReadback instead
         /// </summary>
         public Boolean Insert(ref T entity)
         {
             if (entity == null) throw new ArgumentException("Insert entity: Entity cannot be null");
             return _controller.Create(ref entity);
+        }
+
+        /// <summary>
+        /// Inserts the specified entity into Exact Online
+        /// </summary>
+        public Boolean InsertWithoutReadback(T entity)
+        {
+            if (entity == null)
+                throw new ArgumentException("Insert entity: Entity cannot be null");
+            return _controller.CreateWithoutReadback(entity);
         }
 
         /// <summary>
